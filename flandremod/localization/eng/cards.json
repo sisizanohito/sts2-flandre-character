@@ -58,5 +58,11 @@
   "SPARK_SCATTER_CARD.upgrade.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye.",
   "FLANDREMOD-SPARK_SCATTER_CARD.title": "Spark Scatter",
   "FLANDREMOD-SPARK_SCATTER_CARD.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye.",
-  "FLANDREMOD-SPARK_SCATTER_CARD.upgrade.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye."
+  "FLANDREMOD-SPARK_SCATTER_CARD.upgrade.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye.",
+  "CLOSED_WINGS_CARD.title": "Closed Wings",
+  "CLOSED_WINGS_CARD.description": "Gain {Block} Block. If you have [Madness], gain {BonusBlock} more Block.",
+  "CLOSED_WINGS_CARD.upgrade.description": "Gain {Block} Block. If you have [Madness], gain {BonusBlock} more Block.",
+  "FLANDREMOD-CLOSED_WINGS_CARD.title": "Closed Wings",
+  "FLANDREMOD-CLOSED_WINGS_CARD.description": "Gain {Block} Block. If you have [Madness], gain {BonusBlock} more Block.",
+  "FLANDREMOD-CLOSED_WINGS_CARD.upgrade.description": "Gain {Block} Block. If you have [Madness], gain {BonusBlock} more Block."
 }

@@ -58,5 +58,11 @@
   "SPARK_SCATTER_CARD.upgrade.description": "{Damage}ダメージを与える。対象に対応する[破壊の目]があるなら、その[破壊の目]にも{EyeDamage}ダメージを与える。",
   "FLANDREMOD-SPARK_SCATTER_CARD.title": "火花散らし",
   "FLANDREMOD-SPARK_SCATTER_CARD.description": "{Damage}ダメージを与える。対象に対応する[破壊の目]があるなら、その[破壊の目]にも{EyeDamage}ダメージを与える。",
-  "FLANDREMOD-SPARK_SCATTER_CARD.upgrade.description": "{Damage}ダメージを与える。対象に対応する[破壊の目]があるなら、その[破壊の目]にも{EyeDamage}ダメージを与える。"
+  "FLANDREMOD-SPARK_SCATTER_CARD.upgrade.description": "{Damage}ダメージを与える。対象に対応する[破壊の目]があるなら、その[破壊の目]にも{EyeDamage}ダメージを与える。",
+  "CLOSED_WINGS_CARD.title": "閉ざす羽",
+  "CLOSED_WINGS_CARD.description": "{Block}ブロックを得る。[狂気]があるなら、さらに{BonusBlock}ブロックを得る。",
+  "CLOSED_WINGS_CARD.upgrade.description": "{Block}ブロックを得る。[狂気]があるなら、さらに{BonusBlock}ブロックを得る。",
+  "FLANDREMOD-CLOSED_WINGS_CARD.title": "閉ざす羽",
+  "FLANDREMOD-CLOSED_WINGS_CARD.description": "{Block}ブロックを得る。[狂気]があるなら、さらに{BonusBlock}ブロックを得る。",
+  "FLANDREMOD-CLOSED_WINGS_CARD.upgrade.description": "{Block}ブロックを得る。[狂気]があるなら、さらに{BonusBlock}ブロックを得る。"
 }
