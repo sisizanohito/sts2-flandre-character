@@ -6,6 +6,7 @@ using BaseLib.Utils;
 using FlandreMod.Characters;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -13,16 +14,19 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace FlandreMod.Cards;
 
 [Pool(typeof(FlandreCharacterCardPool))]
-public sealed class FlandreStrikeCard : CustomCardModel
+public sealed class SparkScatterCard : CustomCardModel
 {
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(4m, ValueProp.Move),
+        new IntVar("EyeDamage", 4m)
+    ];
 
-    public override string PortraitPath => "res://images/packed/card_portraits/colorless/ultimate_strike.png";
+    public override string PortraitPath => "res://images/packed/card_portraits/silent/neutralize.png";
     public override string BetaPortraitPath => PortraitPath;
 
-    public FlandreStrikeCard()
-        : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+    public SparkScatterCard()
+        : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 
@@ -35,10 +39,23 @@ public sealed class FlandreStrikeCard : CustomCardModel
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
+
+        Creature? linkedEye = DestructionEyeCardHelper.FindActiveEyeForTarget(this, cardPlay.Target);
+        if (linkedEye == null)
+            return;
+
+        await CreatureCmd.Damage(
+            choiceContext,
+            linkedEye,
+            DynamicVars["EyeDamage"].BaseValue,
+            ValueProp.Move,
+            Owner.Creature,
+            this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars["EyeDamage"].UpgradeValueBy(2m);
     }
 }

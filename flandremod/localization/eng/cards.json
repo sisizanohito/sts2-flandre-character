@@ -52,5 +52,11 @@
   "RENDING_CLAW_CARD.upgrade.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye.",
   "FLANDREMOD-RENDING_CLAW_CARD.title": "Rending Claw",
   "FLANDREMOD-RENDING_CLAW_CARD.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye.",
-  "FLANDREMOD-RENDING_CLAW_CARD.upgrade.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye."
+  "FLANDREMOD-RENDING_CLAW_CARD.upgrade.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye.",
+  "SPARK_SCATTER_CARD.title": "Spark Scatter",
+  "SPARK_SCATTER_CARD.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye.",
+  "SPARK_SCATTER_CARD.upgrade.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye.",
+  "FLANDREMOD-SPARK_SCATTER_CARD.title": "Spark Scatter",
+  "FLANDREMOD-SPARK_SCATTER_CARD.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye.",
+  "FLANDREMOD-SPARK_SCATTER_CARD.upgrade.description": "Deal {Damage} damage. If the target has a [Destruction Eye], deal {EyeDamage} damage to that eye."
 }

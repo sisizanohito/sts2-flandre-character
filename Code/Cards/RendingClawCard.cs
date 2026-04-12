@@ -37,7 +37,7 @@ public sealed class RendingClawCard : CustomCardModel
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_claw")
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
         Creature? linkedEye = DestructionEyeCardHelper.FindActiveEyeForTarget(this, cardPlay.Target);

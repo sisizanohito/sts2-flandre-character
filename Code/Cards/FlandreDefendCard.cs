@@ -19,7 +19,7 @@ public sealed class FlandreDefendCard : CustomCardModel
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5m, ValueProp.Move)];
 
-    public override string PortraitPath => "res://images/packed/card_portraits/ironclad/defend.png";
+    public override string PortraitPath => "res://images/packed/card_portraits/colorless/ultimate_defend.png";
     public override string BetaPortraitPath => PortraitPath;
 
     public FlandreDefendCard()

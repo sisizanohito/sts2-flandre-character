@@ -33,6 +33,10 @@ public static class FlandreTextureHelper
         if (texture != null)
             return texture;
 
+        Texture2D? rawPackedTexture = LoadRawPackedTexture(path);
+        if (rawPackedTexture != null)
+            return rawPackedTexture;
+
         string absolutePath = ProjectSettings.GlobalizePath(path);
         if (File.Exists(absolutePath))
         {
@@ -42,5 +46,31 @@ public static class FlandreTextureHelper
         }
 
         return null;
+    }
+
+    private static Texture2D? LoadRawPackedTexture(string path)
+    {
+        using Godot.FileAccess? file = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read);
+        if (file == null)
+            return null;
+
+        byte[] bytes = file.GetBuffer((long)file.GetLength());
+        if (bytes.Length == 0)
+            return null;
+
+        var image = new Image();
+        string extension = Path.GetExtension(path).ToLowerInvariant();
+        Error loadResult = extension switch
+        {
+            ".png" => image.LoadPngFromBuffer(bytes),
+            ".jpg" or ".jpeg" => image.LoadJpgFromBuffer(bytes),
+            ".webp" => image.LoadWebpFromBuffer(bytes),
+            _ => Error.FileUnrecognized
+        };
+
+        if (loadResult != Error.Ok)
+            return null;
+
+        return ImageTexture.CreateFromImage(image);
     }
 }
