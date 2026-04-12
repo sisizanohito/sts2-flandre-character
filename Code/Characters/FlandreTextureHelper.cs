@@ -9,12 +9,14 @@ public static class FlandreTextureHelper
 {
     public const string CharacterIdSuffix = "FLANDRE_CHARACTER";
     public const string CharacterIconTexturePath = "res://flandremod/Characters/FlandreCharacter/character_icon_flandre_character.png";
+    public const string StartupSafeCharacterIconTexturePath = "res://images/ui/top_panel/character_icon_ironclad.png";
     public const string CharacterSelectIconPath = "res://flandremod/Characters/FlandreCharacter/char_select_flandre_character.png";
     public const string CharacterSelectLockedIconPath = "res://flandremod/Characters/FlandreCharacter/char_select_flandre_character_locked.png";
     public const string CharacterSelectBackgroundPath = "res://flandremod/Characters/FlandreCharacter/char_select_bg.png";
     public const string CombatTexturePath = "res://flandremod/Characters/FlandreCharacter/flandre_character.png";
     public const string TopbarTexturePath = "res://flandremod/Characters/FlandreCharacter/icon.png";
     public const string MapMarkerTexturePath = "res://flandremod/Characters/FlandreCharacter/map_marker_flandre_character.png";
+    public const string StartupSafeMapMarkerTexturePath = "res://images/packed/map/icons/map_marker_ironclad.png";
 
     public static bool IsFlandre(CharacterModel? character)
     {

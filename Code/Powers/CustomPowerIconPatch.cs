@@ -16,6 +16,22 @@ public static class CustomPowerIconPatch
     private static readonly string? GameDirectory = Directory.GetParent(ModDirectory)?.Parent?.Parent?.FullName;
 
     [HarmonyPatch(typeof(PowerModel), nameof(PowerModel.Icon), MethodType.Getter)]
+    [HarmonyPrefix]
+    public static bool IconPrefix(PowerModel __instance, ref Texture2D __result)
+    {
+        string? iconPath = GetCustomIconPath(__instance, big: false, beta: false);
+        if (iconPath == null)
+            return true;
+
+        Texture2D? texture = TryLoadTexture(iconPath);
+        if (texture == null)
+            return true;
+
+        __result = texture;
+        return false;
+    }
+
+    [HarmonyPatch(typeof(PowerModel), nameof(PowerModel.Icon), MethodType.Getter)]
     [HarmonyPostfix]
     public static void IconPostfix(PowerModel __instance, ref Texture2D __result)
     {
@@ -24,6 +40,26 @@ public static class CustomPowerIconPatch
         Texture2D? texture = TryLoadTexture(iconPath);
         if (texture != null)
             __result = texture;
+    }
+
+    [HarmonyPatch(typeof(PowerModel), nameof(PowerModel.BigIcon), MethodType.Getter)]
+    [HarmonyPrefix]
+    public static bool BigIconPrefix(PowerModel __instance, ref Texture2D __result)
+    {
+        string? iconPath = GetCustomIconPath(__instance, big: true, beta: false);
+        string? betaIconPath = GetCustomIconPath(__instance, big: true, beta: true);
+        string? packedIconPath = GetCustomIconPath(__instance, big: false, beta: false);
+        if (iconPath == null && betaIconPath == null && packedIconPath == null)
+            return true;
+
+        Texture2D? texture = TryLoadTexture(iconPath)
+            ?? TryLoadTexture(betaIconPath)
+            ?? TryLoadTexture(packedIconPath);
+        if (texture == null)
+            return true;
+
+        __result = texture;
+        return false;
     }
 
     [HarmonyPatch(typeof(PowerModel), nameof(PowerModel.BigIcon), MethodType.Getter)]
