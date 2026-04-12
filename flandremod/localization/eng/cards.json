@@ -64,5 +64,11 @@
   "CLOSED_WINGS_CARD.upgrade.description": "Gain {Block} Block. If you have [Madness], gain {BonusBlock} more Block.",
   "FLANDREMOD-CLOSED_WINGS_CARD.title": "Closed Wings",
   "FLANDREMOD-CLOSED_WINGS_CARD.description": "Gain {Block} Block. If you have [Madness], gain {BonusBlock} more Block.",
-  "FLANDREMOD-CLOSED_WINGS_CARD.upgrade.description": "Gain {Block} Block. If you have [Madness], gain {BonusBlock} more Block."
+  "FLANDREMOD-CLOSED_WINGS_CARD.upgrade.description": "Gain {Block} Block. If you have [Madness], gain {BonusBlock} more Block.",
+  "TWISTED_PLAY_CARD.title": "Twisted Play",
+  "TWISTED_PLAY_CARD.description": "Gain {MadnessPower} [Madness]. If you already have [Madness], draw {Draw} card.",
+  "TWISTED_PLAY_CARD.upgrade.description": "Gain {MadnessPower} [Madness]. If you already have [Madness], draw {Draw} cards.",
+  "FLANDREMOD-TWISTED_PLAY_CARD.title": "Twisted Play",
+  "FLANDREMOD-TWISTED_PLAY_CARD.description": "Gain {MadnessPower} [Madness]. If you already have [Madness], draw {Draw} card.",
+  "FLANDREMOD-TWISTED_PLAY_CARD.upgrade.description": "Gain {MadnessPower} [Madness]. If you already have [Madness], draw {Draw} cards."
 }

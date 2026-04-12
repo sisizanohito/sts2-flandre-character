@@ -64,5 +64,11 @@
   "CLOSED_WINGS_CARD.upgrade.description": "{Block}ブロックを得る。[狂気]があるなら、さらに{BonusBlock}ブロックを得る。",
   "FLANDREMOD-CLOSED_WINGS_CARD.title": "閉ざす羽",
   "FLANDREMOD-CLOSED_WINGS_CARD.description": "{Block}ブロックを得る。[狂気]があるなら、さらに{BonusBlock}ブロックを得る。",
-  "FLANDREMOD-CLOSED_WINGS_CARD.upgrade.description": "{Block}ブロックを得る。[狂気]があるなら、さらに{BonusBlock}ブロックを得る。"
+  "FLANDREMOD-CLOSED_WINGS_CARD.upgrade.description": "{Block}ブロックを得る。[狂気]があるなら、さらに{BonusBlock}ブロックを得る。",
+  "TWISTED_PLAY_CARD.title": "歪んだ遊戯",
+  "TWISTED_PLAY_CARD.description": "[狂気]を{MadnessPower}得る。すでに[狂気]があるなら、カードを{Draw}枚引く。",
+  "TWISTED_PLAY_CARD.upgrade.description": "[狂気]を{MadnessPower}得る。すでに[狂気]があるなら、カードを{Draw}枚引く。",
+  "FLANDREMOD-TWISTED_PLAY_CARD.title": "歪んだ遊戯",
+  "FLANDREMOD-TWISTED_PLAY_CARD.description": "[狂気]を{MadnessPower}得る。すでに[狂気]があるなら、カードを{Draw}枚引く。",
+  "FLANDREMOD-TWISTED_PLAY_CARD.upgrade.description": "[狂気]を{MadnessPower}得る。すでに[狂気]があるなら、カードを{Draw}枚引く。"
 }
