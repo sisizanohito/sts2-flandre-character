@@ -1,0 +1,17 @@
+/bin/
+/obj/
+/out/
+/recovered-game/
+/assets_tmp/
+
+/flandremod.pck
+
+*.user
+*.suo
+*.log
+*.tmp
+*.bak
+*.bak2
+
+/.vs/
+/.idea/

@@ -1,0 +1,11 @@
+{
+  "id": "flandremod",
+  "pck_name": "flandremod",
+  "name": "FlandreMod",
+  "author": "isiis",
+  "description": "Flandre Scarlet character mod for Slay the Spire 2. Uses the Echo Link mechanic.",
+  "version": "1.0.0",
+  "has_pck": true,
+  "has_dll": true,
+  "affects_gameplay": true
+}

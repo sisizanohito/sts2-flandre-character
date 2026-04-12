@@ -1,0 +1,8 @@
+{
+  "DESTRUCTION_EYE_RELIC.title": "破壊衝動",
+  "DESTRUCTION_EYE_RELIC.description": "1ターンに1回、敵を倒した時、次のターン開始時に{Energy:energyIcons()}を得る。",
+  "DESTRUCTION_EYE_RELIC.flavor": "壊した瞬間、心臓がひとつ速く打つ。",
+  "FLANDREMOD-DESTRUCTION_EYE_RELIC.title": "破壊衝動",
+  "FLANDREMOD-DESTRUCTION_EYE_RELIC.description": "1ターンに1回、敵を倒した時、次のターン開始時に{Energy:energyIcons()}を得る。",
+  "FLANDREMOD-DESTRUCTION_EYE_RELIC.flavor": "壊した瞬間、心臓がひとつ速く打つ。"
+}

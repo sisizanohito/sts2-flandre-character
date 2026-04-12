@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[node name="CardTrail" type="GPUParticles2D"]
+emitting = false
+amount = 20
+lifetime = 0.5

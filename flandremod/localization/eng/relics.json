@@ -1,0 +1,8 @@
+{
+  "DESTRUCTION_EYE_RELIC.title": "Destructive Impulse",
+  "DESTRUCTION_EYE_RELIC.description": "Once each turn, when you kill an enemy, gain {Energy:energyIcons()} at the start of your next turn.",
+  "DESTRUCTION_EYE_RELIC.flavor": "With every destruction, her heartbeat quickens.",
+  "FLANDREMOD-DESTRUCTION_EYE_RELIC.title": "Destructive Impulse",
+  "FLANDREMOD-DESTRUCTION_EYE_RELIC.description": "Once each turn, when you kill an enemy, gain {Energy:energyIcons()} at the start of your next turn.",
+  "FLANDREMOD-DESTRUCTION_EYE_RELIC.flavor": "With every destruction, her heartbeat quickens."
+}

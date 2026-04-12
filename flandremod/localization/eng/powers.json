@@ -1,0 +1,14 @@
+{
+  "LINK_POWER.title": "Destruction Eye",
+  "LINK_POWER.description": "This [Destruction Eye] deals {RelayRatio}% of HP it loses to the linked enemy. On destruction, it deals {Amount} damage. Reapplying it increases explosion damage.",
+  "LINK_POWER.smartDescription": "This [Destruction Eye] deals {RelayRatio}% of HP it loses to the linked enemy. On destruction, it deals {Amount} damage. Reapplying it increases explosion damage.",
+  "MADNESS_POWER.title": "Madness",
+  "MADNESS_POWER.description": "Your next Attack targets ALL enemies. After it resolves, lose 1.",
+  "MADNESS_POWER.smartDescription": "Your next Attack targets ALL enemies. After it resolves, lose 1.",
+  "FLANDREMOD-LINK_POWER.title": "Destruction Eye",
+  "FLANDREMOD-LINK_POWER.description": "This [Destruction Eye] deals {RelayRatio}% of HP it loses to the linked enemy. On destruction, it deals {Amount} damage. Reapplying it increases explosion damage.",
+  "FLANDREMOD-LINK_POWER.smartDescription": "This [Destruction Eye] deals {RelayRatio}% of HP it loses to the linked enemy. On destruction, it deals {Amount} damage. Reapplying it increases explosion damage.",
+  "FLANDREMOD-MADNESS_POWER.title": "Madness",
+  "FLANDREMOD-MADNESS_POWER.description": "Your next Attack targets ALL enemies. After it resolves, lose 1.",
+  "FLANDREMOD-MADNESS_POWER.smartDescription": "Your next Attack targets ALL enemies. After it resolves, lose 1."
+}
