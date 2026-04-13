@@ -1,0 +1,50 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": {
+          "tool_name": "shell_command"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File .\\scripts\\check_remilia_oversight.ps1 -Owner Remilia -ToolName shell_command"
+          }
+        ]
+      },
+      {
+        "matcher": {
+          "tool_name": "apply_patch"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File .\\scripts\\check_remilia_oversight.ps1 -Owner Remilia -ToolName apply_patch"
+          }
+        ]
+      },
+      {
+        "matcher": {
+          "tool_name_regex": "^mcp__codex_apps__github_(create|update|enable|label|reply|add)_"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File .\\scripts\\check_remilia_oversight.ps1 -Owner Remilia -ToolName github_write"
+          }
+        ]
+      },
+      {
+        "matcher": {
+          "tool_name_regex": "^mcp__codex_apps__github_(create_branch|update_ref|create_pull_request)$"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File .\\scripts\\check_remilia_oversight.ps1 -Owner Remilia -ToolName git_publish"
+          }
+        ]
+      }
+    ]
+  }
+}
