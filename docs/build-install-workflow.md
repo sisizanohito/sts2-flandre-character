@@ -20,8 +20,8 @@ dotnet build .\FlandreMod.csproj -c Debug
 2. Rebuild the PCK from `flandremod/` with the correct prefix:
 
 ```text
-source_dir = C:\Users\isiis\Documents\flandre-mod\flandremod
-output_path = C:\Users\isiis\Documents\flandre-mod\flandremod.pck
+source_dir = %REPO_ROOT%\flandremod
+output_path = %REPO_ROOT%\flandremod.pck
 base_prefix = flandremod/
 convert_pngs = true
 ```

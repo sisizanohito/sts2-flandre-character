@@ -158,7 +158,7 @@ Verification pattern:
 
 - Build managed code first
 - Rebuild the PCK with `base_prefix = flandremod/`
-- Use [Install-FlandreMod.ps1](C:/Users/isiis/Documents/flandre-mod/tools/Install-FlandreMod.ps1) to copy the exact local PCK into the Steam mod folder
+- Use [Install-FlandreMod.ps1](../tools/Install-FlandreMod.ps1) to copy the exact local PCK into the Steam mod folder
 
 Do not trust a generic install path when localization or packed assets are involved.
 
