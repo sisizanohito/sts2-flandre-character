@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Utils;
@@ -94,24 +95,26 @@ internal static class DestructionEyeCardHelper
 
     public static bool HasAnyActiveEye(CardModel source)
     {
-        var combatState = source.CombatState;
-        if (combatState == null) return false;
-
-        return combatState.Enemies.Any(enemy =>
-            !enemy.IsDead &&
-            enemy.Monster is LinkedDummyMonsterModel &&
-            enemy.GetPower<LinkPower>() != null);
+        return GetActiveEyes(source).Any();
     }
 
     public static Creature? FindActiveEyeForTarget(CardModel source, Creature target)
     {
-        var combatState = source.CombatState;
-        if (combatState == null) return null;
-
-        return combatState.Enemies.FirstOrDefault(enemy =>
-            !enemy.IsDead &&
-            enemy.Monster is LinkedDummyMonsterModel &&
+        return GetActiveEyes(source).FirstOrDefault(enemy =>
             enemy.GetPower<LinkPower>()?.Target == target);
+    }
+
+    private static IEnumerable<Creature> GetActiveEyes(CardModel source)
+    {
+        var combatState = source.CombatState;
+        if (combatState == null)
+            return Enumerable.Empty<Creature>();
+
+        return combatState.Creatures
+            .Where(creature =>
+                !creature.IsDead &&
+                creature.Monster is LinkedDummyMonsterModel &&
+                creature.GetPower<LinkPower>() != null);
     }
 
     private static void SafePlayOnCreatureCenter(Creature creature, string path)
