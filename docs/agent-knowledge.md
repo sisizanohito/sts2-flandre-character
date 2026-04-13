@@ -91,9 +91,9 @@ Read this before starting a new task, after role changes, and after major debugg
 - Use this fixed format:
   - `owner / remilia_action / reason / next_actor`
 - Keep the check short and operational.
-- Remilia oversight hook templates are stored under `tools/remilia-oversight-plugin/`.
-- Expected plugin placement is the local plugin workspace path under that directory structure.
-- The oversight model is event-based monitoring rather than continuous polling.
+- Hook-based oversight is not adopted in the current project policy.
+- Overreach monitoring is standardized on heartbeat-based checks.
+- Any older hook-oriented notes or templates should be treated as historical reference only, not active guidance.
 
 ## Sub-Agent Tooling Lessons
 
