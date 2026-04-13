@@ -32,6 +32,8 @@ Read this before starting a new task, after role changes, and after major debugg
 - Sub-agents should use `gpt-5.4` by default in this workspace.
 - Do not use `gpt-5.4-mini` for strict MCP execution tasks.
 - This especially applies to any sub-agent expected to call `sts2_moddding` without fallback behavior.
+- Reason:
+  - `gpt-5.4` proved more reliable for strict MCP execution and reduced ambiguous fallback behavior in sub-agent checks.
 
 ## Operating Rules
 
@@ -56,6 +58,7 @@ Read this before starting a new task, after role changes, and after major debugg
   - tool visibility
   - actual tool execution
   - shell or network fallbacks that are not the requested MCP path
+- For strict MCP checks, judge success from `tool + raw result`.
 - For STS2 work, verify prerequisites in this order:
   1. `mcp__sts2_moddding__get_setup_status`
   2. `mcp__sts2_moddding__bridge_ping`
@@ -88,6 +91,9 @@ Read this before starting a new task, after role changes, and after major debugg
 - Use this fixed format:
   - `owner / remilia_action / reason / next_actor`
 - Keep the check short and operational.
+- Remilia oversight hook templates are stored under `tools/remilia-oversight-plugin/`.
+- Expected plugin placement is the local plugin workspace path under that directory structure.
+- The oversight model is event-based monitoring rather than continuous polling.
 
 ## Sub-Agent Tooling Lessons
 
