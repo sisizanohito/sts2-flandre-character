@@ -10,6 +10,8 @@ public static class FlandreTextureHelper
     public const string CharacterIdSuffix = "FLANDRE_CHARACTER";
     public const string CharacterIconTexturePath = "res://flandremod/Characters/FlandreCharacter/character_icon_flandre_character.png";
     public const string StartupSafeCharacterIconTexturePath = "res://images/ui/top_panel/character_icon_ironclad.png";
+    public const string StartupSafeCharacterSelectIconPath = "res://images/packed/character_select/char_select_ironclad.png";
+    public const string StartupSafeCharacterSelectLockedIconPath = "res://images/packed/character_select/char_select_ironclad_locked.png";
     public const string CharacterSelectIconPath = "res://flandremod/Characters/FlandreCharacter/char_select_flandre_character.png";
     public const string CharacterSelectLockedIconPath = "res://flandremod/Characters/FlandreCharacter/char_select_flandre_character_locked.png";
     public const string CharacterSelectBackgroundPath = "res://flandremod/Characters/FlandreCharacter/char_select_bg.png";
