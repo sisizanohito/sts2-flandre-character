@@ -28,8 +28,6 @@ $pckPath = Join-Path $projectAbs "flandremod.pck"
 $managedFiles = @(
     "FlandreMod.dll",
     "FlandreMod.pdb",
-    "FlandreMod.deps.json",
-    "FlandreMod.runtimeconfig.json",
     "BaseLib.dll"
 )
 
@@ -64,6 +62,18 @@ foreach ($file in $managedFiles) {
 }
 
 New-Item -ItemType Directory -Force -Path $modOutputDir | Out-Null
+
+$staleManagedJson = @(
+    "FlandreMod.deps.json",
+    "FlandreMod.runtimeconfig.json"
+)
+
+foreach ($file in $staleManagedJson) {
+    $stalePath = Join-Path $modOutputDir $file
+    if (Test-Path -LiteralPath $stalePath -PathType Leaf) {
+        Remove-Item -LiteralPath $stalePath -Force
+    }
+}
 
 foreach ($file in $managedFiles) {
     $sourcePath = Join-Path $managedOutputDir $file

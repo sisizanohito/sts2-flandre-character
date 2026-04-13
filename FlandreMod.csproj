@@ -53,12 +53,6 @@
     <Copy SourceFiles="$(TargetDir)$(TargetName).pdb"
           DestinationFolder="$(_ModOutputDir)"
           Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
-    <Copy SourceFiles="$(TargetDir)$(TargetName).deps.json"
-          DestinationFolder="$(_ModOutputDir)"
-          Condition="Exists('$(TargetDir)$(TargetName).deps.json')" />
-    <Copy SourceFiles="$(TargetDir)$(TargetName).runtimeconfig.json"
-          DestinationFolder="$(_ModOutputDir)"
-          Condition="Exists('$(TargetDir)$(TargetName).runtimeconfig.json')" />
     <Copy SourceFiles="$(MSBuildProjectDirectory)\mod_manifest.json"
           DestinationFolder="$(_ModOutputDir)"
           Condition="Exists('$(MSBuildProjectDirectory)\mod_manifest.json')" />
