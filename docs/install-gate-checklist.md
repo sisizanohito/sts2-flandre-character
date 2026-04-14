@@ -83,6 +83,28 @@ Then confirm the game log contains:
 
 If either path or either log line is missing, treat the problem as an install/localization packaging issue before debugging card code.
 
+## Post-Install Display Check
+
+After the install gate passes, use this short runtime check before deeper debugging:
+
+1. Hover tip
+   - open a card or state that should show a hover tip
+   - confirm the title and description render as real text, not raw localization keys
+2. Keyword
+   - confirm the expected keyword label appears in card text or tooltip
+   - confirm the keyword explanation opens with readable text
+3. Pool name
+   - confirm any pool or generated-choice name renders as a normal display string
+   - if a pool-related name renders as a key, treat it as localization loading failure first
+4. Combat display
+   - confirm combat-facing labels or counts that depend on the current change render without missing text
+   - when checking `狂気`-related behavior, compare target count with `狂気なし` and `狂気あり`
+
+If any item fails, classify it in this order:
+
+- raw keys or missing names -> localization / install issue first
+- correct text but wrong target count or wrong combat-facing behavior -> card logic or targeting issue
+
 ## Prohibitions
 
 - Do not build the PCK with `base_prefix = flandremod`
