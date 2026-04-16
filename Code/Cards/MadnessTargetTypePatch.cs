@@ -31,8 +31,7 @@ public static class MadnessTargetTypePatch
         if (!__instance.IsMutable) return;
 
         var owner = __instance.Owner;
-        if (owner?.Creature == null) return;
-        if (!owner.Creature.HasPower<MadnessPower>() && !MadnessPower.IsResolvingFor(owner.Creature)) return;
+        if (!MadnessPower.IsActiveFor(owner?.Creature)) return;
 
         if (__result == TargetType.AnyEnemy || __result == TargetType.RandomEnemy)
             __result = TargetType.AllEnemies;
@@ -50,8 +49,8 @@ public static class MadnessOnPlayWrapperPatch
 
         var owner = __instance.Owner;
         var combatState = __instance.CombatState;
-        if (owner?.Creature == null || combatState == null) return;
-        if (!owner.Creature.HasPower<MadnessPower>() && !MadnessPower.IsResolvingFor(owner.Creature)) return;
+        if (combatState == null) return;
+        if (!MadnessPower.IsActiveFor(owner?.Creature)) return;
 
         target = combatState.HittableEnemies.FirstOrDefault();
     }
@@ -67,8 +66,7 @@ public static class MadnessAttackCommandTargetingPatch
         if (card.Type != CardType.Attack) return true;
 
         var owner = card.Owner;
-        if (owner?.Creature == null) return true;
-        if (!owner.Creature.HasPower<MadnessPower>() && !MadnessPower.IsResolvingFor(owner.Creature)) return true;
+        if (!MadnessPower.IsActiveFor(owner?.Creature)) return true;
 
         var combatState = __instance.Attacker?.CombatState ?? owner.Creature.CombatState;
         if (combatState == null) return true;
@@ -97,8 +95,7 @@ public static class MadnessAttackCommandRandomTargetingPatch
         if (card.Type != CardType.Attack) return true;
 
         var owner = card.Owner;
-        if (owner?.Creature == null) return true;
-        if (!owner.Creature.HasPower<MadnessPower>() && !MadnessPower.IsResolvingFor(owner.Creature)) return true;
+        if (!MadnessPower.IsActiveFor(owner?.Creature)) return true;
 
         __result = __instance.TargetingAllOpponents(combatState);
         return false;
@@ -126,7 +123,7 @@ public static class MadnessAttackCommandExecutePatch
         var owner = card.Owner;
         if (owner?.Creature == null) return;
         if (!__instance.IsRandomlyTargeted) return;
-        if (!owner.Creature.HasPower<MadnessPower>() && !MadnessPower.IsResolvingFor(owner.Creature)) return;
+        if (!MadnessPower.IsActiveFor(owner.Creature)) return;
         if (RandomTargetingField == null) return;
 
         RandomTargetingField.SetValue(__instance, false);
