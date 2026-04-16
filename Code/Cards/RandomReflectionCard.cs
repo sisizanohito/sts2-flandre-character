@@ -39,9 +39,7 @@ public sealed class RandomReflectionCard : CustomCardModel
         if (CombatState == null || Owner?.Creature == null)
             return;
 
-        bool spreadToAllEnemies =
-            Owner.Creature.HasPower<MadnessPower>() ||
-            MadnessPower.IsResolvingFor(Owner.Creature);
+        bool spreadToAllEnemies = MadnessPower.IsActiveFor(Owner.Creature);
 
         for (int i = 0; i < HitCount; i++)
         {

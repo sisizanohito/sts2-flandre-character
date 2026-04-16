@@ -29,6 +29,14 @@ public sealed class MadnessPower : CustomPowerModel
         return ResolvingOwners.Contains(creature);
     }
 
+    public static bool IsActiveFor(Creature? creature)
+    {
+        if (creature == null)
+            return false;
+
+        return creature.HasPower<MadnessPower>() || IsResolvingFor(creature);
+    }
+
     public bool Affects(CardModel card)
     {
         if (card.Owner?.Creature != Owner) return false;
