@@ -98,7 +98,9 @@ After the install gate passes, use this short runtime check before deeper debugg
    - if a pool-related name renders as a key, treat it as localization loading failure first
 4. Combat display
    - confirm combat-facing labels or counts that depend on the current change render without missing text
-   - when checking `狂気`-related behavior, compare target count with `狂気なし` and `狂気あり`
+   - when checking `狂気`-related behavior, use `DokaanCard` and `RandomReflectionCard` as the short verification pair
+   - without `狂気`, confirm `DokaanCard` stays `AnyEnemy` and `RandomReflectionCard` stays `RandomEnemy`
+   - with `狂気`, confirm both display as `AllEnemies`, can be played without manual target selection, and consume `MadnessPower` in order
 
 If any item fails, classify it in this order:
 
