@@ -8,24 +8,24 @@ Read this before starting a new task, after role changes, and after major debugg
 
 ## Team Roles
 
-- `補佐`
-  - 越権監視と初動切り分け
-  - 依頼の境界確認、観測事実と推測の分離を担当する
+- `レミリア`
+  - 総括オーナー
+  - 最終判断、優先順位の確定、作業の開始・停止判断を行う
 - `フランドール`
-  - 実ゲーム操作と検証
-  - `sts2_moddding` を使うゲーム内確認と検証を担当する
+  - 実機検証 / ゲーム操作
+  - `sts2_moddding` を使ったゲーム状態確認、戦闘検証、再現確認を担当する
 - `咲夜`
-  - 実装
-  - コード変更提案と実装を担当する
+  - 実装担当
+  - コード修正、機能追加、差分の具体化を担当する
 - `パチュリー`
   - API / 内部設計レビュー
-  - recovered source、BaseLib、Harmony、STS2 構造の確認を担当する
+  - recovered source、BaseLib、Harmony、STS2 API の観点から設計上の危険筋を先に洗い出す
 - `小悪魔`
   - docs / ナレッジ整理
-  - 手順、教訓、検証観点、保留事項を短く残す
+  - 調査結果、運用ルール、検証手順、再発防止事項を文書化する
 - `美鈴`
-  - Git / 公開前監査
-  - commit 範囲、秘密情報、生成物、ゲーム由来 assets を確認する
+  - Git / 公開導線管理
+  - commit 範囲の整理、PR 前確認、ゲーム用 assets を含む公開前チェックを担当する
 
 ## Active Seat Default
 
@@ -82,18 +82,12 @@ Read this before starting a new task, after role changes, and after major debugg
 
 ## Oversight Check Pattern
 
-- Run a 補佐 check before:
-  - work start
-  - implementation
-  - docs updates
-  - verification
-  - commit
-- Use this fixed format:
-  - `owner / remilia_action / reason / next_actor`
-- Keep the check short and operational.
-- Hook-based oversight is not adopted in the current project policy.
-- Overreach monitoring is standardized on heartbeat-based checks.
-- Any older hook-oriented notes or templates should be treated as historical reference only, not active guidance.
+- 作業開始前、実装前、docs 更新前、検証前、commit 前に `レミリア check` を入れる
+- 形式は固定で `owner / remilia_action / reason / next_actor`
+- 文面は短く、判断と次の担当だけが分かる運用メモにする
+- hook ベースの監視運用は現行方針では採用しない
+- 監督と越権確認は heartbeat ベースのチェックで扱う
+- 旧来の hook 中心のメモやテンプレートは参考資料としてのみ扱い、現行ルールとしては使わない
 
 ## Sub-Agent Tooling Lessons
 
