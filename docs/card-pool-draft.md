@@ -60,6 +60,11 @@
 - アンコモンは `全体生成`、`連鎖生成`、`狂気` の伸びを担当する。
 - レアは盤面全体を壊しきる爆発ターンの上限を担う。
 
+## Implementation Status Snapshot
+
+- Done: `SparkScatterCard` now exposes the `Destruction Eye` keyword explicitly, matching the tooltip path already fixed on `EchoLinkCard`.
+- Next safe slice: verify one remaining common card that references `Destruction Eye` in text, preferably `MadGazeCard`.
+
 ## Common Cards
 
 ### 1. `眼差し`
