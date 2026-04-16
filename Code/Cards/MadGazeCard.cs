@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using FlandreMod.Characters;
+using FlandreMod.Keywords;
 using FlandreMod.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -15,6 +16,7 @@ namespace FlandreMod.Cards;
 [Pool(typeof(FlandreCharacterCardPool))]
 public sealed class MadGazeCard : CustomCardModel
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [DestructionEye.CustomType];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<MadnessPower>(1m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<MadnessPower>()];
 
