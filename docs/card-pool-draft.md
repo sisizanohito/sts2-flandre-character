@@ -156,6 +156,9 @@
 
 ## Common Package Notes
 
+- Implementation status snapshot (2026-04-17): `EchoLinkCard` and `LaughingEyeCard` already expose the `Destruction Eye` tooltip path on `main`; this slice adds the same `CanonicalKeywords` exposure to `RendingClawCard`.
+- Next restart point for the same verification track: check one remaining common card that still mentions `Destruction Eye` in localization text but does not yet expose the custom keyword on `main`, preferably `SparkScatterCard` or `CrackedSmileCard`.
+
 - コモン8枚のうち、`破壊の目` を新規生成できる札は `眼差し` と `狂視` の2枚。
 - コモン段階では `全体生成` を入れず、単体設置から丁寧に回す形にする。
 - `起爆札` は `掃射`、`火花散らし`、`乱反射` の3枚を軸にする。
