@@ -50,6 +50,10 @@ Sources:
   - cost `1`
   - gain block
   - adds bonus block when any active eye exists
+- `CruelBlinkCard`
+  - cost `1`
+  - single-target attack
+  - creates `Destruction Eye` on the target after dealing damage
 - `ClosedWingsCard`
   - cost `1`
   - gain block
@@ -81,7 +85,7 @@ Sources:
 
 - `DestructionEyeCardHelper` already owns eye creation, eye reinforcement, and initial eye HP setup
 - madness target-shift behavior has already been confirmed for `DokaanCard` and `RandomReflectionCard`
-- the current codebase already ships 12 non-basic cards across common, uncommon, and rare
+- the current codebase now ships 13 non-basic cards across common, uncommon, and rare
 
 ## Safe Next Slice
 
@@ -89,5 +93,13 @@ The next non-asset task should stay narrow and choose only one of these:
 
 1. Reclassify the current 12 implemented cards into a readable package doc that does not depend on the mojibake draft
 2. Add one new card that closes over the existing `DestructionEyeCardHelper` and `MadnessPower` behavior without introducing a new shared subsystem
+
+## Follow-Up Status
+
+- completed: added `CruelBlinkCard` as one narrow eye-setup attack that reuses `DestructionEyeCardHelper` without a new shared subsystem
+
+## Next Restart Point
+
+- pick exactly one new madness-side card that reuses `MadnessPower` without introducing a new shared subsystem
 
 This document does not decide which of those two slices should go next. It only fixes the implementation inventory.

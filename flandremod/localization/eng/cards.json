@@ -82,5 +82,11 @@
   "TWISTED_PLAY_CARD.upgrade.description": "Gain {MadnessPower} [Madness]. If you already have [Madness], draw {Draw} cards.",
   "FLANDREMOD-TWISTED_PLAY_CARD.title": "Twisted Play",
   "FLANDREMOD-TWISTED_PLAY_CARD.description": "Gain {MadnessPower} [Madness]. If you already have [Madness], draw {Draw} card.",
-  "FLANDREMOD-TWISTED_PLAY_CARD.upgrade.description": "Gain {MadnessPower} [Madness]. If you already have [Madness], draw {Draw} cards."
+  "FLANDREMOD-TWISTED_PLAY_CARD.upgrade.description": "Gain {MadnessPower} [Madness]. If you already have [Madness], draw {Draw} cards.",
+  "CRUEL_BLINK_CARD.title": "Cruel Blink",
+  "CRUEL_BLINK_CARD.description": "Deal {Damage} damage. Create [Destruction Eye] 1 on the target.",
+  "CRUEL_BLINK_CARD.upgrade.description": "Deal {Damage} damage. Create [Destruction Eye] 1 on the target.",
+  "FLANDREMOD-CRUEL_BLINK_CARD.title": "Cruel Blink",
+  "FLANDREMOD-CRUEL_BLINK_CARD.description": "Deal {Damage} damage. Create [Destruction Eye] 1 on the target.",
+  "FLANDREMOD-CRUEL_BLINK_CARD.upgrade.description": "Deal {Damage} damage. Create [Destruction Eye] 1 on the target."
 }
