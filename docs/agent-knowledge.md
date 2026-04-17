@@ -122,6 +122,8 @@ Confirmed fixes:
 - `EchoLinkCard` now exposes the custom keyword through `CanonicalKeywords`
 - `CardHoverTipDuringTargetingPatch` keeps hover tips visible during targeting card flows
 - `DestructionEye` custom keyword exists in code and in localization
+- every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
+  - confirmed mainline cards: `EchoLinkCard`, `SparkScatterCard`, `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, `CruelBlinkCard`
 
 Root cause of raw-key display:
 
@@ -136,6 +138,11 @@ Verification pattern:
   - `Found loc table from mod: eng card_keywords.json`
   - `Found loc table from mod: jpn card_keywords.json`
 - Check rendered hover-tip title and description in the live scene
+
+Current debugging default:
+
+- for already shipped `[Destruction Eye]` cards on `main`, treat missing tooltip text as an install / localization packaging suspicion first, not as a new `CanonicalKeywords` omission
+- only reopen the card-level keyword path when a newly added card introduces `[Destruction Eye]` text without joining the shared exposure pattern
 
 ## Random Reflection Lessons
 
@@ -153,6 +160,8 @@ Verification pattern:
 - Build managed code first
 - Rebuild the PCK with `base_prefix = flandremod/`
 - Use [Install-FlandreMod.ps1](../tools/Install-FlandreMod.ps1) to copy the exact local PCK into the Steam mod folder
+- Treat [install-gate-checklist.md](./install-gate-checklist.md) as the short completion gate before deeper runtime debugging
+- Use [build-install-workflow.md](./build-install-workflow.md) when the stale PCK suspicion needs the longer explanation or extra path/log checks
 
 Do not trust a generic install path when localization or packed assets are involved.
 
