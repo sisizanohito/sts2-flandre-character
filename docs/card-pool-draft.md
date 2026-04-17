@@ -26,6 +26,13 @@
   - アップグレード後は `破壊の目 2`
 - 詳細な挙動は `破壊の目` パワーのツールチップ側に寄せる。
 
+## Implementation Status Notes
+
+- 2026-04-17: `EchoLinkCard` は `CanonicalKeywords` で `DestructionEye.CustomType` を公開する mainline slice を PR #5 で提出済み。
+- 2026-04-17: `SparkScatterCard` は `[Destruction Eye]` tooltip 露出を mainline へ戻す slice を PR #6 で提出済み。
+- 2026-04-17: `MadGazeCard` は localization 上の `[Destruction Eye]` 参照に合わせて `CanonicalKeywords` を追加する slice を PR #7 で提出済み。
+- 2026-04-17: `CrackedSmileCard` も `[Destruction Eye]` 参照カードなので、同じ tooltip 公開経路で 1 枚ずつ揃える対象に含める。
+
 ## Starter Package
 
 - 初期デッキ

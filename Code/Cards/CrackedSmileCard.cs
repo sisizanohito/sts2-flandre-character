@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using FlandreMod.Characters;
+using FlandreMod.Keywords;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,6 +15,8 @@ namespace FlandreMod.Cards;
 [Pool(typeof(FlandreCharacterCardPool))]
 public sealed class CrackedSmileCard : CustomCardModel
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [DestructionEye.CustomType];
+
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
