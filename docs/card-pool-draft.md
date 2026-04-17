@@ -60,6 +60,11 @@
 - アンコモンは `全体生成`、`連鎖生成`、`狂気` の伸びを担当する。
 - レアは盤面全体を壊しきる爆発ターンの上限を担う。
 
+## Implementation Status Snapshot
+
+- Done: `EchoLinkCard` now matches the draft as a `Common` card, so the starter `Gaze` x2 plan and pool rarity agree again.
+- Next safe slice: choose one follow-up common verification target without touching assets, preferably `MadGazeCard` or `SparkScatterCard`.
+
 ## Common Cards
 
 ### 1. `眼差し`
