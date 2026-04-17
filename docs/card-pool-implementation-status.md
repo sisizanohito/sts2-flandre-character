@@ -53,6 +53,10 @@ Related readable package summary:
   - cost `1`
   - gain block
   - adds bonus block when any active eye exists
+- `CruelBlinkCard`
+  - cost `1`
+  - single-target attack
+  - creates `Destruction Eye` on the target after dealing damage
 - `ClosedWingsCard`
   - cost `1`
   - gain block
@@ -84,7 +88,7 @@ Related readable package summary:
 
 - `DestructionEyeCardHelper` already owns eye creation, eye reinforcement, and initial eye HP setup
 - madness target-shift behavior has already been confirmed for `DokaanCard` and `RandomReflectionCard`
-- the current codebase already ships 12 non-basic cards across common, uncommon, and rare
+- the current codebase now ships 13 non-basic cards across common, uncommon, and rare
 
 ## Follow-Up Status
 
