@@ -11,6 +11,9 @@ Sources:
 - `Code/Characters/FlandreCharacter.cs`
 - `flandremod/localization/eng/cards.json`
 
+Related readable package summary:
+- [card-pool-package-map.md](./card-pool-package-map.md)
+
 ## Confirmed Starter Deck
 
 - `FlandreStrikeCard` x4
@@ -83,11 +86,15 @@ Sources:
 - madness target-shift behavior has already been confirmed for `DokaanCard` and `RandomReflectionCard`
 - the current codebase already ships 12 non-basic cards across common, uncommon, and rare
 
+## Follow-Up Status
+
+- completed: reclassified the current implemented cards into [card-pool-package-map.md](./card-pool-package-map.md), a readable package doc that does not depend on the mojibake draft
+
 ## Safe Next Slice
 
-The next non-asset task should stay narrow and choose only one of these:
+The next non-asset task should stay narrow:
 
-1. Reclassify the current 12 implemented cards into a readable package doc that does not depend on the mojibake draft
-2. Add one new card that closes over the existing `DestructionEyeCardHelper` and `MadnessPower` behavior without introducing a new shared subsystem
+1. Add one new card that closes over the existing `DestructionEyeCardHelper` behavior without introducing a new shared subsystem
+2. Add one new card that closes over the existing `MadnessPower` behavior without introducing a new shared subsystem
 
-This document does not decide which of those two slices should go next. It only fixes the implementation inventory.
+This document still does not decide which card should go next. It only records the verified inventory and the completed follow-up doc slice.
