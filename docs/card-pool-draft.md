@@ -286,6 +286,9 @@
 
 ## Madness Implementation Notes
 
+- 2026-04-17 status:
+  - `MadGazeCard` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`, matching the earlier tooltip fix pattern used for `EchoLinkCard` and `SparkScatterCard`.
+  - Remaining `[破壊の目]` text cards should still be verified one by one in separate slices instead of batch-editing the common package.
 - `狂気` は現在、パワー本体と共通層パッチの両方を実装済み。
 - 確認済み:
   - `StrikeIronclad` は `狂気` 中に敵全体対象として解決できる。
