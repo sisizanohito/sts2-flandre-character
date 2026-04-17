@@ -22,7 +22,7 @@ Confirmed sources:
 
 ## Common Package
 
-The common pool is already split into three readable lanes.
+The common pool is already split into four readable lanes.
 
 ### 1. Eye setup
 
@@ -30,9 +30,13 @@ The common pool is already split into three readable lanes.
   - adds `Madness`
   - creates one `Destruction Eye` on a random enemy
   - upgrade adds draw
+- `CruelBlinkCard`
+  - single-target attack
+  - creates `Destruction Eye` on the target after dealing damage
 - role:
   - starts the eye engine without spending the starter `EchoLinkCard`
-  - bridges the eye lane and the madness lane in one card
+  - gives the common pool one direct "hit first, then mark" setup card
+  - keeps `MadGazeCard` as the bridge between the eye lane and the madness lane
 
 ### 2. Eye payoff
 
@@ -113,6 +117,9 @@ From the implemented cards alone, the current Flandre package reads as:
 ## Next Safe Slice
 
 This document only replaces the unreadable package notes from the draft.
+
+Completed follow-up note:
+- every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
 
 The next non-asset slice should therefore be one of:
 

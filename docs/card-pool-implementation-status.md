@@ -88,11 +88,13 @@ Related readable package summary:
 
 - `DestructionEyeCardHelper` already owns eye creation, eye reinforcement, and initial eye HP setup
 - madness target-shift behavior has already been confirmed for `DokaanCard` and `RandomReflectionCard`
+- every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
 - the current codebase now ships 13 non-basic cards across common, uncommon, and rare
 
 ## Follow-Up Status
 
 - completed: reclassified the current implemented cards into [card-pool-package-map.md](./card-pool-package-map.md), a readable package doc that does not depend on the mojibake draft
+- completed: closed the remaining `Destruction Eye` tooltip-follow-up cards on `main` by landing keyword exposure for `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, and the new `CruelBlinkCard`
 
 ## Safe Next Slice
 
