@@ -26,6 +26,13 @@
   - アップグレード後は `破壊の目 2`
 - 詳細な挙動は `破壊の目` パワーのツールチップ側に寄せる。
 
+## Implementation Status Notes
+
+- 2026-04-17: `EchoLinkCard` は `CanonicalKeywords` で `DestructionEye.CustomType` を公開する mainline slice を PR #5 で提出済み。
+- 2026-04-17: `SparkScatterCard` は `[Destruction Eye]` tooltip 露出を mainline へ戻す slice を PR #6 で提出済み。
+- 2026-04-17: `MadGazeCard` は localization 上の `[Destruction Eye]` 参照に合わせて `CanonicalKeywords` を追加する slice を PR #7 で提出済み。
+- 2026-04-17: `CrackedSmileCard` も `[Destruction Eye]` 参照カードなので、同じ tooltip 公開経路で 1 枚ずつ揃える対象に含める。
+
 ## Starter Package
 
 - 初期デッキ
@@ -59,6 +66,11 @@
 - コモンは安定して `破壊の目` に触れる札を厚くする。
 - アンコモンは `全体生成`、`連鎖生成`、`狂気` の伸びを担当する。
 - レアは盤面全体を壊しきる爆発ターンの上限を担う。
+
+## Implementation Status Snapshot
+
+- Done: `EchoLinkCard` now matches the draft as a `Common` card, so the starter `Gaze` x2 plan and pool rarity agree again.
+- Next safe slice: choose one follow-up common verification target without touching assets, preferably `MadGazeCard` or `SparkScatterCard`.
 
 ## Common Cards
 
@@ -143,6 +155,9 @@
 - 役割: テーマに沿って使いやすい守り札。目を置くターンの隙を埋める。
 
 ## Common Package Notes
+
+- Implementation status snapshot (2026-04-17): `EchoLinkCard` and `LaughingEyeCard` already expose the `Destruction Eye` tooltip path on `main`; this slice adds the same `CanonicalKeywords` exposure to `RendingClawCard`.
+- Next restart point for the same verification track: check one remaining common card that still mentions `Destruction Eye` in localization text but does not yet expose the custom keyword on `main`, preferably `SparkScatterCard` or `CrackedSmileCard`.
 
 - コモン8枚のうち、`破壊の目` を新規生成できる札は `眼差し` と `狂視` の2枚。
 - コモン段階では `全体生成` を入れず、単体設置から丁寧に回す形にする。
@@ -279,8 +294,16 @@
 3. `破壊の目` を参照する専用パワーやレリックを追加するか検討する。
 4. `狂気` の実装方式をパワー化で統一するか確認する。
 
+## Implementation Status Snapshot
+
+- 2026-04-17: `ProliferatingGazeCard` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`, matching its `[Destruction Eye]` localization text and the tooltip fix pattern already used on `EchoLinkCard`.
+- Next restart point: keep the slice size to one card and verify whether `MadGazeCard` on `main` still needs the same keyword exposure after the already-open branch and PR backlog are resolved.
+
 ## Madness Implementation Notes
 
+- 2026-04-17 status:
+  - `MadGazeCard` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`, matching the earlier tooltip fix pattern used for `EchoLinkCard` and `SparkScatterCard`.
+  - Remaining `[破壊の目]` text cards should still be verified one by one in separate slices instead of batch-editing the common package.
 - `狂気` は現在、パワー本体と共通層パッチの両方を実装済み。
 - 確認済み:
   - `StrikeIronclad` は `狂気` 中に敵全体対象として解決できる。

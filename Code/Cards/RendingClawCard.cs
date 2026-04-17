@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using FlandreMod.Characters;
+using FlandreMod.Keywords;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -21,6 +22,8 @@ public sealed class RendingClawCard : CustomCardModel
         new DamageVar(7m, ValueProp.Move),
         new IntVar("EyeDamage", 4m)
     ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [DestructionEye.CustomType];
 
     public override string PortraitPath => "res://images/packed/card_portraits/ironclad/clothesline.png";
     public override string BetaPortraitPath => PortraitPath;

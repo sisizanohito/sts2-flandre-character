@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using FlandreMod.Characters;
+using FlandreMod.Keywords;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -16,6 +17,8 @@ namespace FlandreMod.Cards;
 [Pool(typeof(FlandreCharacterCardPool))]
 public sealed class SparkScatterCard : CustomCardModel
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [DestructionEye.CustomType];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(4m, ValueProp.Move),
