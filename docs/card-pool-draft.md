@@ -62,8 +62,8 @@
 
 ## Implementation Status Snapshot
 
-- Done: `SparkScatterCard` now exposes the `Destruction Eye` keyword explicitly, matching the tooltip path already fixed on `EchoLinkCard`.
-- Next safe slice: verify one remaining common card that references `Destruction Eye` in text, preferably `MadGazeCard`.
+- Done: `EchoLinkCard` now matches the draft as a `Common` card, so the starter `Gaze` x2 plan and pool rarity agree again.
+- Next safe slice: choose one follow-up common verification target without touching assets, preferably `MadGazeCard` or `SparkScatterCard`.
 
 ## Common Cards
 

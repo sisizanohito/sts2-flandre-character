@@ -20,7 +20,7 @@ public sealed class EchoLinkCard : CustomCardModel
     public override string BetaPortraitPath => PortraitPath;
 
     public EchoLinkCard()
-        : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+        : base(2, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 
