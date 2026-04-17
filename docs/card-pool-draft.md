@@ -294,6 +294,11 @@
 3. `破壊の目` を参照する専用パワーやレリックを追加するか検討する。
 4. `狂気` の実装方式をパワー化で統一するか確認する。
 
+## Implementation Status Snapshot
+
+- 2026-04-17: `ProliferatingGazeCard` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`, matching its `[Destruction Eye]` localization text and the tooltip fix pattern already used on `EchoLinkCard`.
+- Next restart point: keep the slice size to one card and verify whether `MadGazeCard` on `main` still needs the same keyword exposure after the already-open branch and PR backlog are resolved.
+
 ## Madness Implementation Notes
 
 - 2026-04-17 status:
