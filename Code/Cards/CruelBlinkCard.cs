@@ -42,7 +42,7 @@ public sealed class CruelBlinkCard : CustomCardModel
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await DestructionEyeCardHelper.ApplyToTarget(this, target);
+        await DestructionEyeCardHelper.ApplyToTarget(choiceContext, this, target);
     }
 
     protected override void OnUpgrade()

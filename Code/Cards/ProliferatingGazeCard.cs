@@ -26,7 +26,7 @@ public sealed class ProliferatingGazeCard : CustomCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await DestructionEyeCardHelper.ApplyToAllEnemies(this);
+        await DestructionEyeCardHelper.ApplyToAllEnemies(choiceContext, this);
     }
 
     protected override void OnUpgrade()

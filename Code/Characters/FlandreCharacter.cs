@@ -61,7 +61,8 @@ public class FlandreCharacter : CustomCharacterModel
     public override string CustomIconTexturePath => FlandreTextureHelper.StartupSafeCharacterIconTexturePath;
     public override string CustomRestSiteAnimPath => "res://flandremod/Characters/FlandreCharacter/flandre_character_rest_site.tscn";
     public override string CustomMerchantAnimPath => "res://flandremod/Characters/FlandreCharacter/flandre_character_merchant.tscn";
-    public override string CustomCharacterSelectBg => "res://flandremod/Characters/FlandreCharacter/char_select_bg_flandre_character.tscn";
+    // Use a startup-safe built-in background until the custom texture can be loaded without PCK remap errors.
+    public override string CustomCharacterSelectBg => "res://scenes/screens/char_select/char_select_bg_ironclad.tscn";
     // Startup-safe built-in textures avoid sync-load failures before the button patch swaps in custom images.
     public override string CustomCharacterSelectIconPath => FlandreTextureHelper.StartupSafeCharacterSelectIconPath;
     public override string CustomCharacterSelectLockedIconPath => FlandreTextureHelper.StartupSafeCharacterSelectLockedIconPath;

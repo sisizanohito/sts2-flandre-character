@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Texture2D" path="res://flandremod/Characters/FlandreCharacter/char_select_bg.png" id="1_bg"]
+[ext_resource type="Texture2D" path="res://images/packed/character_select/char_select_ironclad.png" id="1_bg"]
 
 [node name="CharSelectBg" type="TextureRect"]
 layout_mode = 1

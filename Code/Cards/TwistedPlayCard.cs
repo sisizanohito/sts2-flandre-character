@@ -35,7 +35,7 @@ public sealed class TwistedPlayCard : CustomCardModel
     {
         bool hadMadness = Owner.Creature.HasPower<MadnessPower>();
 
-        await PowerCmd.Apply<MadnessPower>(Owner.Creature, DynamicVars["MadnessPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<MadnessPower>(choiceContext, Owner.Creature, DynamicVars["MadnessPower"].BaseValue, Owner.Creature, this);
 
         if (!hadMadness)
             return;

@@ -21,6 +21,8 @@ function Resolve-AbsolutePath {
 function Get-InstallVerificationSummary {
     param(
         [string]$ProjectRoot,
+        [string]$ManagedOutputDir,
+        [string]$ModOutputDir,
         [string]$SourcePckPath,
         [string]$InstalledPckPath,
         [string[]]$RequiredRepoFiles
@@ -39,6 +41,32 @@ function Get-InstallVerificationSummary {
             Length = if ($exists) { (Get-Item -LiteralPath $absolutePath).Length } else { $null }
         }
     }
+    $managedArtifactChecks = foreach ($artifact in @(
+        @{ Source = "FlandreMod.dll"; Installed = "FlandreMod.dll" },
+        @{ Source = "FlandreMod.dll"; Installed = "flandremod.dll" },
+        @{ Source = "FlandreMod.pdb"; Installed = "FlandreMod.pdb" },
+        @{ Source = "FlandreMod.pdb"; Installed = "flandremod.pdb" },
+        @{ Source = "BaseLib.dll"; Installed = "BaseLib.dll" }
+    )) {
+        $fileName = $artifact.Source
+        $installedFileName = $artifact.Installed
+        $sourcePath = Join-Path $ManagedOutputDir $fileName
+        $installedPath = Join-Path $ModOutputDir $installedFileName
+        $sourceExists = Test-Path -LiteralPath $sourcePath -PathType Leaf
+        $installedExists = Test-Path -LiteralPath $installedPath -PathType Leaf
+        [pscustomobject]@{
+            SourceFile = $fileName
+            InstalledFile = $installedFileName
+            SourceExists = $sourceExists
+            InstalledExists = $installedExists
+            Sha256Matches = if ($sourceExists -and $installedExists) {
+                (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash -eq
+                (Get-FileHash -LiteralPath $installedPath -Algorithm SHA256).Hash
+            } else {
+                $false
+            }
+        }
+    }
 
     return [pscustomobject]@{
         SourcePckPath = $SourcePckPath
@@ -50,6 +78,7 @@ function Get-InstallVerificationSummary {
         PckSha256Matches = ($sourceHash -eq $installedHash)
         SourcePckSha256 = $sourceHash
         InstalledPckSha256 = $installedHash
+        ManagedArtifacts = $managedArtifactChecks
         RequiredRepoFiles = $repoFileChecks
         FollowUpChecks = @(
             "Verify the rebuilt local flandremod.pck is the one copied into the mods folder.",
@@ -62,6 +91,7 @@ function Get-InstallVerificationSummary {
 $projectAbs = Resolve-AbsolutePath -Path $ProjectRoot
 $modsAbs = Resolve-AbsolutePath -Path $ModsDir
 $modOutputDir = Join-Path $modsAbs "flandremod"
+$baseLibOutputDir = Join-Path $modsAbs "BaseLib.0.2.7"
 $managedOutputDir = Join-Path $projectAbs "bin\$Configuration\net9.0"
 $manifestPath = Join-Path $projectAbs "mod_manifest.json"
 $pckPath = Join-Path $projectAbs "flandremod.pck"
@@ -74,6 +104,22 @@ $managedFiles = @(
     "FlandreMod.dll",
     "FlandreMod.pdb",
     "BaseLib.dll"
+)
+
+$projectXml = [xml](Get-Content -LiteralPath (Join-Path $projectAbs "FlandreMod.csproj") -Raw)
+$baseLibPackageRef = $projectXml.SelectNodes("//PackageReference") |
+    Where-Object { $_.GetAttribute("Include") -eq "Alchyr.Sts2.BaseLib" } |
+    Select-Object -First 1
+$baseLibPackageVersion = if ($null -ne $baseLibPackageRef) { $baseLibPackageRef.GetAttribute("Version") } else { $null }
+if ($null -eq $baseLibPackageRef -or [string]::IsNullOrWhiteSpace($baseLibPackageVersion)) {
+    throw "Could not determine Alchyr.Sts2.BaseLib package version from FlandreMod.csproj"
+}
+
+$baseLibPackageDir = Join-Path $env:USERPROFILE ".nuget\packages\alchyr.sts2.baselib\$baseLibPackageVersion"
+$baseLibPackageFiles = @(
+    (Join-Path $baseLibPackageDir "lib\net9.0\BaseLib.dll"),
+    (Join-Path $baseLibPackageDir "Content\BaseLib.json"),
+    (Join-Path $baseLibPackageDir "Content\BaseLib.pck")
 )
 
 if ($BuildManaged) {
@@ -106,6 +152,13 @@ foreach ($file in $managedFiles) {
     }
 }
 
+foreach ($file in $baseLibPackageFiles) {
+    if (-not (Test-Path -LiteralPath $file -PathType Leaf)) {
+        throw "BaseLib package artifact missing: $file"
+    }
+}
+
+New-Item -ItemType Directory -Force -Path $baseLibOutputDir | Out-Null
 New-Item -ItemType Directory -Force -Path $modOutputDir | Out-Null
 
 $staleManagedJson = @(
@@ -125,13 +178,18 @@ foreach ($file in $managedFiles) {
     Copy-Item -LiteralPath $sourcePath -Destination (Join-Path $modOutputDir $file) -Force
 }
 
+Copy-Item -LiteralPath (Join-Path $baseLibPackageDir "lib\net9.0\BaseLib.dll") -Destination (Join-Path $baseLibOutputDir "BaseLib.dll") -Force
+Copy-Item -LiteralPath (Join-Path $baseLibPackageDir "Content\BaseLib.json") -Destination (Join-Path $baseLibOutputDir "BaseLib.json") -Force
+Copy-Item -LiteralPath (Join-Path $baseLibPackageDir "Content\BaseLib.pck") -Destination (Join-Path $baseLibOutputDir "BaseLib.pck") -Force
+Copy-Item -LiteralPath (Join-Path $managedOutputDir "FlandreMod.dll") -Destination (Join-Path $modOutputDir "flandremod.dll") -Force
+Copy-Item -LiteralPath (Join-Path $managedOutputDir "FlandreMod.pdb") -Destination (Join-Path $modOutputDir "flandremod.pdb") -Force
 Copy-Item -LiteralPath $manifestPath -Destination (Join-Path $modOutputDir "mod_manifest.json") -Force
 Copy-Item -LiteralPath $pckPath -Destination (Join-Path $modOutputDir "flandremod.pck") -Force
 
 $installedPckPath = Join-Path $modOutputDir "flandremod.pck"
 $installedPck = Get-Item -LiteralPath $installedPckPath
 $sourcePck = Get-Item -LiteralPath $pckPath
-$verification = Get-InstallVerificationSummary -ProjectRoot $projectAbs -SourcePckPath $pckPath -InstalledPckPath $installedPckPath -RequiredRepoFiles $requiredRepoFiles
+$verification = Get-InstallVerificationSummary -ProjectRoot $projectAbs -ManagedOutputDir $managedOutputDir -ModOutputDir $modOutputDir -SourcePckPath $pckPath -InstalledPckPath $installedPckPath -RequiredRepoFiles $requiredRepoFiles
 
 [pscustomobject]@{
     ModDir = $modOutputDir
@@ -140,6 +198,8 @@ $verification = Get-InstallVerificationSummary -ProjectRoot $projectAbs -SourceP
     InstalledPckLength = $installedPck.Length
     InstalledPckLastWriteTime = $installedPck.LastWriteTime
     ManagedOutputDir = $managedOutputDir
+    BaseLibDir = $baseLibOutputDir
+    BaseLibVersion = $baseLibPackageVersion
 } | Format-List
 
 ""

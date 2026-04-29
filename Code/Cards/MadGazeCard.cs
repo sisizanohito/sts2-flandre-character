@@ -30,8 +30,8 @@ public sealed class MadGazeCard : CustomCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<MadnessPower>(Owner.Creature, DynamicVars["MadnessPower"].BaseValue, Owner.Creature, this);
-        await DestructionEyeCardHelper.ApplyToRandomEnemy(this);
+        await PowerCmd.Apply<MadnessPower>(choiceContext, Owner.Creature, DynamicVars["MadnessPower"].BaseValue, Owner.Creature, this);
+        await DestructionEyeCardHelper.ApplyToRandomEnemy(choiceContext, this);
 
         if (IsUpgraded)
             await CardPileCmd.Draw(choiceContext, 1, Owner);

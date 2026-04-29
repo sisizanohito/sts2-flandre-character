@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://src/Core/Nodes/Combat/NCreatureVisuals.cs" id="1_script"]
-[ext_resource type="Texture2D" path="res://flandremod/Characters/FlandreCharacter/flandre_character.png" id="2_texture"]
 
 [node name="FlandreCharacter" type="Node2D"]
 script = ExtResource("1_script")
@@ -10,7 +9,6 @@ script = ExtResource("1_script")
 unique_name_in_owner = true
 position = Vector2(0, -180)
 scale = Vector2(1, 1)
-texture = ExtResource("2_texture")
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

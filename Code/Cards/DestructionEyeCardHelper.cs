@@ -9,6 +9,7 @@ using FlandreMod.Visuals;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 
 namespace FlandreMod.Cards;
@@ -19,7 +20,7 @@ internal static class DestructionEyeCardHelper
     private const decimal DeathDamageIncrement = 8m;
     private const int MinimumEyeHp = 5;
 
-    public static async Task ApplyToTarget(CardModel source, Creature target)
+    public static async Task ApplyToTarget(PlayerChoiceContext choiceContext, CardModel source, Creature target)
     {
         var ownerCreature = source.Owner?.Creature;
         var combatState = source.CombatState;
@@ -35,7 +36,7 @@ internal static class DestructionEyeCardHelper
         {
             LinkPower? existingLink = existingEye.GetPower<LinkPower>();
             if (existingLink != null)
-                await PowerCmd.ModifyAmount(existingLink, DeathDamageIncrement, ownerCreature, source);
+                await PowerCmd.ModifyAmount(choiceContext, existingLink, DeathDamageIncrement, ownerCreature, source);
 
             SafePlayOnCreatureCenter(existingEye, "vfx/vfx_explosion");
             SafePlayOnCreatureCenter(target, "vfx/vfx_gaze");
@@ -57,13 +58,13 @@ internal static class DestructionEyeCardHelper
         var linkPower = (LinkPower)ModelDb.Power<LinkPower>().ToMutable();
         linkPower.Target = target;
         linkPower.RelayRatio = (int)BaseRelayRatio;
-        await PowerCmd.Apply(linkPower, eye, amount: DeathDamageIncrement, applier: ownerCreature, cardSource: source);
+        await PowerCmd.Apply(choiceContext, linkPower, eye, amount: DeathDamageIncrement, applier: ownerCreature, cardSource: source);
 
         SafePlayOnCreatureCenter(target, "vfx/vfx_gaze");
         SafePlayOnCreatureCenter(eye, "vfx/vfx_block");
     }
 
-    public static async Task ApplyToRandomEnemy(CardModel source)
+    public static async Task ApplyToRandomEnemy(PlayerChoiceContext choiceContext, CardModel source)
     {
         var runState = source.Owner?.RunState;
         var combatState = source.CombatState;
@@ -77,10 +78,10 @@ internal static class DestructionEyeCardHelper
         Creature? target = runState.Rng.CombatTargets.NextItem(enemies);
         if (target == null) return;
 
-        await ApplyToTarget(source, target);
+        await ApplyToTarget(choiceContext, source, target);
     }
 
-    public static async Task ApplyToAllEnemies(CardModel source)
+    public static async Task ApplyToAllEnemies(PlayerChoiceContext choiceContext, CardModel source)
     {
         var combatState = source.CombatState;
         if (combatState == null) return;
@@ -90,7 +91,7 @@ internal static class DestructionEyeCardHelper
             .ToList();
 
         foreach (Creature enemy in enemies)
-            await ApplyToTarget(source, enemy);
+            await ApplyToTarget(choiceContext, source, enemy);
     }
 
     public static bool HasAnyActiveEye(CardModel source)
