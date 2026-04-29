@@ -4,8 +4,10 @@ using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using FlandreMod.Characters;
+using FlandreMod.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -27,13 +29,31 @@ public sealed class DokaanCard : CustomCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+        bool isMadness =
+            Owner.Creature.HasPower<MadnessPower>() ||
+            MadnessPower.IsResolvingFor(Owner.Creature);
 
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_explosion")
-            .Execute(choiceContext);
+        if (!isMadness)
+        {
+            ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_explosion")
+                .Execute(choiceContext);
+            return;
+        }
+
+        IReadOnlyList<Creature>? enemies = CombatState?.HittableEnemies;
+        if (enemies == null) return;
+
+        foreach (Creature enemy in enemies)
+        {
+            if (enemy.IsDead) continue;
+
+            await CreatureCmd.Damage(choiceContext, enemy, DynamicVars.Damage, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()
