@@ -11,13 +11,15 @@ public static class FlandreTextureHelper
     public const string StartupSafeCharacterIconTexturePath = "res://images/ui/top_panel/character_icon_ironclad.png";
     public const string StartupSafeCharacterSelectIconPath = "res://images/packed/character_select/char_select_ironclad.png";
     public const string StartupSafeCharacterSelectLockedIconPath = "res://images/packed/character_select/char_select_ironclad_locked.png";
-    public const string CharacterIconTexturePath = StartupSafeCharacterIconTexturePath;
-    public const string CharacterSelectIconPath = StartupSafeCharacterSelectIconPath;
-    public const string CharacterSelectLockedIconPath = StartupSafeCharacterSelectLockedIconPath;
-    public const string CharacterSelectBackgroundPath = StartupSafeCharacterSelectIconPath;
+    public const string CharacterIconTexturePath = "res://flandremod/Characters/FlandreCharacter/character_icon_flandre_character.png";
+    public const string CharacterSelectIconPath = "res://flandremod/Characters/FlandreCharacter/char_select_flandre_character.png";
+    public const string CharacterSelectLockedIconPath = "res://flandremod/Characters/FlandreCharacter/char_select_flandre_character_locked.png";
+    public const string CharacterSelectBackgroundPath = "res://flandremod/Characters/FlandreCharacter/char_select_bg.png";
     public const string CombatTexturePath = "res://flandremod/Characters/FlandreCharacter/flandre_character.png";
+    public const string CardEnergySpritePath = "res://images/atlases/ui_atlas.sprites/card/energy_flandrecharacter.tres";
+    public const string CardEnergyAtlasPath = "res://images/atlases/flandre_energy_icon.png";
     public const string StartupSafeMapMarkerTexturePath = "res://images/packed/map/icons/map_marker_ironclad.png";
-    public const string TopbarTexturePath = StartupSafeCharacterIconTexturePath;
+    public const string TopbarTexturePath = CharacterIconTexturePath;
     public const string MapMarkerTexturePath = StartupSafeMapMarkerTexturePath;
 
     public static bool IsFlandre(CharacterModel? character)
