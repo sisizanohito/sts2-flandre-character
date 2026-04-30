@@ -7,7 +7,6 @@ using FlandreMod.Characters;
 using FlandreMod.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -45,15 +44,12 @@ public sealed class DokaanCard : CustomCardModel
             return;
         }
 
-        IReadOnlyList<Creature>? enemies = CombatState?.HittableEnemies;
-        if (enemies == null) return;
+        if (CombatState == null) return;
 
-        foreach (Creature enemy in enemies)
-        {
-            if (enemy.IsDead) continue;
-
-            await CreatureCmd.Damage(choiceContext, enemy, DynamicVars.Damage, Owner.Creature, this);
-        }
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .TargetingAllOpponents(CombatState)
+            .Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
