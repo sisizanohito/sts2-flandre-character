@@ -80,10 +80,14 @@ The common pool is already split into five readable lanes.
 - `BloodScentCard`
   - gains block
   - draws when current `Bloodshed` reaches its threshold
+- `CrimsonAdvanceCard`
+  - loses HP
+  - draws cards
+  - gains energy when current `Bloodshed` reaches its threshold
 - role:
-  - opens the vampire build axis without self-damage
+  - opens the vampire build axis with both passive field-damage payoff and active HP-payment setup
   - rewards damage that happens anywhere on the field, including damage involving `Destruction Eye`
-  - starts as a non-consuming threshold payoff so the resource can be verified before spenders are added
+  - starts with non-consuming threshold payoffs so the resource can be verified before spenders are added
 
 ## Uncommon Package
 
@@ -93,26 +97,36 @@ The common pool is already split into five readable lanes.
 - `ProliferatingGazeCard`
   - applies eyes to all enemies
   - upgrade reduces cost
+- `BloodMakeupCard`
+  - loses HP
+  - gains efficient block
+  - heals back a small amount when current `Bloodshed` reaches its threshold
 
 Uncommon cards are the package expanders.
 
 - `EchoLinkCard` is the precise setup card and already anchors the starter deck
 - `ProliferatingGazeCard` is the wide-board escalation card
-- together they push the deck from "single eye payoff" into "board-wide eye state"
+- `BloodMakeupCard` lets the bloodshed lane use HP payment as defensive tempo instead of only raw acceleration
+- together they push the deck from "single eye payoff" into "board-wide eye state" or into HP-payment stabilization
 
 ## Rare Package
 
 - `DokaanCard`
   - heavy damage finisher
   - becomes an all-enemy hit under `Madness`
+- `VampiricImpulseCard`
+  - heavy single-target attack
+  - heals for half of unblocked damage dealt when current `Bloodshed` reaches its threshold
 
-The current rare package is intentionally narrow.
+The current rare package is intentionally narrow but now has one finisher for each of the two newer branches.
 
 - `DokaanCard` is the only shipped rare and acts as the existing madness payoff finisher
+- `VampiricImpulseCard` is the first vampire-style closer that turns bloodshed setup into HP recovery
 - this leaves room for later rares to specialize into:
   - eye-state burst conversion
   - high-cost board control
   - setup compression that combines eye creation with payoff
+  - explicit `Bloodshed` consumption
 
 ## Current Reading
 
@@ -121,7 +135,7 @@ From the implemented cards alone, the current Flandre package reads as:
 1. start with targeted `Destruction Eye` setup from the starter deck
 2. draft commons that either cash in active eyes or stabilize the deck while building toward them
 3. use `Madness` as the alternative branch that changes how attacks fan out
-4. use `Bloodshed` as a field-damage resource that can reward either eye turns or ordinary combat damage
+4. use `Bloodshed` as a field-damage resource that can reward either eye turns, ordinary combat damage, or deliberate HP payment
 5. let uncommons widen or deepen the eye board state
 6. let `DokaanCard` serve as the current rare closer
 
@@ -131,10 +145,10 @@ This document only replaces the unreadable package notes from the draft.
 
 Completed follow-up note:
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
-- `BloodshedPower` and `BloodScentCard` add the first non-self-damage vampire axis slice.
+- `BloodshedPower`, `BloodScentCard`, `CrimsonAdvanceCard`, `BloodMakeupCard`, and `VampiricImpulseCard` add the first vampire axis slice.
 
 The next non-asset slice should therefore be one of:
 
 1. add one new card that cleanly extends the existing eye package without a new subsystem
 2. add one new card that cleanly extends the existing madness package without a new subsystem
-3. add one new card that reads or spends `Bloodshed`, but not both at once
+3. add one new card that consumes `Bloodshed`, since current cards only read and build it
