@@ -1,14 +1,20 @@
-{
+﻿{
   "LINK_POWER.title": "破壊の目",
-  "LINK_POWER.description": "この[破壊の目]が失ったHPの{RelayRatio}%をリンク先にも与える。破壊時、{Amount}ダメージを与える。重ねると爆発ダメージが増える。",
-  "LINK_POWER.smartDescription": "この[破壊の目]が失ったHPの{RelayRatio}%をリンク先にも与える。破壊時、{Amount}ダメージを与える。重ねると爆発ダメージが増える。",
+  "LINK_POWER.description": "この[Destruction Eye]が失ったHPの{RelayRatio}%をリンク先にも与える。破壊時、{Amount}ダメージを与える。重ねると爆発ダメージが増える。",
+  "LINK_POWER.smartDescription": "この[Destruction Eye]が失ったHPの{RelayRatio}%をリンク先にも与える。破壊時、{Amount}ダメージを与える。重ねると爆発ダメージが増える。",
   "MADNESS_POWER.title": "狂気",
   "MADNESS_POWER.description": "次のアタックは敵全体を対象にする。発動後、これを1失う。",
   "MADNESS_POWER.smartDescription": "次のアタックは敵全体を対象にする。発動後、これを1失う。",
+  "BLOODSHED_POWER.title": "血潮",
+  "BLOODSHED_POWER.description": "このターン、場で発生したHPダメージを数える。あなたのターン開始時に0に戻る。",
+  "BLOODSHED_POWER.smartDescription": "このターン、場で発生したHPダメージを数える。あなたのターン開始時に0に戻る。",
   "FLANDREMOD-LINK_POWER.title": "破壊の目",
-  "FLANDREMOD-LINK_POWER.description": "この[破壊の目]が失ったHPの{RelayRatio}%をリンク先にも与える。破壊時、{Amount}ダメージを与える。重ねると爆発ダメージが増える。",
-  "FLANDREMOD-LINK_POWER.smartDescription": "この[破壊の目]が失ったHPの{RelayRatio}%をリンク先にも与える。破壊時、{Amount}ダメージを与える。重ねると爆発ダメージが増える。",
+  "FLANDREMOD-LINK_POWER.description": "この[Destruction Eye]が失ったHPの{RelayRatio}%をリンク先にも与える。破壊時、{Amount}ダメージを与える。重ねると爆発ダメージが増える。",
+  "FLANDREMOD-LINK_POWER.smartDescription": "この[Destruction Eye]が失ったHPの{RelayRatio}%をリンク先にも与える。破壊時、{Amount}ダメージを与える。重ねると爆発ダメージが増える。",
   "FLANDREMOD-MADNESS_POWER.title": "狂気",
   "FLANDREMOD-MADNESS_POWER.description": "次のアタックは敵全体を対象にする。発動後、これを1失う。",
-  "FLANDREMOD-MADNESS_POWER.smartDescription": "次のアタックは敵全体を対象にする。発動後、これを1失う。"
+  "FLANDREMOD-MADNESS_POWER.smartDescription": "次のアタックは敵全体を対象にする。発動後、これを1失う。",
+  "FLANDREMOD-BLOODSHED_POWER.title": "血潮",
+  "FLANDREMOD-BLOODSHED_POWER.description": "このターン、場で発生したHPダメージを数える。あなたのターン開始時に0に戻る。",
+  "FLANDREMOD-BLOODSHED_POWER.smartDescription": "このターン、場で発生したHPダメージを数える。あなたのターン開始時に0に戻る。"
 }

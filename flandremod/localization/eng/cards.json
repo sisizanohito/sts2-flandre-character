@@ -88,5 +88,11 @@
   "CRUEL_BLINK_CARD.upgrade.description": "Deal {Damage} damage. Create [Destruction Eye] 1 on the target.",
   "FLANDREMOD-CRUEL_BLINK_CARD.title": "Cruel Blink",
   "FLANDREMOD-CRUEL_BLINK_CARD.description": "Deal {Damage} damage. Create [Destruction Eye] 1 on the target.",
-  "FLANDREMOD-CRUEL_BLINK_CARD.upgrade.description": "Deal {Damage} damage. Create [Destruction Eye] 1 on the target."
+  "FLANDREMOD-CRUEL_BLINK_CARD.upgrade.description": "Deal {Damage} damage. Create [Destruction Eye] 1 on the target.",
+  "BLOOD_SCENT_CARD.title": "Blood Scent",
+  "BLOOD_SCENT_CARD.description": "Gain {Block} Block. If [Bloodshed] is at least {BloodshedThreshold}, draw {Draw} card.",
+  "BLOOD_SCENT_CARD.upgrade.description": "Gain {Block} Block. If [Bloodshed] is at least {BloodshedThreshold}, draw {Draw} card.",
+  "FLANDREMOD-BLOOD_SCENT_CARD.title": "Blood Scent",
+  "FLANDREMOD-BLOOD_SCENT_CARD.description": "Gain {Block} Block. If [Bloodshed] is at least {BloodshedThreshold}, draw {Draw} card.",
+  "FLANDREMOD-BLOOD_SCENT_CARD.upgrade.description": "Gain {Block} Block. If [Bloodshed] is at least {BloodshedThreshold}, draw {Draw} card."
 }

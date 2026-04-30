@@ -1,4 +1,4 @@
-{
+﻿{
   "flandremod-flandre_character.title": "フランドール",
   "flandremod-flandre_character.titleObject": "フランドール",
   "flandremod-flandre_character.pronounSubject": "彼女",
@@ -11,6 +11,6 @@
   "FLANDREMOD-FLANDRE_CHARACTER.pronounObject": "彼女",
   "FLANDREMOD-FLANDRE_CHARACTER.possessiveAdjective": "彼女の",
   "FLANDREMOD-FLANDRE_CHARACTER.pronounPossessive": "彼女のもの",
-  "FLANDREMOD-FLANDRE_CHARACTER.description": "紅魔館に住まう吸血鬼。敵を[破壊の目]で結びつける。",
+  "FLANDREMOD-FLANDRE_CHARACTER.description": "紅魔館に住まう吸血鬼。敵を[Destruction Eye]で結びつける。",
   "CARD_POOL.FLANDREMOD-FLANDRE_CHARACTER_CARD_POOL": "フランドール"
 }

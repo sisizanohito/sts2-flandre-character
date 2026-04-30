@@ -22,7 +22,7 @@ Confirmed sources:
 
 ## Common Package
 
-The common pool is already split into four readable lanes.
+The common pool is already split into five readable lanes.
 
 ### 1. Eye setup
 
@@ -75,6 +75,16 @@ The common pool is already split into four readable lanes.
   - gives the pool one simple baseline attack that does not require eye or madness setup
   - keeps early reward choices from being over-constrained by synergy requirements
 
+### 5. Bloodshed support
+
+- `BloodScentCard`
+  - gains block
+  - draws when current `Bloodshed` reaches its threshold
+- role:
+  - opens the vampire build axis without self-damage
+  - rewards damage that happens anywhere on the field, including damage involving `Destruction Eye`
+  - starts as a non-consuming threshold payoff so the resource can be verified before spenders are added
+
 ## Uncommon Package
 
 - `EchoLinkCard`
@@ -111,8 +121,9 @@ From the implemented cards alone, the current Flandre package reads as:
 1. start with targeted `Destruction Eye` setup from the starter deck
 2. draft commons that either cash in active eyes or stabilize the deck while building toward them
 3. use `Madness` as the alternative branch that changes how attacks fan out
-4. let uncommons widen or deepen the eye board state
-5. let `DokaanCard` serve as the current rare closer
+4. use `Bloodshed` as a field-damage resource that can reward either eye turns or ordinary combat damage
+5. let uncommons widen or deepen the eye board state
+6. let `DokaanCard` serve as the current rare closer
 
 ## Next Safe Slice
 
@@ -120,8 +131,10 @@ This document only replaces the unreadable package notes from the draft.
 
 Completed follow-up note:
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
+- `BloodshedPower` and `BloodScentCard` add the first non-self-damage vampire axis slice.
 
 The next non-asset slice should therefore be one of:
 
 1. add one new card that cleanly extends the existing eye package without a new subsystem
 2. add one new card that cleanly extends the existing madness package without a new subsystem
+3. add one new card that reads or spends `Bloodshed`, but not both at once

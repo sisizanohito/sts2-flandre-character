@@ -97,10 +97,12 @@ public static class CustomPowerIconPatch
         {
             "MADNESS_POWER" => "res://images/powers/madness_power.png",
             "LINK_POWER" => "res://images/powers/link_power.png",
+            "BLOODSHED_POWER" => "res://images/powers/link_power.png",
             _ => power switch
             {
                 MadnessPower => "res://images/powers/madness_power.png",
                 LinkPower => "res://images/powers/link_power.png",
+                BloodshedPower => "res://images/powers/link_power.png",
                 _ => null
             }
         };

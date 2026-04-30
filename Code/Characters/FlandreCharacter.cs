@@ -57,12 +57,12 @@ public class FlandreCharacter : CustomCharacterModel
     // Use a known-good trail scene so preview cards always complete their fly-out cleanup.
     public override string CustomTrailPath => "res://scenes/vfx/card_trail_ironclad.tscn";
     public override string CustomIconPath => "res://flandremod/Characters/FlandreCharacter/flandre_character_icon.tscn";
-    public override string CustomIconTexturePath => FlandreTextureHelper.CharacterIconTexturePath;
+    public override string CustomIconTexturePath => FlandreTextureHelper.StartupSafeCharacterIconTexturePath;
     public override string CustomRestSiteAnimPath => "res://flandremod/Characters/FlandreCharacter/flandre_character_rest_site.tscn";
     public override string CustomMerchantAnimPath => "res://flandremod/Characters/FlandreCharacter/flandre_character_merchant.tscn";
     public override string CustomCharacterSelectBg => "res://flandremod/Characters/FlandreCharacter/char_select_bg_flandre_character.tscn";
-    public override string CustomCharacterSelectIconPath => FlandreTextureHelper.CharacterSelectIconPath;
-    public override string CustomCharacterSelectLockedIconPath => FlandreTextureHelper.CharacterSelectLockedIconPath;
+    public override string CustomCharacterSelectIconPath => FlandreTextureHelper.StartupSafeCharacterSelectIconPath;
+    public override string CustomCharacterSelectLockedIconPath => FlandreTextureHelper.StartupSafeCharacterSelectLockedIconPath;
     public override string CustomCharacterSelectTransitionPath => "res://materials/transitions/ironclad_transition_mat.tres";
     public override string CustomMapMarkerPath => FlandreTextureHelper.StartupSafeMapMarkerTexturePath;
     public override string? CustomEnergyCounterPath => "res://scenes/combat/energy_counters/ironclad_energy_counter.tscn";

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using FlandreMod.Characters;
+using FlandreMod.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -32,16 +33,26 @@ public sealed class DestructionEyeRelic : CustomRelicModel
         return runState.Players.All(player => player.GetRelicById(Id) == null);
     }
 
-    public override Task BeforeCombatStart()
+    public override async Task BeforeCombatStart()
     {
         _pendingEnergy = 0;
         _triggeredThisTurn = false;
-        return Task.CompletedTask;
+
+        BloodshedPower? bloodshedPower = await PowerCmd.Apply<BloodshedPower>(
+            new ThrowingPlayerChoiceContext(),
+            Owner.Creature,
+            1m,
+            Owner.Creature,
+            null,
+            silent: true);
+        bloodshedPower?.SetAmount(1, silent: true);
     }
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Creature.Player) return;
+
+        Owner.Creature.GetPower<BloodshedPower>()?.SetAmount(1, silent: true);
 
         if (_pendingEnergy > 0)
         {
