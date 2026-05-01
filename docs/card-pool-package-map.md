@@ -101,12 +101,16 @@ The common pool is already split into five readable lanes.
   - loses HP
   - gains efficient block
   - heals back a small amount when current `Bloodshed` reaches its threshold
+- `BloodPactCard`
+  - consumes current `Bloodshed`
+  - gains Energy and draws cards if the consume succeeds
 
 Uncommon cards are the package expanders.
 
 - `EchoLinkCard` is the precise setup card and already anchors the starter deck
 - `ProliferatingGazeCard` is the wide-board escalation card
 - `BloodMakeupCard` lets the bloodshed lane use HP payment as defensive tempo instead of only raw acceleration
+- `BloodPactCard` is the first explicit `Bloodshed` spender and turns the resource into burst tempo
 - together they push the deck from "single eye payoff" into "board-wide eye state" or into HP-payment stabilization
 
 ## Rare Package
@@ -145,10 +149,10 @@ This document only replaces the unreadable package notes from the draft.
 
 Completed follow-up note:
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
-- `BloodshedPower`, `BloodScentCard`, `CrimsonAdvanceCard`, `BloodMakeupCard`, and `VampiricImpulseCard` add the first vampire axis slice.
+- `BloodshedPower`, `BloodScentCard`, `CrimsonAdvanceCard`, `BloodMakeupCard`, `VampiricImpulseCard`, and `BloodPactCard` add the first vampire axis slice.
 
 The next non-asset slice should therefore be one of:
 
 1. add one new card that cleanly extends the existing eye package without a new subsystem
 2. add one new card that cleanly extends the existing madness package without a new subsystem
-3. add one new card that consumes `Bloodshed`, since current cards only read and build it
+3. add one follow-up `Bloodshed` card that scales by every N `Bloodshed`, since the first fixed-cost spender now exists

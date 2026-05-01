@@ -106,5 +106,11 @@
   "VAMPIRIC_IMPULSE_CARD.upgrade.description": "{Damage}ダメージを与える。[Bloodshed]が{BloodshedThreshold}以上なら、与えた未ブロックダメージの半分だけHPを回復する。",
   "FLANDREMOD-VAMPIRIC_IMPULSE_CARD.title": "吸血衝動",
   "FLANDREMOD-VAMPIRIC_IMPULSE_CARD.description": "{Damage}ダメージを与える。[Bloodshed]が{BloodshedThreshold}以上なら、与えた未ブロックダメージの半分だけHPを回復する。",
-  "FLANDREMOD-VAMPIRIC_IMPULSE_CARD.upgrade.description": "{Damage}ダメージを与える。[Bloodshed]が{BloodshedThreshold}以上なら、与えた未ブロックダメージの半分だけHPを回復する。"
+  "FLANDREMOD-VAMPIRIC_IMPULSE_CARD.upgrade.description": "{Damage}ダメージを与える。[Bloodshed]が{BloodshedThreshold}以上なら、与えた未ブロックダメージの半分だけHPを回復する。",
+  "BLOOD_PACT_CARD.title": "血の契約",
+  "BLOOD_PACT_CARD.description": "[Bloodshed]が{BloodshedCost}以上なら、[Bloodshed]を{BloodshedCost}消費する。{Energy}を得る。カードを{Cards}枚引く。",
+  "BLOOD_PACT_CARD.upgrade.description": "[Bloodshed]が{BloodshedCost}以上なら、[Bloodshed]を{BloodshedCost}消費する。{Energy}を得る。カードを{Cards}枚引く。",
+  "FLANDREMOD-BLOOD_PACT_CARD.title": "血の契約",
+  "FLANDREMOD-BLOOD_PACT_CARD.description": "[Bloodshed]が{BloodshedCost}以上なら、[Bloodshed]を{BloodshedCost}消費する。{Energy}を得る。カードを{Cards}枚引く。",
+  "FLANDREMOD-BLOOD_PACT_CARD.upgrade.description": "[Bloodshed]が{BloodshedCost}以上なら、[Bloodshed]を{BloodshedCost}消費する。{Energy}を得る。カードを{Cards}枚引く。"
 }

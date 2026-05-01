@@ -38,6 +38,16 @@ public sealed class BloodshedPower : CustomPowerModel
         return CurrentFor(creature) >= threshold;
     }
 
+    public static async Task<bool> TryConsume(PlayerChoiceContext choiceContext, Creature? creature, int amount, Creature? applier, CardModel? cardSource)
+    {
+        BloodshedPower? power = creature?.GetPower<BloodshedPower>();
+        if (power == null || power.CurrentBloodshed < amount)
+            return false;
+
+        await PowerCmd.ModifyAmount(choiceContext, power, -amount, applier, cardSource);
+        return true;
+    }
+
     public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
         if (creature.CombatState != Owner.CombatState) return;

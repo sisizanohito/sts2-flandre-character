@@ -31,9 +31,12 @@ It is intentionally separate from direct self-damage: the resource tracks HP dam
 - `VampiricImpulseCard`
   - rare attack
   - heals for half of unblocked damage dealt if current `Bloodshed` is at least 20
+- `BloodPactCard`
+  - uncommon skill
+  - consumes 15 current `Bloodshed`
+  - gains Energy and draws cards only if the consume succeeds
 
-These cards only read or build the resource. They do not consume `Bloodshed`.
-That keeps the first slice easy to verify before adding spenders.
+The first four cards only read or build the resource. `BloodPactCard` is the first fixed-cost spender and intentionally avoids scaling by every N `Bloodshed`.
 
 ## Extension Notes
 

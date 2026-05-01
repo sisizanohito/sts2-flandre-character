@@ -65,6 +65,15 @@ Related readable package summary:
   - cost `0`
   - applies `MadnessPower` 1
   - draws if `Madness` was already active
+- `BloodScentCard`
+  - cost `1`
+  - gains block
+  - draws when current `Bloodshed` reaches its threshold
+- `CrimsonAdvanceCard`
+  - cost `0`
+  - loses HP
+  - draws cards
+  - gains Energy when current `Bloodshed` reaches its threshold
 
 ### Uncommon
 
@@ -76,6 +85,15 @@ Related readable package summary:
   - cost `2`
   - applies `Destruction Eye` to all enemies
   - upgrade changes cost from `2` to `1`
+- `BloodMakeupCard`
+  - cost `1`
+  - loses HP
+  - gains efficient block
+  - heals back a small amount when current `Bloodshed` reaches its threshold
+- `BloodPactCard`
+  - cost `1`
+  - consumes 15 current `Bloodshed`
+  - gains Energy and draws cards only when the consume succeeds
 
 ### Rare
 
@@ -83,13 +101,17 @@ Related readable package summary:
   - cost `3`
   - high single-target damage
   - madness-specific all-enemy behavior is handled by the shared patch
+- `VampiricImpulseCard`
+  - cost `2`
+  - single-target attack
+  - heals for half of unblocked damage dealt when current `Bloodshed` reaches its threshold
 
 ## Stable Shared Base
 
 - `DestructionEyeCardHelper` already owns eye creation, eye reinforcement, and initial eye HP setup
 - madness target-shift behavior has already been confirmed for `DokaanCard` and `RandomReflectionCard`
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
-- the current codebase now ships 13 non-basic cards across common, uncommon, and rare
+- the current codebase now ships 18 non-basic cards across common, uncommon, and rare
 
 ## Follow-Up Status
 
@@ -102,5 +124,6 @@ The next non-asset task should stay narrow:
 
 1. Add one new card that closes over the existing `DestructionEyeCardHelper` behavior without introducing a new shared subsystem
 2. Add one new card that closes over the existing `MadnessPower` behavior without introducing a new shared subsystem
+3. Add one `Bloodshed` follow-up that scales by every N `Bloodshed`, since the first fixed-cost spender now exists
 
 This document still does not decide which card should go next. It only records the verified inventory and the completed follow-up doc slice.

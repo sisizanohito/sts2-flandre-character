@@ -112,5 +112,11 @@
   "VAMPIRIC_IMPULSE_CARD.upgrade.description": "Deal {Damage} damage. If [Bloodshed] is at least {BloodshedThreshold}, heal HP equal to half the unblocked damage dealt.",
   "FLANDREMOD-VAMPIRIC_IMPULSE_CARD.title": "Vampiric Impulse",
   "FLANDREMOD-VAMPIRIC_IMPULSE_CARD.description": "Deal {Damage} damage. If [Bloodshed] is at least {BloodshedThreshold}, heal HP equal to half the unblocked damage dealt.",
-  "FLANDREMOD-VAMPIRIC_IMPULSE_CARD.upgrade.description": "Deal {Damage} damage. If [Bloodshed] is at least {BloodshedThreshold}, heal HP equal to half the unblocked damage dealt."
+  "FLANDREMOD-VAMPIRIC_IMPULSE_CARD.upgrade.description": "Deal {Damage} damage. If [Bloodshed] is at least {BloodshedThreshold}, heal HP equal to half the unblocked damage dealt.",
+  "BLOOD_PACT_CARD.title": "Blood Pact",
+  "BLOOD_PACT_CARD.description": "If [Bloodshed] is at least {BloodshedCost}, consume {BloodshedCost} [Bloodshed]. Gain {Energy}. Draw {Cards} card.",
+  "BLOOD_PACT_CARD.upgrade.description": "If [Bloodshed] is at least {BloodshedCost}, consume {BloodshedCost} [Bloodshed]. Gain {Energy}. Draw {Cards} cards.",
+  "FLANDREMOD-BLOOD_PACT_CARD.title": "Blood Pact",
+  "FLANDREMOD-BLOOD_PACT_CARD.description": "If [Bloodshed] is at least {BloodshedCost}, consume {BloodshedCost} [Bloodshed]. Gain {Energy}. Draw {Cards} card.",
+  "FLANDREMOD-BLOOD_PACT_CARD.upgrade.description": "If [Bloodshed] is at least {BloodshedCost}, consume {BloodshedCost} [Bloodshed]. Gain {Energy}. Draw {Cards} cards."
 }
