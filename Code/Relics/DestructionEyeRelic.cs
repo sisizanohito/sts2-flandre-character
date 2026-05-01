@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using FlandreMod.Characters;
+using FlandreMod.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -21,7 +22,7 @@ public sealed class DestructionEyeRelic : CustomRelicModel
     private bool _triggeredThisTurn;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar("Energy", 1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
     public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";
     protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/burning_blood.tres";
     protected override string BigIconPath => "res://images/relics/burning_blood.png";
@@ -32,16 +33,26 @@ public sealed class DestructionEyeRelic : CustomRelicModel
         return runState.Players.All(player => player.GetRelicById(Id) == null);
     }
 
-    public override Task BeforeCombatStart()
+    public override async Task BeforeCombatStart()
     {
         _pendingEnergy = 0;
         _triggeredThisTurn = false;
-        return Task.CompletedTask;
+
+        BloodshedPower? bloodshedPower = await PowerCmd.Apply<BloodshedPower>(
+            new ThrowingPlayerChoiceContext(),
+            Owner.Creature,
+            1m,
+            Owner.Creature,
+            null,
+            silent: true);
+        bloodshedPower?.SetAmount(1, silent: true);
     }
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Creature.Player) return;
+
+        Owner.Creature.GetPower<BloodshedPower>()?.SetAmount(1, silent: true);
 
         if (_pendingEnergy > 0)
         {
