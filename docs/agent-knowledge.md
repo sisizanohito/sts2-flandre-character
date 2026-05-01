@@ -165,6 +165,20 @@ Current debugging default:
 
 Do not trust a generic install path when localization or packed assets are involved.
 
+## Character Identity Debugging
+
+- If selecting Flandre appears to start Ironclad, verify the live run identity through `bridge_get_full_state` before assuming it is only a UI texture issue.
+- A clean Flandre run should report `character: FlandreCharacter`, `hp: 75`, starter cards `FlandreStrikeCard` / `FlandreDefendCard` / `EchoLinkCard`, and starter relic `DestructionEyeRelic`.
+- If the current run reports `character: Ironclad` with `StrikeIronclad`, `DefendIronclad`, `Bash`, and `BurningBlood`, the run is really Ironclad.
+- A failed hot reload while the game is running can leave the session in a poisoned state even when installed files are correct. In that case, stop the game, rebuild, reinstall, relaunch, and retest with `run_test_scenario` or `bridge_get_full_state`.
+
+## Energy Icon Debugging
+
+- Flandre's energy prefix must be lower-case `flandrecharacter`; `EnergyIconsFormatter` does not lower-case the prefix when building `res://images/packed/sprite_fonts/{prefix}_energy_icon.png`.
+- Godot rich text `[img]` did not render a mod-local raw PNG path from `flandremod/Characters/FlandreCharacter/ui/`, even though the string resolved to that path.
+- For Flandre text energy icons, the card energy `.tres` path can render through the atlas loader patch, but it must be emitted as `[img=24x24]...[/img]`; plain `[img]...[/img]` renders the 64px card icon too large in body text.
+- Visual check: start a Flandre run with seed `FLANDREENERGY02`; Neow's Booming Conch option should show an energy icon after `gain`.
+
 ## Commit Hygiene
 
 - Commit only the files that belong to the current fix

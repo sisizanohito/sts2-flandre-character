@@ -8,6 +8,7 @@ namespace FlandreMod.Characters;
 public static class FlandreTextureHelper
 {
     public const string CharacterIdSuffix = "FLANDRE_CHARACTER";
+    public const string EnergyColorName = "flandrecharacter";
     public const string StartupSafeCharacterIconTexturePath = "res://images/ui/top_panel/character_icon_ironclad.png";
     public const string StartupSafeCharacterSelectIconPath = "res://images/packed/character_select/char_select_ironclad.png";
     public const string StartupSafeCharacterSelectLockedIconPath = "res://images/packed/character_select/char_select_ironclad_locked.png";

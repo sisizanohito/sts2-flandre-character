@@ -22,7 +22,7 @@ public sealed class DestructionEyeRelic : CustomRelicModel
     private bool _triggeredThisTurn;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar("Energy", 1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
     public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";
     protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/burning_blood.tres";
     protected override string BigIconPath => "res://images/relics/burning_blood.png";

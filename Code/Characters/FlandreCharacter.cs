@@ -77,17 +77,21 @@ public sealed class FlandreCharacterCardPool : CustomCardPoolModel
     public override float V => 1f;
     public override Color DeckEntryCardColor => FlandreCharacter.Color;
     public override bool IsColorless => false;
-    public override string EnergyColorName => FlandreCharacter.CharacterId;
+    public override string EnergyColorName => FlandreTextureHelper.EnergyColorName;
     public override string? BigEnergyIconPath => "res://flandremod/Characters/FlandreCharacter/ui/flandre_character_energy_icon.png";
     public override string? TextEnergyIconPath => "res://flandremod/Characters/FlandreCharacter/ui/text_flandre_character_energy_icon.png";
 }
 
 public class FlandreCharacterRelicPool : CustomRelicPoolModel
 {
-    public override string EnergyColorName => FlandreCharacter.CharacterId;
+    public override string EnergyColorName => FlandreTextureHelper.EnergyColorName;
+    public override string? BigEnergyIconPath => "res://flandremod/Characters/FlandreCharacter/ui/flandre_character_energy_icon.png";
+    public override string? TextEnergyIconPath => "res://flandremod/Characters/FlandreCharacter/ui/text_flandre_character_energy_icon.png";
 }
 
 public class FlandreCharacterPotionPool : CustomPotionPoolModel
 {
-    public override string EnergyColorName => FlandreCharacter.CharacterId;
+    public override string EnergyColorName => FlandreTextureHelper.EnergyColorName;
+    public override string? BigEnergyIconPath => "res://flandremod/Characters/FlandreCharacter/ui/flandre_character_energy_icon.png";
+    public override string? TextEnergyIconPath => "res://flandremod/Characters/FlandreCharacter/ui/text_flandre_character_energy_icon.png";
 }
