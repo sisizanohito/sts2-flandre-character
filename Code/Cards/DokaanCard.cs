@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using FlandreMod.Characters;
+using FlandreMod.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -27,12 +28,27 @@ public sealed class DokaanCard : CustomCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+        bool isMadness =
+            Owner.Creature.HasPower<MadnessPower>() ||
+            MadnessPower.IsResolvingFor(Owner.Creature);
+
+        if (!isMadness)
+        {
+            ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
+
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_explosion")
+                .Execute(choiceContext);
+            return;
+        }
+
+        if (CombatState == null) return;
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_explosion")
+            .TargetingAllOpponents(CombatState)
             .Execute(choiceContext);
     }
 

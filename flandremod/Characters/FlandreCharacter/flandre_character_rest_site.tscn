@@ -1,10 +1,7 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="Texture2D" path="res://flandremod/Characters/FlandreCharacter/flandre_character.png" id="1_sprite"]
+[gd_scene format=3]
 
 [node name="FlandreCharacterRestSite" type="Node2D"]
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_sprite")
 position = Vector2(0, -100)
 scale = Vector2(0.5, 0.5)

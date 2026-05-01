@@ -18,7 +18,7 @@ public sealed class FlandreStrikeCard : CustomCardModel
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move)];
 
-    public override string PortraitPath => "res://images/packed/card_portraits/colorless/ultimate_strike.png";
+    public override string PortraitPath => "res://flandremod/images/cards/strike_flandre.png";
     public override string BetaPortraitPath => PortraitPath;
 
     public FlandreStrikeCard()

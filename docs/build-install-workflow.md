@@ -17,14 +17,21 @@ When that happens, hover tips can still appear, but the title and description sh
 dotnet build .\FlandreMod.csproj -c Debug
 ```
 
-2. Rebuild the PCK from `flandremod/` with the correct prefix:
+2. Rebuild the PCK from a staging directory that contains both root asset folders:
 
 ```text
-source_dir = %REPO_ROOT%\flandremod
+source_dir = %REPO_ROOT%\out\pck_stage
 output_path = %REPO_ROOT%\flandremod.pck
-base_prefix = flandremod/
+base_prefix =
 convert_pngs = true
 ```
+
+The staging directory must contain:
+
+- `%REPO_ROOT%\out\pck_stage\flandremod\...`
+- `%REPO_ROOT%\out\pck_stage\images\...`
+
+The root `images` folder is required for custom atlas sprite paths such as `res://images/atlases/ui_atlas.sprites/card/energy_flandrecharacter.tres`.
 
 3. Sync the exact built artifacts into the Steam mods folder:
 

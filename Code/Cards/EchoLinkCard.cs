@@ -31,7 +31,7 @@ public sealed class EchoLinkCard : CustomCardModel
 
         int repeatCount = IsUpgraded ? 2 : 1;
         for (int i = 0; i < repeatCount; i++)
-            await DestructionEyeCardHelper.ApplyToTarget(this, cardPlay.Target);
+            await DestructionEyeCardHelper.ApplyToTarget(choiceContext, this, cardPlay.Target);
     }
 
     protected override void OnUpgrade()

@@ -122,6 +122,8 @@ Confirmed fixes:
 - `EchoLinkCard` now exposes the custom keyword through `CanonicalKeywords`
 - `CardHoverTipDuringTargetingPatch` keeps hover tips visible during targeting card flows
 - `DestructionEye` custom keyword exists in code and in localization
+- every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
+  - confirmed mainline cards: `EchoLinkCard`, `SparkScatterCard`, `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, `CruelBlinkCard`
 
 Root cause of raw-key display:
 
@@ -136,6 +138,11 @@ Verification pattern:
   - `Found loc table from mod: eng card_keywords.json`
   - `Found loc table from mod: jpn card_keywords.json`
 - Check rendered hover-tip title and description in the live scene
+
+Current debugging default:
+
+- for already shipped `[Destruction Eye]` cards on `main`, treat missing tooltip text as an install / localization packaging suspicion first, not as a new `CanonicalKeywords` omission
+- only reopen the card-level keyword path when a newly added card introduces `[Destruction Eye]` text without joining the shared exposure pattern
 
 ## Random Reflection Lessons
 
@@ -153,8 +160,24 @@ Verification pattern:
 - Build managed code first
 - Rebuild the PCK with `base_prefix = flandremod/`
 - Use [Install-FlandreMod.ps1](../tools/Install-FlandreMod.ps1) to copy the exact local PCK into the Steam mod folder
+- Treat [install-gate-checklist.md](./install-gate-checklist.md) as the short completion gate before deeper runtime debugging
+- Use [build-install-workflow.md](./build-install-workflow.md) when the stale PCK suspicion needs the longer explanation or extra path/log checks
 
 Do not trust a generic install path when localization or packed assets are involved.
+
+## Character Identity Debugging
+
+- If selecting Flandre appears to start Ironclad, verify the live run identity through `bridge_get_full_state` before assuming it is only a UI texture issue.
+- A clean Flandre run should report `character: FlandreCharacter`, `hp: 75`, starter cards `FlandreStrikeCard` / `FlandreDefendCard` / `EchoLinkCard`, and starter relic `DestructionEyeRelic`.
+- If the current run reports `character: Ironclad` with `StrikeIronclad`, `DefendIronclad`, `Bash`, and `BurningBlood`, the run is really Ironclad.
+- A failed hot reload while the game is running can leave the session in a poisoned state even when installed files are correct. In that case, stop the game, rebuild, reinstall, relaunch, and retest with `run_test_scenario` or `bridge_get_full_state`.
+
+## Energy Icon Debugging
+
+- Flandre's energy prefix must be lower-case `flandrecharacter`; `EnergyIconsFormatter` does not lower-case the prefix when building `res://images/packed/sprite_fonts/{prefix}_energy_icon.png`.
+- Godot rich text `[img]` did not render a mod-local raw PNG path from `flandremod/Characters/FlandreCharacter/ui/`, even though the string resolved to that path.
+- For Flandre text energy icons, the card energy `.tres` path can render through the atlas loader patch, but it must be emitted as `[img=24x24]...[/img]`; plain `[img]...[/img]` renders the 64px card icon too large in body text.
+- Visual check: start a Flandre run with seed `FLANDREENERGY02`; Neow's Booming Conch option should show an energy icon after `gain`.
 
 ## Commit Hygiene
 

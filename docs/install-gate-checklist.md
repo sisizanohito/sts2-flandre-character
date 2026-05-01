@@ -26,7 +26,7 @@ This gate does not cover:
 Treat the install as complete only when all of the following are true:
 
 - the managed build succeeded
-- the local `flandremod.pck` was rebuilt with `base_prefix = flandremod/`
+- the local `flandremod.pck` was rebuilt from a staging directory with root `flandremod/` and `images/` folders
 - `.\tools\Install-FlandreMod.ps1 -ProjectRoot . -Configuration Debug -StopGame` completed
 - the install script self-check summary confirms the local and installed `flandremod.pck` matched
 
@@ -40,12 +40,12 @@ If any item is missing, stop and treat the install as incomplete.
 dotnet build .\FlandreMod.csproj -c Debug
 ```
 
-2. Rebuild the local PCK from `flandremod/` with the correct prefix.
+2. Rebuild the local PCK from a staging directory with root `flandremod/` and `images/` folders.
 
 ```text
-source_dir = %REPO_ROOT%\flandremod
+source_dir = %REPO_ROOT%\out\pck_stage
 output_path = %REPO_ROOT%\flandremod.pck
-base_prefix = flandremod/
+base_prefix =
 convert_pngs = true
 ```
 
@@ -98,7 +98,9 @@ After the install gate passes, use this short runtime check before deeper debugg
    - if a pool-related name renders as a key, treat it as localization loading failure first
 4. Combat display
    - confirm combat-facing labels or counts that depend on the current change render without missing text
-   - when checking `狂気`-related behavior, compare target count with `狂気なし` and `狂気あり`
+   - when checking `Madness`-related behavior, use `DokaanCard` and `RandomReflectionCard` as the short verification pair
+   - without `Madness`, confirm `DokaanCard` stays `AnyEnemy` and `RandomReflectionCard` stays `RandomEnemy`
+   - with `Madness`, confirm both display as `AllEnemies`, can be played without manual target selection, and consume `MadnessPower` in order
 
 If any item fails, classify it in this order:
 
