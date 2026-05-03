@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`docs/card-pool-draft.md` still contains mojibake, so it is not a reliable source for the current implementation state.
+`docs/design/card-pool-draft.md` still contains mojibake, so it is not a reliable source for the current implementation state.
 
 This document records only confirmed facts from the codebase so the next non-asset task can start from a clean inventory.
 

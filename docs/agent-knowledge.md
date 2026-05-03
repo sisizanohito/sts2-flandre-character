@@ -160,8 +160,8 @@ Current debugging default:
 - Build managed code first
 - Rebuild the PCK with `base_prefix = flandremod/`
 - Use [Install-FlandreMod.ps1](../tools/Install-FlandreMod.ps1) to copy the exact local PCK into the Steam mod folder
-- Treat [install-gate-checklist.md](./install-gate-checklist.md) as the short completion gate before deeper runtime debugging
-- Use [build-install-workflow.md](./build-install-workflow.md) when the stale PCK suspicion needs the longer explanation or extra path/log checks
+- Treat [install-gate-checklist.md](./workflows/install-gate-checklist.md) as the short completion gate before deeper runtime debugging
+- Use [build-install-workflow.md](./workflows/build-install-workflow.md) when the stale PCK suspicion needs the longer explanation or extra path/log checks
 
 Do not trust a generic install path when localization or packed assets are involved.
 

@@ -11,7 +11,7 @@
   - Writes `flandre_skel_data.tres`.
   - Patches `flandre_character.tscn` from `Sprite2D` to `SpineSprite`.
   - Creates a scene backup before patching.
-  - Fixed entry conditions are documented in [flandre-spine-visual-entry.md](./flandre-spine-visual-entry.md).
+  - Fixed entry conditions are documented in [flandre-spine-visual-entry.md](../visuals/flandre-spine-visual-entry.md).
 
 ## Meshy output status
 - Meshy generation tasks completed successfully:
@@ -29,7 +29,7 @@
    - `.\tools\Enable-FlandreSpineVisuals.ps1 -SpineAssetDir <your_spine_export_folder>`
 3. Build and hot-reload.
 
-For the exact destination paths, generated `.tres`, patched scene file, and preview-name assumptions, use [flandre-spine-visual-entry.md](./flandre-spine-visual-entry.md).
+For the exact destination paths, generated `.tres`, patched scene file, and preview-name assumptions, use [flandre-spine-visual-entry.md](../visuals/flandre-spine-visual-entry.md).
 
 ## Direct download fallback (without MCP image URLs)
 Use Meshy REST API directly:

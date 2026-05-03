@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`docs/card-pool-draft.md` still contains mojibake in the package-note sections, so it is not a reliable handoff document when choosing the next narrow implementation slice.
+`docs/design/card-pool-draft.md` still contains mojibake in the package-note sections, so it is not a reliable handoff document when choosing the next narrow implementation slice.
 
 This file rewrites only the currently implemented package structure in a readable form. It does not propose new cards or change the roadmap order.
 

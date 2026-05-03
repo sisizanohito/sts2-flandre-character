@@ -6,8 +6,8 @@ Read this file first whenever a new Codex thread starts in this repository.
 
 1. `docs/roadmap.md`
 2. `docs/agent-knowledge.md`
-3. If the task touches build, install, localization, assets, or packed files: `docs/build-install-workflow.md`
-4. If the task needs runtime display or install verification: `docs/install-gate-checklist.md`
+3. If the task touches build, install, localization, assets, or packed files: `docs/workflows/build-install-workflow.md`
+4. If the task needs runtime display or install verification: `docs/workflows/install-gate-checklist.md`
 
 ## Project Context
 
@@ -51,9 +51,10 @@ Do not accept a generic `connected` answer as proof of MCP success.
 
 - `docs/roadmap.md`: current status, near-term priorities, and next entry points.
 - `docs/agent-knowledge.md`: MCP operations, verification rules, and lessons from previous debugging.
-- `docs/build-install-workflow.md`: build, PCK rebuild, and install workflow.
-- `docs/install-gate-checklist.md`: short install verification gate.
-- `docs/card-pool-package-map.md`: current card pool package map.
-- `docs/bloodshed-design-note.md`: Bloodshed design notes.
-- `docs/combat-animation-progress.md`: combat animation progress.
-- `docs/flandre-spine-visual-entry.md`: Spine migration entry point.
+- `docs/README.md`: documentation index by topic.
+- `docs/workflows/build-install-workflow.md`: build, PCK rebuild, and install workflow.
+- `docs/workflows/install-gate-checklist.md`: short install verification gate.
+- `docs/status/card-pool-package-map.md`: current card pool package map.
+- `docs/design/bloodshed-design-note.md`: Bloodshed design notes.
+- `docs/status/combat-animation-progress.md`: combat animation progress.
+- `docs/visuals/flandre-spine-visual-entry.md`: Spine migration entry point.
