@@ -163,6 +163,11 @@ Current debugging default:
   - `MerchantRoom.Inventory` updated for the current inventory API
 - Flandre's BaseLib dependency must be installed as its own mod and declared in `mod_manifest.json`; a copied `BaseLib.dll` beside `FlandreMod.dll` is not enough for reliable game loading.
 - Keep `GodotSharp` package references aligned with the current game/BaseLib runtime. As of the current STS2 install and BaseLib 3.1.0, use `GodotSharp` 4.5.1, not 4.4.0.
+- BaseLib 3.1.0 currently logs `Applied 150 patches successfully, 3 failed` on STS2 startup. The failed patches are
+  `ExhaustivePatch`, `PersistPatch`, and `PurgePatch`, all targeting the old
+  `CardModel.GetResultPileType` method. The current installed `sts2.dll` uses
+  `GetResultPileTypeForCardPlay` instead. Flandre's current cards do not use
+  `Exhaustive`, `Persist`, `Purge`, `BaseLibKeywords.Purge`, or `CardKeyword.Exhaust`, so this is not an active Flandre card behavior bug as of task `24bf4d4a`. If a future Flandre card needs these BaseLib mechanics, update BaseLib or add a local result-pile implementation against the current `Hook.ModifyCardPlayResultPileTypeAndPosition` / `GetResultPileTypeForCardPlay` path before relying on them.
 - If testplay stops on Flandre startup, validate localization JSON first. A malformed locale file can surface as an in-game generic popup rather than a clear mod-load error.
 - Flandre raw PNG assets packed in the PCK need raw-buffer loading before `ResourceLoader.Load`; otherwise Godot logs `No loader found for resource` even when the PNG exists.
 - Flandre mod-local Power icons should use `res://flandremod/images/powers/...`, matching the actual PCK layout.
