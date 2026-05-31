@@ -177,6 +177,9 @@ Current debugging default:
 
 - Implementation:
   - `RandomReflectionCard` was added as a random-generation card that creates or routes into Reflection-related outcomes during live play verification.
+- Duplicate ID warning:
+  - The startup warning `Two AbstractModels FlandreMod.Cards.RandomReflectionCard and FlandreMod.Cards.RandomReflectionCard from mod flandremod share an ID` came from the game's `ModelIdSerializationCache` sort comparer, not from a second card source file or duplicate pool registration.
+  - `RandomReflectionCard` had one source definition, one compiled `AbstractModel` type, and one installed mod manifest; the warning disappeared after guarding the comparer path so the same `Type` instance is not treated as a duplicate model.
 - Verification blocker:
   - Missing or broken pool-name localization blocked the intended verification path because the generated choice flow could not be read cleanly in-game.
 - Localization repair:
