@@ -1,3 +1,4 @@
+using FlandreMod.Bloodshed;
 using HarmonyLib;
 using Godot;
 using MegaCrit.Sts2.Core.Logging;
@@ -16,6 +17,7 @@ public static class ModEntry
 
         _harmony = new Harmony("com.isiis.flandremod");
         _harmony.PatchAll();
+        BloodshedCombatHookSubscription.Register();
 
         Log.Warn("[FlandreMod] Loaded successfully!");
     }

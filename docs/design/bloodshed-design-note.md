@@ -5,14 +5,15 @@
 `Bloodshed` is the first draft of Flandre's vampire-style build axis.
 It is intentionally separate from direct self-damage: the resource tracks HP damage that happens anywhere on the combat field during the current turn.
 
-## Initial Rule
+## Current Rule
 
-- `Bloodshed` is a player-side Power.
-- It is applied at combat start by `DestructionEyeRelic`.
+- `Bloodshed` is Flandre-specific combat state, not a displayed player-side Power.
+- `BloodshedPower` remains only as a compatibility facade and hover-tip localization source for cards that mention `[Bloodshed]`.
 - It counts HP loss from any creature in the same combat.
 - Healing and non-HP changes do not increase it.
 - It resets at the start of Flandre's turn.
-- Current implementation keeps an internal baseline amount of `1` so the Power can exist while displaying `0`.
+- The live count is displayed under/near Flandre's energy counter, following the same combat UI area that Regent uses for the built-in Star counter.
+- If Stars become visible for Flandre through a nonstandard effect, the Bloodshed label shifts lower to avoid directly covering the Star counter.
 
 ## First Payoff Cards
 
