@@ -1,0 +1,16 @@
+.agents/skills/beads/SKILL.md
+.agents/skills/beads/agents/openai.yaml
+.beads/.gitignore
+.beads/README.md
+.beads/config.yaml
+.beads/hooks/post-checkout
+.beads/hooks/post-merge
+.beads/hooks/pre-commit
+.beads/hooks/pre-push
+.beads/hooks/prepare-commit-msg
+.beads/interactions.jsonl
+.beads/issues.jsonl
+.beads/metadata.json
+.gitignore
+AGENTS.md
+docs/agent-knowledge.md

@@ -1,0 +1,38 @@
+
+Mode  Length FullName
+----  ------ --------
+d----        C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\backup
+d----        C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt
+d----        C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\hooks
+-a--- 1685   C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\.gitignore
+-a--- 6      C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\.local_version
+-a--- 2309   C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\config.yaml
+-a--- 128    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\export-state.json
+-a--- 2182   C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\interactions.jsonl
+-a--- 25102  C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\issues.jsonl
+-a--- 168    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\metadata.json
+-a--- 2334   C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\README.md
+d----        C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\backup\oldgen
+-a--- 107    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\backup\backup_state.json
+-a--- 0      C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\backup\LOCK
+-a--- 146    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\backup\manifest
+-a--- 72895  C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\backup\pp60s6assp21g1pnutpbvldvdg922frc.darc
+d----        C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod
+d----        C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt
+d----        C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\noms
+d----        C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\temptf
+-a--- 2      C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\config.json
+-a--- 399    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\repo_state.json
+d----        C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\noms\oldgen
+-a--- 50431  C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\noms\journal.idx
+-a--- 0      C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\noms\LOCK
+-a--- 147    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\noms\manifest
+-a--- 857847 C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\noms\vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+-a--- 0      C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\embeddeddolt\flandre_mod\.dolt\temptf\dolt_embedded_metrics
+-a--- 825    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\hooks\post-checkout
+-a--- 813    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\hooks\post-merge
+-a--- 813    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\hooks\pre-commit
+-a--- 805    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\hooks\pre-push
+-a--- 845    C:\Users\isiis\AppData\Local\AgentStudio\runner-cache\tmp\flandre-beads-recover-a054b9b84cb642f7ae33f42fad2e7496\.beads\hooks\prepare-commit-msg
+
+

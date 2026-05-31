@@ -1,0 +1,5 @@
+# local git hooks cleanup at 2026-05-31T23:05:18.5084848+09:00
+command: git config --unset core.hooksPath
+verify: git config --get core.hooksPath
+exit=1
+<no output>

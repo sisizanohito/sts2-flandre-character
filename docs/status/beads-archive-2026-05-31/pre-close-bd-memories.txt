@@ -1,0 +1,1 @@
+No memories stored. Use 'bd remember "insight"' to add one.

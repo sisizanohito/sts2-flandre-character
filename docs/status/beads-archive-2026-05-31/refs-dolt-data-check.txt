@@ -1,0 +1,7 @@
+# refs/dolt/data check at 2026-05-31T22:57:41.2971188+09:00
+## local: git show-ref refs/dolt/data
+exit=1
+<no output>
+## remote: git ls-remote origin refs/dolt/data
+exit=0
+<no output>
