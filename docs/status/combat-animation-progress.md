@@ -27,7 +27,7 @@
    - `flandre.png`
 2. Run:
    - `.\tools\Enable-FlandreSpineVisuals.ps1 -SpineAssetDir <your_spine_export_folder>`
-3. Build and hot-reload.
+3. Build the mod and PCK, install the built artifacts, then restart the game.
 
 For the exact destination paths, generated `.tres`, patched scene file, and preview-name assumptions, use [flandre-spine-visual-entry.md](../visuals/flandre-spine-visual-entry.md).
 
