@@ -156,6 +156,18 @@ Current debugging default:
 - do not put the two-word keyword in card body text as `[Destruction Eye]`; the card description rich-text pass can parse it as an unclosed `Destruction` BBCode tag
 - only reopen the card-level keyword path when a newly added card introduces Destruction Eye text without joining the shared exposure pattern
 
+## Card Dynamic Description Lessons
+
+- For card text values that should change in combat, localization must use the
+  preview/highlight formatter, for example `{Damage:diff()}` and
+  `{Block:diff()}`.
+- Plain `{Damage}` / `{Block}` formats the DynamicVar base value and will not
+  show Strength, Weak, Vulnerable, Dexterity, or Frail preview changes even when
+  the card declares `DamageVar` / `BlockVar` correctly.
+- Base game card localization follows the `:diff()` pattern; use the same
+  pattern in both `flandremod/localization/eng/cards.json` and
+  `flandremod/localization/jpn/cards.json`.
+
 ## Testplay Stop Lessons
 
 - Do not use `hot_reload_project` for this workspace; it currently fails inside the MCP server and can leave the live game in a poisoned type/cache state. Rebuild, install, and restart instead.
