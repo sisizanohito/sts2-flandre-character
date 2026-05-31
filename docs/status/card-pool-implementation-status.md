@@ -94,6 +94,14 @@ Related readable package summary:
   - cost `1`
   - consumes 15 current `Bloodshed`
   - gains Energy and draws cards only when the consume succeeds
+- `ScarletAppetiteCard`
+  - cost `1`
+  - power
+  - whenever Flandre loses HP, gains additional `Bloodshed`
+- `SanguineGuardCard`
+  - cost `1`
+  - power
+  - at end of Flandre's turn, gains Block for every 10 current `Bloodshed`
 
 ### Rare
 
@@ -105,13 +113,17 @@ Related readable package summary:
   - cost `2`
   - single-target attack
   - heals for half of unblocked damage dealt when current `Bloodshed` reaches its threshold
+- `CataclysmicGazeCard`
+  - cost `2`
+  - damages each active `Destruction Eye`
+  - then attacks all enemies
 
 ## Stable Shared Base
 
 - `DestructionEyeCardHelper` already owns eye creation, eye reinforcement, and initial eye HP setup
 - madness target-shift behavior has already been confirmed for `DokaanCard` and `RandomReflectionCard`
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
-- the current codebase now ships 18 non-basic cards across common, uncommon, and rare
+- the current codebase now ships 21 non-basic cards across common, uncommon, and rare
 
 ## Follow-Up Status
 
@@ -124,6 +136,6 @@ The next non-asset task should stay narrow:
 
 1. Add one new card that closes over the existing `DestructionEyeCardHelper` behavior without introducing a new shared subsystem
 2. Add one new card that closes over the existing `MadnessPower` behavior without introducing a new shared subsystem
-3. Add one `Bloodshed` follow-up that scales by every N `Bloodshed`, since the first fixed-cost spender now exists
+3. Add one rare `Bloodshed` follow-up that consumes the resource, since the first fixed-cost spender and first non-consuming scaling payoff now exist
 
 This document still does not decide which card should go next. It only records the verified inventory and the completed follow-up doc slice.

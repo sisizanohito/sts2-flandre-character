@@ -38,6 +38,7 @@ Read this before starting a new task, after role changes, and after major debugg
 ## Operating Rules
 
 - Always announce the active members for a task before substantial work starts.
+- Use PowerShell 7 (`pwsh`) as the default shell. If Codex starts in Windows PowerShell, wrap substantive commands with `pwsh -NoLogo -NoProfile -Command ...`.
 - Prefer direct MCP / developer tools over ad-hoc workarounds.
 - When a specific MCP tool is requested, call that tool first.
 - Do not fall back to shell, HTTP, or JSON-RPC hand-rolled requests unless explicitly allowed.
@@ -122,7 +123,7 @@ Confirmed fixes:
 - `EchoLinkCard` now exposes the custom keyword through `CanonicalKeywords`
 - `CardHoverTipDuringTargetingPatch` keeps hover tips visible during targeting card flows
 - `DestructionEye` custom keyword exists in code and in localization
-- every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
+- every currently shipped card that refers to Destruction Eye now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
   - confirmed mainline cards: `EchoLinkCard`, `SparkScatterCard`, `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, `CruelBlinkCard`
 
 Root cause of raw-key display:
@@ -141,8 +142,17 @@ Verification pattern:
 
 Current debugging default:
 
-- for already shipped `[Destruction Eye]` cards on `main`, treat missing tooltip text as an install / localization packaging suspicion first, not as a new `CanonicalKeywords` omission
-- only reopen the card-level keyword path when a newly added card introduces `[Destruction Eye]` text without joining the shared exposure pattern
+- for already shipped Destruction Eye cards on `main`, treat missing tooltip text as an install / localization packaging suspicion first, not as a new `CanonicalKeywords` omission
+- do not put the two-word keyword in card body text as `[Destruction Eye]`; the card description rich-text pass can parse it as an unclosed `Destruction` BBCode tag
+- only reopen the card-level keyword path when a newly added card introduces Destruction Eye text without joining the shared exposure pattern
+
+## Testplay Stop Lessons
+
+- Do not use `hot_reload_project` for this workspace; it currently fails inside the MCP server and can leave the live game in a poisoned type/cache state. Rebuild, install, and restart instead.
+- If testplay stops on Flandre startup, validate localization JSON first. A malformed locale file can surface as an in-game generic popup rather than a clear mod-load error.
+- Flandre raw PNG assets packed in the PCK need raw-buffer loading before `ResourceLoader.Load`; otherwise Godot logs `No loader found for resource` even when the PNG exists.
+- Flandre mod-local Power icons should use `res://flandremod/images/powers/...`, matching the actual PCK layout.
+- Avoid `vfx/vfx_explosion` until a valid asset path is confirmed. `vfx/vfx_bloody_impact` is confirmed to resolve in live combat.
 
 ## Random Reflection Lessons
 
