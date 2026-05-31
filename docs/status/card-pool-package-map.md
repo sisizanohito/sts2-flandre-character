@@ -2,9 +2,12 @@
 
 ## Purpose
 
-`docs/design/card-pool-draft.md` still contains mojibake in the package-note sections, so it is not a reliable handoff document when choosing the next narrow implementation slice.
+`docs/design/card-pool-draft.md` previously contained mojibake in the package-note sections. As of the 2026-05-31 docs cleanup, the draft and this package map are readable.
 
-This file rewrites only the currently implemented package structure in a readable form. It does not propose new cards or change the roadmap order.
+This file records only the currently implemented package structure in a readable form. It does not propose new cards or change the roadmap order.
+
+Recovery note:
+- no unrecoverable package-note text remained in this pass, so no `UNKNOWN` placeholders were added
 
 Confirmed sources:
 - `Code/Cards/*.cs`
@@ -158,7 +161,7 @@ From the implemented cards alone, the current Flandre package reads as:
 
 ## Next Safe Slice
 
-This document only replaces the unreadable package notes from the draft.
+This document originated as the readable replacement for the draft package notes and now remains the current handoff for implemented package structure.
 
 Completed follow-up note:
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
