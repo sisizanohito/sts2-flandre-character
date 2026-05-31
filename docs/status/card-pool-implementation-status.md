@@ -94,6 +94,11 @@ Related readable package summary:
   - cost `1`
   - consumes 15 current `Bloodshed`
   - gains Energy and draws cards only when the consume succeeds
+- `FrenziedFlightCard`
+  - cost `1`
+  - applies `MadnessPower` 2
+  - draws cards
+  - upgrade increases draw by 1
 - `ScarletAppetiteCard`
   - cost `1`
   - power
@@ -123,12 +128,13 @@ Related readable package summary:
 - `DestructionEyeCardHelper` already owns eye creation, eye reinforcement, and initial eye HP setup
 - madness target-shift behavior has already been confirmed for `DokaanCard` and `RandomReflectionCard`
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
-- the current codebase now ships 21 non-basic cards across common, uncommon, and rare
+- the current codebase now ships 22 non-basic cards across common, uncommon, and rare
 
 ## Follow-Up Status
 
 - completed: reclassified the current implemented cards into [card-pool-package-map.md](./card-pool-package-map.md), a readable package doc that does not depend on the mojibake draft
 - completed: closed the remaining `Destruction Eye` tooltip-follow-up cards on `main` by landing keyword exposure for `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, and the new `CruelBlinkCard`
+- completed: added `FrenziedFlightCard` as a single uncommon madness extender; localization changed, so build plus install verification is required before runtime display can be called verified
 
 ## Safe Next Slice
 

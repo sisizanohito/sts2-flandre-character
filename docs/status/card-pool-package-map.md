@@ -104,6 +104,9 @@ The common pool is already split into five readable lanes.
 - `BloodPactCard`
   - consumes current `Bloodshed`
   - gains Energy and draws cards if the consume succeeds
+- `FrenziedFlightCard`
+  - applies `Madness`
+  - draws cards
 - `ScarletAppetiteCard`
   - power that adds extra `Bloodshed` whenever Flandre loses HP
 - `SanguineGuardCard`
@@ -115,9 +118,10 @@ Uncommon cards are the package expanders.
 - `ProliferatingGazeCard` is the wide-board escalation card
 - `BloodMakeupCard` lets the bloodshed lane use HP payment as defensive tempo instead of only raw acceleration
 - `BloodPactCard` is the first explicit `Bloodshed` spender and turns the resource into burst tempo
+- `FrenziedFlightCard` is the first uncommon madness extender, giving the lane a compact way to queue multiple all-enemy attacks without adding a new targeting rule
 - `ScarletAppetiteCard` makes self HP loss accelerate the Bloodshed count
 - `SanguineGuardCard` is the first non-consuming "per N Bloodshed" scaling payoff
-- together they push the deck from "single eye payoff" into "board-wide eye state" or into HP-payment stabilization
+- together they push the deck from "single eye payoff" into "board-wide eye state", madness burst setup, or HP-payment stabilization
 
 ## Rare Package
 
@@ -159,6 +163,7 @@ This document only replaces the unreadable package notes from the draft.
 Completed follow-up note:
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
 - `BloodshedPower`, `BloodScentCard`, `CrimsonAdvanceCard`, `BloodMakeupCard`, `VampiricImpulseCard`, `BloodPactCard`, `ScarletAppetiteCard`, and `SanguineGuardCard` add the first vampire axis slice.
+- `FrenziedFlightCard` adds one narrow uncommon madness slice. Because it changes localization and packed card text, build plus install verification is required before treating runtime display as verified.
 
 The next non-asset slice should therefore be one of:
 
