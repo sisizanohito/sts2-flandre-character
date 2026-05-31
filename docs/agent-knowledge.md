@@ -147,9 +147,24 @@ Verification pattern:
 
 Current debugging default:
 
+- Use [reflection-random-verification.md](./workflows/reflection-random-verification.md)
+  for a reusable `RandomReflectionCard` / generated-choice / pool-name
+  localization verification path.
 - for already shipped Destruction Eye cards on `main`, treat missing tooltip text as an install / localization packaging suspicion first, not as a new `CanonicalKeywords` omission
 - do not put the two-word keyword in card body text as `[Destruction Eye]`; the card description rich-text pass can parse it as an unclosed `Destruction` BBCode tag
 - only reopen the card-level keyword path when a newly added card introduces Destruction Eye text without joining the shared exposure pattern
+
+## Card Dynamic Description Lessons
+
+- For card text values that should change in combat, localization must use the
+  preview/highlight formatter, for example `{Damage:diff()}` and
+  `{Block:diff()}`.
+- Plain `{Damage}` / `{Block}` formats the DynamicVar base value and will not
+  show Strength, Weak, Vulnerable, Dexterity, or Frail preview changes even when
+  the card declares `DamageVar` / `BlockVar` correctly.
+- Base game card localization follows the `:diff()` pattern; use the same
+  pattern in both `flandremod/localization/eng/cards.json` and
+  `flandremod/localization/jpn/cards.json`.
 
 ## Testplay Stop Lessons
 
@@ -188,10 +203,11 @@ Current debugging default:
 ## Build And Install Rules
 
 - Build managed code first
-- Rebuild the PCK with `base_prefix = flandremod/`
+- Rebuild the PCK from a staging directory that contains both `flandremod/` and root `images/` folders, with no extra base prefix from the staging root.
 - Use [Install-FlandreMod.ps1](../tools/Install-FlandreMod.ps1) to copy the exact local PCK into the Steam mod folder
 - Treat [install-gate-checklist.md](./workflows/install-gate-checklist.md) as the short completion gate before deeper runtime debugging
 - Use [build-install-workflow.md](./workflows/build-install-workflow.md) when the stale PCK suspicion needs the longer explanation or extra path/log checks
+- If a build tool reports `source_dir` as only the repo `flandremod/` folder, do not treat that PCK as sufficient for runtime checks involving Flandre energy icons; it will omit `res://images/atlases/ui_atlas.sprites/card/energy_flandrecharacter.tres`.
 - Startup log error `Detected old-style dependencies without min version specified` means `mod_manifest.json` still uses string dependencies. Use object dependencies with `id` and `min_version`.
 - If the startup log says `Tried to load mod with id BaseLib, but a mod is already loaded with that name`, check for duplicate BaseLib folders in the game `mods` directory. The Flandre installer should sync BaseLib into the canonical `BaseLib` folder and remove old `BaseLib.*` installs that declare `id: BaseLib`.
 
@@ -210,6 +226,12 @@ Do not trust a generic install path when localization or packed assets are invol
 - Godot rich text `[img]` did not render a mod-local raw PNG path from `flandremod/Characters/FlandreCharacter/ui/`, even though the string resolved to that path.
 - For Flandre text energy icons, the card energy `.tres` path can render through the atlas loader patch, but it must be emitted as `[img=24x24]...[/img]`; plain `[img]...[/img]` renders the 64px card icon too large in body text.
 - Visual check: start a Flandre run with seed `FLANDREENERGY02`; Neow's Booming Conch option should show an energy icon after `gain`.
+
+## Neow Startup Debugging
+
+- If Flandre starts at Neow but blessing choices are missing, check the game log for asset-load exceptions from `Neow.GenerateInitialOptions()` before changing Neow option generation.
+- A missing `res://images/atlases/ui_atlas.sprites/card/energy_flandrecharacter.tres` means the installed PCK omitted the root `images/` folder; rebuild from staged `flandremod/` plus `images/`.
+- Flandre also needs a Neow dialogue entry keyed by the exact model id entry `FLANDREMOD-FLANDRE_CHARACTER`; see [neow-startup-debugging.md](./status/neow-startup-debugging.md).
 
 ## Commit Hygiene
 

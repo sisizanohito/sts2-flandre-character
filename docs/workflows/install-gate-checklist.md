@@ -87,6 +87,11 @@ If either path or either log line is missing, treat the problem as an install/lo
 
 After the install gate passes, use this short runtime check before deeper debugging:
 
+For Reflection / random-generation card checks, use
+[reflection-random-verification.md](./reflection-random-verification.md) after
+this gate so card, generated-choice, and pool-name localization are checked
+together.
+
 1. Hover tip
    - open a card or state that should show a hover tip
    - confirm the title and description render as real text, not raw localization keys
