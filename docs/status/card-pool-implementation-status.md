@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`docs/design/card-pool-draft.md` still contains mojibake, so it is not a reliable source for the current implementation state.
+`docs/design/card-pool-draft.md` previously contained mojibake, so this file remains the confirmed implementation inventory for handoff work. As of the 2026-05-31 docs cleanup, no active mojibake or unrecoverable `UNKNOWN` section was found in `docs/**`.
 
 This document records only confirmed facts from the codebase so the next non-asset task can start from a clean inventory.
 
@@ -132,7 +132,7 @@ Related readable package summary:
 
 ## Follow-Up Status
 
-- completed: reclassified the current implemented cards into [card-pool-package-map.md](./card-pool-package-map.md), a readable package doc that does not depend on the mojibake draft
+- completed: reclassified the current implemented cards into [card-pool-package-map.md](./card-pool-package-map.md), a readable package doc that no longer depends on the historically mojibake draft notes
 - completed: closed the remaining `Destruction Eye` tooltip-follow-up cards on `main` by landing keyword exposure for `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, and the new `CruelBlinkCard`
 - completed: added `FrenziedFlightCard` as a single uncommon madness extender; localization changed, so build plus install verification is required before runtime display can be called verified
 
