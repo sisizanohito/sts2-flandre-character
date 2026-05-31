@@ -147,6 +147,13 @@ Current debugging default:
 ## Testplay Stop Lessons
 
 - Do not use `hot_reload_project` for this workspace; it currently fails inside the MCP server and can leave the live game in a poisoned type/cache state. Rebuild, install, and restart instead.
+- For live bridge testing, MCPTest may need local updates after a STS2 game update. On 2026-05-31 the bridge needed:
+  - `BeforePlayPhaseStart` hook remapped to an existing play-phase hook
+  - `CombatManager.IsPlayPhase` replaced with `ActionQueueSynchronizer.CombatState`
+  - `PowerCmd.Apply` calls updated for the required `PlayerChoiceContext`
+  - `MerchantRoom.Inventory` updated for the current inventory API
+- Flandre's BaseLib dependency must be installed as its own mod and declared in `mod_manifest.json`; a copied `BaseLib.dll` beside `FlandreMod.dll` is not enough for reliable game loading.
+- Keep `GodotSharp` package references aligned with the current game/BaseLib runtime. As of the current STS2 install and BaseLib 3.1.0, use `GodotSharp` 4.5.1, not 4.4.0.
 - If testplay stops on Flandre startup, validate localization JSON first. A malformed locale file can surface as an in-game generic popup rather than a clear mod-load error.
 - Flandre raw PNG assets packed in the PCK need raw-buffer loading before `ResourceLoader.Load`; otherwise Godot logs `No loader found for resource` even when the PNG exists.
 - Flandre mod-local Power icons should use `res://flandremod/images/powers/...`, matching the actual PCK layout.

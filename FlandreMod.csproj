@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <Compile Remove="recovered-game\**\*.cs" />
-    <PackageReference Include="GodotSharp" Version="4.4.0" />
+    <PackageReference Include="GodotSharp" Version="4.5.1" />
     <PackageReference Include="Lib.Harmony" Version="2.4.2" />
     <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.1.0" />
   </ItemGroup>
