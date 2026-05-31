@@ -5,7 +5,7 @@ Start here when you only need to find the right note. Keep the high-traffic hand
 ## Core
 
 - [roadmap.md](./roadmap.md): current priorities, next entry points, and project status.
-- [agent-knowledge.md](./agent-knowledge.md): working rules, verification expectations, and debugging lessons.
+- [agent-knowledge.md](./agent-knowledge.md): working rules, task-management expectations, verification expectations, and debugging lessons.
 
 ## Design
 
