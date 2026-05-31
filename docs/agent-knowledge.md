@@ -2,32 +2,26 @@
 
 ## Purpose
 
-This file captures the current working rules for the Flandre mod project so the team can start from the same assumptions every time.
+This file captures the current working rules for the Flandre mod project so agents can start from the same assumptions every time.
 
-Read this before starting a new task, after role changes, and after major debugging sessions.
+Read this before starting a new task, after workflow changes, and after major debugging sessions.
 
-## Team Roles
+## Work Areas
 
-- `レミリア`
-  - 総括オーナー
-  - 最終判断、優先順位の確定、作業の開始・停止判断を行う
-- `フランドール`
-  - 実機検証 / ゲーム操作
-  - `sts2_moddding` を使ったゲーム状態確認、戦闘検証、再現確認を担当する
-- `咲夜`
-  - 実装担当
-  - コード修正、機能追加、差分の具体化を担当する
-- `パチュリー`
-  - API / 内部設計レビュー
-  - recovered source、BaseLib、Harmony、STS2 API の観点から設計上の危険筋を先に洗い出す
-- `小悪魔`
-  - docs / ナレッジ整理
-  - 調査結果、運用ルール、検証手順、再発防止事項を文書化する
-- `美鈴`
-  - Git / 公開導線管理
-  - commit 範囲の整理、PR 前確認、ゲーム用 assets を含む公開前チェックを担当する
+- Project ownership:
+  - final decisions, priority, and start/stop calls
+- Runtime verification / game operation:
+  - use `sts2_moddding` for game state checks, combat verification, and reproduction checks
+- Implementation:
+  - code changes, feature additions, and concrete diffs
+- API / internal design review:
+  - inspect recovered source, BaseLib, Harmony, and STS2 API risks before implementation
+- Docs / knowledge maintenance:
+  - document findings, operating rules, verification steps, and recurring pitfalls
+- Git / release hygiene:
+  - keep commit scope clear, run pre-PR checks, and verify game assets before publishing
 
-## Active Seat Default
+## Sub-Agent Model Default
 
 - Sub-agents should use `gpt-5.4` by default in this workspace.
 - Do not use `gpt-5.4-mini` for strict MCP execution tasks.
@@ -37,7 +31,7 @@ Read this before starting a new task, after role changes, and after major debugg
 
 ## Operating Rules
 
-- Always announce the active members for a task before substantial work starts.
+- Before substantial work, state the concrete work areas involved when it affects verification or handoff.
 - Use PowerShell 7 (`pwsh`) as the default shell. If Codex starts in Windows PowerShell, wrap substantive commands with `pwsh -NoLogo -NoProfile -Command ...`.
 - Prefer direct MCP / developer tools over ad-hoc workarounds.
 - When a specific MCP tool is requested, call that tool first.
@@ -54,8 +48,8 @@ Read this before starting a new task, after role changes, and after major debugg
 - New spawn-created sub-agents may still fail to execute `sts2_moddding` tools even when older existing agents can execute them.
 - A Codex restart by itself did not restore `sts2_moddding` execution for newly spawned agents in this workspace.
 - In this workspace, `gpt-5.4-mini` proved unreliable for strict MCP execution tasks. Prefer `gpt-5.4` for sub-agents that need to call `sts2_moddding` or follow strict no-fallback rules.
-- In the current seat lineup standardized on `gpt-5.4`, all active members successfully executed `sts2_moddding` tools.
-- When checking a sub-agent seat, distinguish between:
+- After standardizing sub-agent model selection on `gpt-5.4`, all checked sub-agents successfully executed `sts2_moddding` tools.
+- When checking sub-agent capability, distinguish between:
   - tool visibility
   - actual tool execution
   - shell or network fallbacks that are not the requested MCP path
@@ -65,27 +59,26 @@ Read this before starting a new task, after role changes, and after major debugg
   2. `mcp__sts2_moddding__bridge_ping`
   3. task-specific state calls such as `bridge_get_full_state`
 
-## Flandre Test Rule
+## Runtime Verification Rule
 
-- Flandre is the intended game-operation and test specialist when the seat can execute `sts2_moddding`.
-- Flandre may use `sts2_moddding` only when explicitly instructed to do so.
+- Runtime verification agents may use `sts2_moddding` only when explicitly instructed to do so.
 - When testing tool access, do not accept a generic `connected` answer without the tool name and result payload.
-- If Flandre is told to use `sts2_moddding`, explicitly forbid PowerShell or other substitute paths in the instruction.
+- If an agent is told to use `sts2_moddding`, explicitly forbid PowerShell or other substitute paths in the instruction.
 - During any `sts2_moddding` verification, shell substitution is prohibited.
 - Judge success or failure from the named MCP tool and its raw returned payload, not from summaries.
-- Ask Flandre to check visible tools first when the seat behavior is unclear, but confirm execution through an actual `sts2_moddding` call.
-- Flandre must not use shell, HTTP, or manual JSON-RPC as a substitute for named MCP tools.
+- Ask the agent to check visible tools first when capability is unclear, but confirm execution through an actual `sts2_moddding` call.
+- Runtime verification agents must not use shell, HTTP, or manual JSON-RPC as a substitute for named MCP tools.
 - Required response pattern for tool checks:
   1. tool name
   2. success or failure
   3. returned values or exact error
   4. conclusion
 
-## Oversight Check Pattern
+## Oversight Notes
 
-- 作業開始前、実装前、docs 更新前、検証前、commit 前に `レミリア check` を入れる
-- 形式は固定で `owner / remilia_action / reason / next_actor`
-- 文面は短く、判断と次の担当だけが分かる運用メモにする
+- 判断や引き継ぎが必要な場面では、短い checkpoint note を残す
+- 形式は `owner / action / reason / next_step`
+- 文面は短く、判断と次の作業だけが分かる運用メモにする
 - hook ベースの監視運用は現行方針では採用しない
 - 監督と越権確認は heartbeat ベースのチェックで扱う
 - 旧来の hook 中心のメモやテンプレートは参考資料としてのみ扱い、現行ルールとしては使わない
@@ -96,9 +89,9 @@ Observed sequence:
 
 1. Older long-lived agents such as `Gibbs` and `Dirac` could execute `mcp__sts2_moddding__bridge_ping`
 2. Multiple newly spawned agents could see or describe the tool but failed to execute it
-3. One reset Flandre seat answered only `connected`, but later confirmed that was from `Test-NetConnection`, not `sts2_moddding`
-4. A reset Flandre seat succeeded only after being told to use `sts2_moddding` and to report both the tool name and the raw result
-5. After standardizing current seats on `gpt-5.4`, all active members were able to execute `sts2_moddding`
+3. One reset verification sub-agent answered only `connected`, but later confirmed that was from `Test-NetConnection`, not `sts2_moddding`
+4. A reset verification sub-agent succeeded only after being told to use `sts2_moddding` and to report both the tool name and the raw result
+5. After standardizing current sub-agents on `gpt-5.4`, all checked sub-agents were able to execute `sts2_moddding`
 
 Working guidance:
 
@@ -107,9 +100,9 @@ Working guidance:
   - the raw returned payload
   - no substitute commands
 - Treat `visible but not executable` as a distinct failure mode
-- If a seat starts giving vague answers, reset the seat and retest with a minimal instruction
+- If a sub-agent starts giving vague answers, reset it and retest with a minimal instruction
 - Do not assume a new spawned agent inherits the same MCP execution surface as an older surviving one
-- If a seat must execute MCP tools reliably, use a `gpt-5.4` sub-agent instead of `gpt-5.4-mini`
+- If a sub-agent must execute MCP tools reliably, use `gpt-5.4` instead of `gpt-5.4-mini`
 
 ## Tooltip Debugging Lessons
 
@@ -199,7 +192,7 @@ Do not trust a generic install path when localization or packed assets are invol
 
 Update this document after:
 
-- role or authority changes
+- workflow or responsibility changes
 - major debugging discoveries
 - workflow changes
 - new recurring pitfalls
