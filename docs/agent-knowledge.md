@@ -194,6 +194,8 @@ Current debugging default:
 - Use [Install-FlandreMod.ps1](../tools/Install-FlandreMod.ps1) to copy the exact local PCK into the Steam mod folder
 - Treat [install-gate-checklist.md](./workflows/install-gate-checklist.md) as the short completion gate before deeper runtime debugging
 - Use [build-install-workflow.md](./workflows/build-install-workflow.md) when the stale PCK suspicion needs the longer explanation or extra path/log checks
+- Startup log error `Detected old-style dependencies without min version specified` means `mod_manifest.json` still uses string dependencies. Use object dependencies with `id` and `min_version`.
+- If the startup log says `Tried to load mod with id BaseLib, but a mod is already loaded with that name`, check for duplicate BaseLib folders in the game `mods` directory. The Flandre installer should sync BaseLib into the canonical `BaseLib` folder and remove old `BaseLib.*` installs that declare `id: BaseLib`.
 
 Do not trust a generic install path when localization or packed assets are involved.
 
