@@ -58,6 +58,11 @@ Read this before starting a new task, after workflow changes, and after major de
   1. `mcp__sts2_moddding__get_setup_status`
   2. `mcp__sts2_moddding__bridge_ping`
   3. task-specific state calls such as `bridge_get_full_state`
+- As of 2026-05-31, GDRE-backed resource tools can fail before execution with
+  `UnboundLocalError: cannot access local variable 'asyncio' where it is not associated with a value`.
+  Confirmed affected tools in this session: `recover_game_project` and `list_game_assets`.
+  The current workaround was to call the same `sts2mcp.gdre_tools.recover_game_project`
+  backend directly and recover assets to `C:/mcp/sts2-modding-mcp/recovered`.
 
 ## Runtime Verification Rule
 
