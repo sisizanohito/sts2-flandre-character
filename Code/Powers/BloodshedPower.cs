@@ -14,11 +14,11 @@ public sealed class BloodshedPower : CustomPowerModel
 {
     private const int BaselineAmount = 1;
 
-    public override string? CustomPackedIconPath => "res://images/powers/link_power.png";
+    public override string? CustomPackedIconPath => "res://flandremod/images/powers/link_power.png";
 
-    public override string? CustomBigIconPath => "res://images/powers/link_power.png";
+    public override string? CustomBigIconPath => "res://flandremod/images/powers/link_power.png";
 
-    public override string? CustomBigBetaIconPath => "res://images/powers/link_power.png";
+    public override string? CustomBigBetaIconPath => "res://flandremod/images/powers/link_power.png";
 
     public override PowerType Type => PowerType.Buff;
 
@@ -36,6 +36,24 @@ public sealed class BloodshedPower : CustomPowerModel
     public static bool IsAtLeast(Creature? creature, int threshold)
     {
         return CurrentFor(creature) >= threshold;
+    }
+
+    public static async Task Add(PlayerChoiceContext choiceContext, Creature? creature, int amount, Creature? applier, CardModel? cardSource, bool silent = false)
+    {
+        if (creature == null || amount <= 0)
+            return;
+
+        BloodshedPower? power = creature.GetPower<BloodshedPower>();
+        if (power == null)
+        {
+            power = await PowerCmd.Apply<BloodshedPower>(choiceContext, creature, BaselineAmount, applier, cardSource, silent: true);
+            power?.SetAmount(BaselineAmount, silent: true);
+        }
+
+        if (power == null)
+            return;
+
+        await PowerCmd.ModifyAmount(choiceContext, power, amount, applier, cardSource, silent: silent);
     }
 
     public static async Task<bool> TryConsume(PlayerChoiceContext choiceContext, Creature? creature, int amount, Creature? applier, CardModel? cardSource)
@@ -57,9 +75,9 @@ public sealed class BloodshedPower : CustomPowerModel
         if (bloodshed <= 0) return;
 
         Flash();
-        await PowerCmd.ModifyAmount(
+        await Add(
             new ThrowingPlayerChoiceContext(),
-            this,
+            Owner,
             bloodshed,
             null,
             null,

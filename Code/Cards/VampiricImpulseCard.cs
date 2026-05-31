@@ -51,7 +51,7 @@ public sealed class VampiricImpulseCard : CustomCardModel
         if (!shouldHeal)
             return;
 
-        int healAmount = attack.Results.Sum(result => result.UnblockedDamage) / 2;
+        int healAmount = attack.Results.SelectMany(results => results).Sum(result => result.UnblockedDamage) / 2;
         if (healAmount <= 0)
             return;
 

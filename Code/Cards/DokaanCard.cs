@@ -39,7 +39,7 @@ public sealed class DokaanCard : CustomCardModel
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_explosion")
+                .WithHitFx("vfx/vfx_bloody_impact")
                 .Execute(choiceContext);
             return;
         }

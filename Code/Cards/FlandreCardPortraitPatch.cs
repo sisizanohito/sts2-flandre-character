@@ -14,6 +14,7 @@ public static class FlandreCardPortraitPatch
         {
             FlandreStrikeCard => "res://flandremod/images/cards/strike_flandre.png",
             FlandreDefendCard => "res://flandremod/images/cards/defend_flandre.png",
+            CataclysmicGazeCard => "res://flandremod/images/cards/strike_flandre.png",
             _ => null
         };
 

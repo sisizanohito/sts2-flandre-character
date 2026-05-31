@@ -38,7 +38,7 @@ internal static class DestructionEyeCardHelper
             if (existingLink != null)
                 await PowerCmd.ModifyAmount(choiceContext, existingLink, DeathDamageIncrement, ownerCreature, source);
 
-            SafePlayOnCreatureCenter(existingEye, "vfx/vfx_explosion");
+            SafePlayOnCreatureCenter(existingEye, "vfx/vfx_bloody_impact");
             SafePlayOnCreatureCenter(target, "vfx/vfx_gaze");
             return;
         }
@@ -97,6 +97,11 @@ internal static class DestructionEyeCardHelper
     public static bool HasAnyActiveEye(CardModel source)
     {
         return GetActiveEyes(source).Any();
+    }
+
+    public static IReadOnlyList<Creature> GetActiveEyesSnapshot(CardModel source)
+    {
+        return GetActiveEyes(source).ToList();
     }
 
     public static Creature? FindActiveEyeForTarget(CardModel source, Creature target)

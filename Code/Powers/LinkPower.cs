@@ -19,11 +19,11 @@ public sealed class LinkPower : CustomPowerModel
 {
     private const string RelayRatioVarName = "RelayRatio";
 
-    public override string? CustomPackedIconPath => "res://images/powers/link_power.png";
+    public override string? CustomPackedIconPath => "res://flandremod/images/powers/link_power.png";
 
-    public override string? CustomBigIconPath => "res://images/powers/link_power.png";
+    public override string? CustomBigIconPath => "res://flandremod/images/powers/link_power.png";
 
-    public override string? CustomBigBetaIconPath => "res://images/powers/link_power.png";
+    public override string? CustomBigBetaIconPath => "res://flandremod/images/powers/link_power.png";
 
     public decimal DeathDamage
     {
@@ -75,7 +75,7 @@ public sealed class LinkPower : CustomPowerModel
         );
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (RemainingTurns <= 0) return;
         if (side != Owner.Side) return;

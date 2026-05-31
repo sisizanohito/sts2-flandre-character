@@ -36,6 +36,13 @@ public static class FlandreTextureHelper
 
     public static Texture2D? LoadTexture(string path)
     {
+        if (IsModLocalRawTexture(path))
+        {
+            Texture2D? rawTexture = LoadRawPackedTexture(path);
+            if (rawTexture != null)
+                return rawTexture;
+        }
+
         Texture2D? texture = ResourceLoader.Load<Texture2D>(path, null, ResourceLoader.CacheMode.Reuse);
         if (texture != null)
             return texture;
@@ -53,6 +60,13 @@ public static class FlandreTextureHelper
         }
 
         return null;
+    }
+
+    private static bool IsModLocalRawTexture(string path)
+    {
+        return path.EndsWith(".png", StringComparison.OrdinalIgnoreCase)
+            && (path.StartsWith("res://flandremod/", StringComparison.Ordinal)
+                || path.StartsWith("res://images/", StringComparison.Ordinal));
     }
 
     private static Texture2D? LoadRawPackedTexture(string path)

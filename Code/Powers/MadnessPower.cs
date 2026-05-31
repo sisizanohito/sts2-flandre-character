@@ -14,11 +14,11 @@ public sealed class MadnessPower : CustomPowerModel
 {
     private static readonly HashSet<Creature> ResolvingOwners = [];
 
-    public override string? CustomPackedIconPath => "res://images/powers/madness_power.png";
+    public override string? CustomPackedIconPath => "res://flandremod/images/powers/madness_power.png";
 
-    public override string? CustomBigIconPath => "res://images/powers/madness_power.png";
+    public override string? CustomBigIconPath => "res://flandremod/images/powers/madness_power.png";
 
-    public override string? CustomBigBetaIconPath => "res://images/powers/madness_power.png";
+    public override string? CustomBigBetaIconPath => "res://flandremod/images/powers/madness_power.png";
 
     public override PowerType Type => PowerType.Buff;
 

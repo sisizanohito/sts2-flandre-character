@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using FlandreMod.Characters;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Models;
@@ -95,14 +96,14 @@ public static class CustomPowerIconPatch
         string id = power.Id?.Entry ?? string.Empty;
         return id switch
         {
-            "MADNESS_POWER" => "res://images/powers/madness_power.png",
-            "LINK_POWER" => "res://images/powers/link_power.png",
-            "BLOODSHED_POWER" => "res://images/powers/link_power.png",
+            "MADNESS_POWER" => "res://flandremod/images/powers/madness_power.png",
+            "LINK_POWER" => "res://flandremod/images/powers/link_power.png",
+            "BLOODSHED_POWER" => "res://flandremod/images/powers/link_power.png",
             _ => power switch
             {
-                MadnessPower => "res://images/powers/madness_power.png",
-                LinkPower => "res://images/powers/link_power.png",
-                BloodshedPower => "res://images/powers/link_power.png",
+                MadnessPower => "res://flandremod/images/powers/madness_power.png",
+                LinkPower => "res://flandremod/images/powers/link_power.png",
+                BloodshedPower => "res://flandremod/images/powers/link_power.png",
                 _ => null
             }
         };
@@ -136,16 +137,9 @@ public static class CustomPowerIconPatch
         if (string.IsNullOrWhiteSpace(resourcePath))
             return null;
 
-        try
-        {
-            Texture2D? fromResource = ResourceLoader.Load<Texture2D>(resourcePath, null, ResourceLoader.CacheMode.Reuse);
-            if (fromResource != null)
-                return fromResource;
-        }
-        catch
-        {
-            // Fall back to disk-based loading below.
-        }
+        Texture2D? fromPackedOrResource = FlandreTextureHelper.LoadTexture(resourcePath);
+        if (fromPackedOrResource != null)
+            return fromPackedOrResource;
 
         foreach (string filePath in GetCandidateFilePaths(resourcePath))
         {
