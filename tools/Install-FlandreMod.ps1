@@ -18,6 +18,44 @@ function Resolve-AbsolutePath {
     return [System.IO.Path]::GetFullPath((Join-Path (Get-Location).Path $Path))
 }
 
+function Remove-LegacyBaseLibInstalls {
+    param(
+        [string]$ModsDir,
+        [string]$CanonicalBaseLibDir
+    )
+
+    $modsFull = [System.IO.Path]::GetFullPath($ModsDir).TrimEnd([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar)
+    $canonicalFull = [System.IO.Path]::GetFullPath($CanonicalBaseLibDir).TrimEnd([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar)
+    $removed = @()
+
+    foreach ($dir in Get-ChildItem -LiteralPath $modsFull -Directory -Filter "BaseLib.*" -ErrorAction SilentlyContinue) {
+        $dirFull = [System.IO.Path]::GetFullPath($dir.FullName).TrimEnd([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar)
+        if ($dirFull -eq $canonicalFull) {
+            continue
+        }
+
+        $modsPrefix = $modsFull + [System.IO.Path]::DirectorySeparatorChar
+        if (-not $dirFull.StartsWith($modsPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+            throw "Refusing to remove BaseLib directory outside mods folder: $dirFull"
+        }
+
+        $manifestPath = Join-Path $dirFull "BaseLib.json"
+        if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
+            continue
+        }
+
+        $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
+        if ($manifest.id -ne "BaseLib") {
+            continue
+        }
+
+        Remove-Item -LiteralPath $dirFull -Recurse -Force
+        $removed += $dirFull
+    }
+
+    return $removed
+}
+
 function Get-InstallVerificationSummary {
     param(
         [string]$ProjectRoot,
@@ -91,7 +129,7 @@ function Get-InstallVerificationSummary {
 $projectAbs = Resolve-AbsolutePath -Path $ProjectRoot
 $modsAbs = Resolve-AbsolutePath -Path $ModsDir
 $modOutputDir = Join-Path $modsAbs "flandremod"
-$baseLibOutputDir = Join-Path $modsAbs "BaseLib.0.2.7"
+$baseLibOutputDir = Join-Path $modsAbs "BaseLib"
 $managedOutputDir = Join-Path $projectAbs "bin\$Configuration\net9.0"
 $manifestPath = Join-Path $projectAbs "mod_manifest.json"
 $pckPath = Join-Path $projectAbs "flandremod.pck"
@@ -158,6 +196,8 @@ foreach ($file in $baseLibPackageFiles) {
     }
 }
 
+$removedLegacyBaseLibDirs = Remove-LegacyBaseLibInstalls -ModsDir $modsAbs -CanonicalBaseLibDir $baseLibOutputDir
+
 New-Item -ItemType Directory -Force -Path $baseLibOutputDir | Out-Null
 New-Item -ItemType Directory -Force -Path $modOutputDir | Out-Null
 
@@ -200,6 +240,7 @@ $verification = Get-InstallVerificationSummary -ProjectRoot $projectAbs -Managed
     ManagedOutputDir = $managedOutputDir
     BaseLibDir = $baseLibOutputDir
     BaseLibVersion = $baseLibPackageVersion
+    RemovedLegacyBaseLibDirs = $removedLegacyBaseLibDirs
 } | Format-List
 
 ""
