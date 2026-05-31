@@ -23,6 +23,7 @@ Start here when you only need to find the right note. Keep the high-traffic hand
 
 - [workflows/build-install-workflow.md](./workflows/build-install-workflow.md): build, PCK rebuild, install, and stale-PCK checks.
 - [workflows/install-gate-checklist.md](./workflows/install-gate-checklist.md): short install completion gate.
+- [workflows/reflection-random-verification.md](./workflows/reflection-random-verification.md): Reflection / random-generation card verification path with localization checks.
 - [workflows/debug-commands.md](./workflows/debug-commands.md): quick debug command references.
 
 ## Visuals

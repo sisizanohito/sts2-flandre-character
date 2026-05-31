@@ -149,6 +149,9 @@ Verification pattern:
 
 Current debugging default:
 
+- Use [reflection-random-verification.md](./workflows/reflection-random-verification.md)
+  for a reusable `RandomReflectionCard` / generated-choice / pool-name
+  localization verification path.
 - for already shipped Destruction Eye cards on `main`, treat missing tooltip text as an install / localization packaging suspicion first, not as a new `CanonicalKeywords` omission
 - do not put the two-word keyword in card body text as `[Destruction Eye]`; the card description rich-text pass can parse it as an unclosed `Destruction` BBCode tag
 - only reopen the card-level keyword path when a newly added card introduces Destruction Eye text without joining the shared exposure pattern
