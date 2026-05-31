@@ -84,13 +84,6 @@ The durable task tracker for this repository is the Agent Teams `koumakan` board
 - For visible replies to leads, teammates, or users during Agent Teams handoffs, use the exposed Agent Teams `message_send` MCP tool as requested by the handoff.
 - Do not use markdown TODO files as the shared task tracker.
 
-### Beads Migration Boundary
-
-- Do not use `bd` or Beads for new task tracking.
-- Beads data may be read only for migration archive or historical lookup when explicitly needed.
-- Do not write, close, delete, or sync Beads data unless a board task or lead/user instruction explicitly authorizes it.
-- Do not delete `.beads/**`, `.agents/skills/beads/**`, or remote `refs/dolt/data` as part of ordinary docs or implementation work.
-
 ### Session Completion
 
 - Run quality gates appropriate to the files changed.

@@ -1,7 +1,0 @@
-{
-  "database": "dolt",
-  "backend": "dolt",
-  "dolt_mode": "embedded",
-  "dolt_database": "flandre_mod",
-  "project_id": "f4430191-665a-4c8c-bfa3-ec77628e5875"
-}
