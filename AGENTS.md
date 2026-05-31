@@ -57,6 +57,7 @@ Do not accept a generic `connected` answer as proof of MCP success.
 - Do not revert unrelated local changes.
 - If committing, stage only files that belong to the current issue.
 - After useful discoveries, update the relevant docs briefly.
+- Beads の issue title / description / acceptance criteria / notes など、タスク本文はユーザーから別指定がない限り日本語で書く。
 
 ## Useful Docs
 
