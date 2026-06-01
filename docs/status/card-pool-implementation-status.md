@@ -65,6 +65,10 @@ Related readable package summary:
   - cost `1`
   - gain block
   - adds bonus block when `Madness` is active
+- `RuddyStepCard`
+  - cost `1`
+  - gain block
+  - uses the mod-local defend portrait
 - `TwistedPlayCard`
   - cost `0`
   - applies `MadnessPower` 1
@@ -140,6 +144,7 @@ Related readable package summary:
 - completed: closed the remaining `Destruction Eye` tooltip-follow-up cards on `main` by landing keyword exposure for `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, and the new `CruelBlinkCard`
 - completed: added `FrenziedFlightCard` as a single uncommon madness extender; localization changed, so build plus install verification is required before runtime display can be called verified
 - completed: added `UnsteadyStrikeCard` as a single common madness payoff; localization changed, so build plus install verification is required before runtime display can be called verified
+- completed: added `RuddyStepCard` as a single common defensive skill; localization changed, so build plus install verification is required before runtime display can be called verified
 
 ## Safe Next Slice
 

@@ -66,6 +66,9 @@ The common pool is already split into five readable lanes.
   - draws a card only while `Madness` is active during play resolution
 - `ClosedWingsCard`
   - defensive payoff that gets better while `Madness` is active
+- `RuddyStepCard`
+  - simple block skill
+  - provides a low-risk common defensive pick without adding another subsystem
 - `TwistedPlayCard`
   - applies `Madness`
   - turns repeated madness application into card draw
@@ -171,6 +174,7 @@ Completed follow-up note:
 - `BloodshedPower`, `BloodScentCard`, `CrimsonAdvanceCard`, `BloodMakeupCard`, `VampiricImpulseCard`, `BloodPactCard`, `ScarletAppetiteCard`, and `SanguineGuardCard` add the first vampire axis slice.
 - `FrenziedFlightCard` adds one narrow uncommon madness slice. Because it changes localization and packed card text, build plus install verification is required before treating runtime display as verified.
 - `UnsteadyStrikeCard` adds one narrow common madness payoff. Because it changes localization and packed card text, build plus install verification is required before treating runtime display as verified.
+- `RuddyStepCard` adds one narrow common defensive skill. It uses the mod-local defend portrait and requires build plus install verification before treating runtime display as verified.
 
 The next non-asset slice should therefore be one of:
 
