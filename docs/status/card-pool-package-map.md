@@ -78,6 +78,9 @@ The common pool is already split into five readable lanes.
 
 ### 4. Generic pressure
 
+- `ShatteredGlintCard`
+  - simple single-target attack
+  - gives the common pool another low-complexity damage card
 - `SweepingBurstCard`
   - unconditional all-enemy attack
 - role:
@@ -113,6 +116,9 @@ The common pool is already split into five readable lanes.
 - `BloodPactCard`
   - consumes current `Bloodshed`
   - gains Energy and draws cards if the consume succeeds
+- `EchoingRuptureCard`
+  - single-target attack
+  - contributes to `Bloodshed` through normal HP damage tracking
 - `FrenziedFlightCard`
   - applies `Madness`
   - draws cards
@@ -183,6 +189,8 @@ Completed follow-up note:
 - `FrenziedFlightCard` adds one narrow uncommon madness slice. Because it changes localization and packed card text, build plus install verification is required before treating runtime display as verified.
 - `UnsteadyStrikeCard` adds one narrow common madness payoff. Because it changes localization and packed card text, build plus install verification is required before treating runtime display as verified.
 - `RuddyStepCard` adds one narrow common defensive skill. It uses the mod-local defend portrait and requires build plus install verification before treating runtime display as verified.
+- `ShatteredGlintCard` adds one simple common attack and uses the mod-local strike portrait.
+- `EchoingRuptureCard` adds one uncommon Bloodshed attack and uses the Bloodshed hover tip path.
 
 The next non-asset slice should therefore be one of:
 

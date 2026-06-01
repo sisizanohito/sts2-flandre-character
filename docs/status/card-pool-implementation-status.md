@@ -49,6 +49,10 @@ Related readable package summary:
   - cost `1`
   - single-target attack
   - draws 1 card only when `Madness` is active during play resolution
+- `ShatteredGlintCard`
+  - cost `1`
+  - single-target attack
+  - simple baseline damage
 - `LaughingEyeCard`
   - cost `1`
   - single-target attack
@@ -102,6 +106,10 @@ Related readable package summary:
   - cost `1`
   - consumes 15 current `Bloodshed`
   - gains Energy and draws cards only when the consume succeeds
+- `EchoingRuptureCard`
+  - cost `1`
+  - single-target attack
+  - contributes to `Bloodshed` through normal HP damage tracking
 - `FrenziedFlightCard`
   - cost `1`
   - applies `MadnessPower` 2
@@ -155,6 +163,8 @@ Related readable package summary:
 - completed: added `FrenziedFlightCard` as a single uncommon madness extender; localization changed, so build plus install verification is required before runtime display can be called verified
 - completed: added `UnsteadyStrikeCard` as a single common madness payoff; localization changed, so build plus install verification is required before runtime display can be called verified
 - completed: added `RuddyStepCard` as a single common defensive skill; localization changed, so build plus install verification is required before runtime display can be called verified
+- completed: added `ShatteredGlintCard` as a simple common attack; localization changed, so build plus install verification is required before runtime display can be called verified
+- completed: added `EchoingRuptureCard` as an uncommon Bloodshed attack; localization changed, so build plus install verification is required before runtime display can be called verified
 - completed: added `CrimsonFeastCard` as the first rare fixed-cost `Bloodshed` spender that converts a successful consume into damage plus healing
 
 ## Safe Next Slice
