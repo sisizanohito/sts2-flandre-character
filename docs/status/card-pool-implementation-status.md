@@ -45,6 +45,10 @@ Related readable package summary:
   - cost `1`
   - three random hits
   - madness-specific all-enemy behavior is handled by `MadnessTargetTypePatch` plus card logic
+- `UnsteadyStrikeCard`
+  - cost `1`
+  - single-target attack
+  - draws 1 card only when `Madness` is active during play resolution
 - `LaughingEyeCard`
   - cost `1`
   - single-target attack
@@ -145,6 +149,7 @@ Related readable package summary:
 - completed: reclassified the current implemented cards into [card-pool-package-map.md](./card-pool-package-map.md), a readable package doc that no longer depends on the historically mojibake draft notes
 - completed: closed the remaining `Destruction Eye` tooltip-follow-up cards on `main` by landing keyword exposure for `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, and the new `CruelBlinkCard`
 - completed: added `FrenziedFlightCard` as a single uncommon madness extender; localization changed, so build plus install verification is required before runtime display can be called verified
+- completed: added `UnsteadyStrikeCard` as a single common madness payoff; localization changed, so build plus install verification is required before runtime display can be called verified
 - completed: added `CrimsonFeastCard` as the first rare fixed-cost `Bloodshed` spender that converts a successful consume into damage plus healing
 
 ## Safe Next Slice

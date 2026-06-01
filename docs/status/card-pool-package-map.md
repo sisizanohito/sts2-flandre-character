@@ -61,6 +61,9 @@ The common pool is already split into five readable lanes.
 
 - `RandomReflectionCard`
   - random-hit attack that spreads across all enemies when `Madness` is active
+- `UnsteadyStrikeCard`
+  - single-target attack
+  - draws a card only while `Madness` is active during play resolution
 - `ClosedWingsCard`
   - defensive payoff that gets better while `Madness` is active
 - `TwistedPlayCard`
@@ -175,6 +178,7 @@ Completed follow-up note:
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
 - `BloodshedPower`, `BloodScentCard`, `CrimsonAdvanceCard`, `BloodMakeupCard`, `VampiricImpulseCard`, `BloodPactCard`, `ScarletAppetiteCard`, `SanguineGuardCard`, and `CrimsonFeastCard` add the first vampire axis slice.
 - `FrenziedFlightCard` adds one narrow uncommon madness slice. Because it changes localization and packed card text, build plus install verification is required before treating runtime display as verified.
+- `UnsteadyStrikeCard` adds one narrow common madness payoff. Because it changes localization and packed card text, build plus install verification is required before treating runtime display as verified.
 
 The next non-asset slice should therefore be one of:
 
