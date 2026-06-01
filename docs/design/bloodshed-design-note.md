@@ -43,15 +43,18 @@ It is intentionally separate from direct self-damage: the resource tracks HP dam
   - uncommon power
   - at the end of Flandre's turn, gains Block for every 10 current `Bloodshed`
   - tests the first "N per Bloodshed" scaling payoff without consuming the resource
+- `CrimsonFeastCard`
+  - rare attack
+  - consumes 25 current `Bloodshed`
+  - only if the consume succeeds, deals damage and heals a fixed amount
 
-The first four cards only read or build the resource. `BloodPactCard` is the first fixed-cost spender and intentionally avoids scaling by every N `Bloodshed`. `SanguineGuardCard` is the first non-consuming scaling payoff, while `ScarletAppetiteCard` keeps the HP-loss reward behavior isolated in a power.
+The first four cards only read or build the resource. `BloodPactCard` is the first fixed-cost spender and intentionally avoids scaling by every N `Bloodshed`. `SanguineGuardCard` is the first non-consuming scaling payoff, while `ScarletAppetiteCard` keeps the HP-loss reward behavior isolated in a power. `CrimsonFeastCard` is the first rare fixed-cost spender that turns a successful consume into attack plus healing.
 
 ## Extension Notes
 
 Good next cards should test one new behavior at a time:
 
-1. a rare card that consumes current `Bloodshed`
-2. a second scaling payoff that uses attack or draw instead of block
-3. a stricter self-HP-loss payoff that only checks HP paid by cards, if the STS2 API exposes a reliable source hook
+1. a second scaling payoff that uses attack or draw instead of block
+2. a stricter self-HP-loss payoff that only checks HP paid by cards, if the STS2 API exposes a reliable source hook
 
 Avoid adding consumption and multiple threshold tiers in the same slice.

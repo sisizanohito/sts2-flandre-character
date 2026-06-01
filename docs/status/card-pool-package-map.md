@@ -141,16 +141,20 @@ Uncommon cards are the package expanders.
 - `CataclysmicGazeCard`
   - damages each active `Destruction Eye`
   - then attacks all enemies
+- `CrimsonFeastCard`
+  - consumes current `Bloodshed`
+  - if the consume succeeds, attacks one enemy and heals Flandre
 
 The current rare package is intentionally narrow but now has one finisher for each of the two newer branches.
 
 - `DokaanCard` is the only shipped rare and acts as the existing madness payoff finisher
 - `VampiricImpulseCard` is the first vampire-style closer that turns bloodshed setup into HP recovery
 - `CataclysmicGazeCard` is the first rare eye-state burst card, converting placed eyes into immediate relay pressure before a board hit
+- `CrimsonFeastCard` is the first rare fixed-cost `Bloodshed` spender, keeping the consume condition separate from both damage and healing
 - this leaves room for later rares to specialize into:
   - high-cost board control
   - setup compression that combines eye creation with payoff
-  - explicit `Bloodshed` consumption
+  - a second `Bloodshed` payoff shape if the first rare spender remains stable
 
 ## Current Reading
 
@@ -169,11 +173,11 @@ This document originated as the readable replacement for the draft package notes
 
 Completed follow-up note:
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
-- `BloodshedPower`, `BloodScentCard`, `CrimsonAdvanceCard`, `BloodMakeupCard`, `VampiricImpulseCard`, `BloodPactCard`, `ScarletAppetiteCard`, and `SanguineGuardCard` add the first vampire axis slice.
+- `BloodshedPower`, `BloodScentCard`, `CrimsonAdvanceCard`, `BloodMakeupCard`, `VampiricImpulseCard`, `BloodPactCard`, `ScarletAppetiteCard`, `SanguineGuardCard`, and `CrimsonFeastCard` add the first vampire axis slice.
 - `FrenziedFlightCard` adds one narrow uncommon madness slice. Because it changes localization and packed card text, build plus install verification is required before treating runtime display as verified.
 
 The next non-asset slice should therefore be one of:
 
 1. add one new card that cleanly extends the existing eye package without a new subsystem
 2. add one new card that cleanly extends the existing madness package without a new subsystem
-3. add one rare `Bloodshed` card that consumes current `Bloodshed`, since fixed-cost spending and non-consuming scaling now both exist
+3. add a later `Bloodshed` follow-up only after `CrimsonFeastCard` runtime behavior is stable

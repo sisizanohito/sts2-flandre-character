@@ -148,5 +148,11 @@
   "CATACLYSMIC_GAZE_CARD.upgrade.description": "それぞれの破壊の目に{EyeDamage}ダメージを与える。敵全体に{Damage:diff()}ダメージを与える。",
   "FLANDREMOD-CATACLYSMIC_GAZE_CARD.title": "破局の視線",
   "FLANDREMOD-CATACLYSMIC_GAZE_CARD.description": "それぞれの破壊の目に{EyeDamage}ダメージを与える。敵全体に{Damage:diff()}ダメージを与える。",
-  "FLANDREMOD-CATACLYSMIC_GAZE_CARD.upgrade.description": "それぞれの破壊の目に{EyeDamage}ダメージを与える。敵全体に{Damage:diff()}ダメージを与える。"
+  "FLANDREMOD-CATACLYSMIC_GAZE_CARD.upgrade.description": "それぞれの破壊の目に{EyeDamage}ダメージを与える。敵全体に{Damage:diff()}ダメージを与える。",
+  "CRIMSON_FEAST_CARD.title": "紅の饗宴",
+  "CRIMSON_FEAST_CARD.description": "[Bloodshed]が{BloodshedCost}以上なら、[Bloodshed]を{BloodshedCost}消費する。{Damage:diff()}ダメージを与える。HPを{Heal}回復する。",
+  "CRIMSON_FEAST_CARD.upgrade.description": "[Bloodshed]が{BloodshedCost}以上なら、[Bloodshed]を{BloodshedCost}消費する。{Damage:diff()}ダメージを与える。HPを{Heal}回復する。",
+  "FLANDREMOD-CRIMSON_FEAST_CARD.title": "紅の饗宴",
+  "FLANDREMOD-CRIMSON_FEAST_CARD.description": "[Bloodshed]が{BloodshedCost}以上なら、[Bloodshed]を{BloodshedCost}消費する。{Damage:diff()}ダメージを与える。HPを{Heal}回復する。",
+  "FLANDREMOD-CRIMSON_FEAST_CARD.upgrade.description": "[Bloodshed]が{BloodshedCost}以上なら、[Bloodshed]を{BloodshedCost}消費する。{Damage:diff()}ダメージを与える。HPを{Heal}回復する。"
 }

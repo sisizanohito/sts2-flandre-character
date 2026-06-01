@@ -127,19 +127,25 @@ Related readable package summary:
   - cost `2`
   - damages each active `Destruction Eye`
   - then attacks all enemies
+- `CrimsonFeastCard`
+  - cost `2`
+  - single-target attack
+  - consumes 25 current `Bloodshed`
+  - deals damage and heals only when the consume succeeds
 
 ## Stable Shared Base
 
 - `DestructionEyeCardHelper` already owns eye creation, eye reinforcement, and initial eye HP setup
 - madness target-shift behavior has already been confirmed for `DokaanCard` and `RandomReflectionCard`
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
-- the current codebase now ships 22 non-basic cards across common, uncommon, and rare
+- the current codebase now ships 23 non-basic cards across common, uncommon, and rare
 
 ## Follow-Up Status
 
 - completed: reclassified the current implemented cards into [card-pool-package-map.md](./card-pool-package-map.md), a readable package doc that no longer depends on the historically mojibake draft notes
 - completed: closed the remaining `Destruction Eye` tooltip-follow-up cards on `main` by landing keyword exposure for `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, and the new `CruelBlinkCard`
 - completed: added `FrenziedFlightCard` as a single uncommon madness extender; localization changed, so build plus install verification is required before runtime display can be called verified
+- completed: added `CrimsonFeastCard` as the first rare fixed-cost `Bloodshed` spender that converts a successful consume into damage plus healing
 
 ## Safe Next Slice
 
@@ -147,6 +153,6 @@ The next non-asset task should stay narrow:
 
 1. Add one new card that closes over the existing `DestructionEyeCardHelper` behavior without introducing a new shared subsystem
 2. Add one new card that closes over the existing `MadnessPower` behavior without introducing a new shared subsystem
-3. Add one rare `Bloodshed` follow-up that consumes the resource, since the first fixed-cost spender and first non-consuming scaling payoff now exist
+3. Add a second narrow `Bloodshed` payoff only after `CrimsonFeastCard` runtime behavior remains stable
 
 This document still does not decide which card should go next. It only records the verified inventory and the completed follow-up doc slice.

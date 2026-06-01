@@ -148,5 +148,11 @@
   "CATACLYSMIC_GAZE_CARD.upgrade.description": "Deal {EyeDamage} damage to each Destruction Eye. Deal {Damage:diff()} damage to ALL enemies.",
   "FLANDREMOD-CATACLYSMIC_GAZE_CARD.title": "Cataclysmic Gaze",
   "FLANDREMOD-CATACLYSMIC_GAZE_CARD.description": "Deal {EyeDamage} damage to each Destruction Eye. Deal {Damage:diff()} damage to ALL enemies.",
-  "FLANDREMOD-CATACLYSMIC_GAZE_CARD.upgrade.description": "Deal {EyeDamage} damage to each Destruction Eye. Deal {Damage:diff()} damage to ALL enemies."
+  "FLANDREMOD-CATACLYSMIC_GAZE_CARD.upgrade.description": "Deal {EyeDamage} damage to each Destruction Eye. Deal {Damage:diff()} damage to ALL enemies.",
+  "CRIMSON_FEAST_CARD.title": "Crimson Feast",
+  "CRIMSON_FEAST_CARD.description": "If [Bloodshed] is at least {BloodshedCost}, consume {BloodshedCost} [Bloodshed]. Deal {Damage:diff()} damage. Heal {Heal} HP.",
+  "CRIMSON_FEAST_CARD.upgrade.description": "If [Bloodshed] is at least {BloodshedCost}, consume {BloodshedCost} [Bloodshed]. Deal {Damage:diff()} damage. Heal {Heal} HP.",
+  "FLANDREMOD-CRIMSON_FEAST_CARD.title": "Crimson Feast",
+  "FLANDREMOD-CRIMSON_FEAST_CARD.description": "If [Bloodshed] is at least {BloodshedCost}, consume {BloodshedCost} [Bloodshed]. Deal {Damage:diff()} damage. Heal {Heal} HP.",
+  "FLANDREMOD-CRIMSON_FEAST_CARD.upgrade.description": "If [Bloodshed] is at least {BloodshedCost}, consume {BloodshedCost} [Bloodshed]. Deal {Damage:diff()} damage. Heal {Heal} HP."
 }
