@@ -110,6 +110,9 @@ The common pool is already split into five readable lanes.
 - `FrenziedFlightCard`
   - applies `Madness`
   - draws cards
+- `UnhingedShelterCard`
+  - gains block
+  - applies `Madness`
 - `ScarletAppetiteCard`
   - power that adds extra `Bloodshed` whenever Flandre loses HP
 - `SanguineGuardCard`
@@ -122,6 +125,7 @@ Uncommon cards are the package expanders.
 - `BloodMakeupCard` lets the bloodshed lane use HP payment as defensive tempo instead of only raw acceleration
 - `BloodPactCard` is the first explicit `Bloodshed` spender and turns the resource into burst tempo
 - `FrenziedFlightCard` is the first uncommon madness extender, giving the lane a compact way to queue multiple all-enemy attacks without adding a new targeting rule
+- `UnhingedShelterCard` is the defensive madness extender, pairing immediate block with one queued `Madness`
 - `ScarletAppetiteCard` makes self HP loss accelerate the Bloodshed count
 - `SanguineGuardCard` is the first non-consuming "per N Bloodshed" scaling payoff
 - together they push the deck from "single eye payoff" into "board-wide eye state", madness burst setup, or HP-payment stabilization

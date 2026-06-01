@@ -99,6 +99,11 @@ Related readable package summary:
   - applies `MadnessPower` 2
   - draws cards
   - upgrade increases draw by 1
+- `UnhingedShelterCard`
+  - cost `1`
+  - gains block
+  - applies `MadnessPower` 1
+  - upgrade increases block by 3
 - `ScarletAppetiteCard`
   - cost `1`
   - power

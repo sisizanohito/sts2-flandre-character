@@ -177,8 +177,9 @@ Current debugging default:
   - `PowerCmd.Apply` calls updated for the required `PlayerChoiceContext`
   - `MerchantRoom.Inventory` updated for the current inventory API
 - Flandre's BaseLib dependency must be installed as its own mod and declared in `mod_manifest.json`; a copied `BaseLib.dll` beside `FlandreMod.dll` is not enough for reliable game loading.
-- Keep `GodotSharp` package references aligned with the current game/BaseLib runtime. As of the current STS2 install and BaseLib 3.1.0, use `GodotSharp` 4.5.1, not 4.4.0.
-- BaseLib 3.1.0 currently logs `Applied 150 patches successfully, 3 failed` on STS2 startup. The failed patches are
+- Keep `GodotSharp` package references aligned with the current game/BaseLib runtime. As of the current STS2 install and BaseLib 3.1.8, use `GodotSharp` 4.5.1, not 4.4.0.
+- BaseLib 3.1.0 logged `Creature.get_ShowsInfiniteHp()` `MissingMethodException` during combat health-bar refresh in this workspace. Use `Alchyr.Sts2.BaseLib` 3.1.8 and `mod_manifest.json` min_version `v3.1.8` for current runtime verification.
+- BaseLib 3.1.0 also logged `Applied 150 patches successfully, 3 failed` on STS2 startup. The failed patches were
   `ExhaustivePatch`, `PersistPatch`, and `PurgePatch`, all targeting the old
   `CardModel.GetResultPileType` method. The current installed `sts2.dll` uses
   `GetResultPileTypeForCardPlay` instead. Flandre's current cards do not use
