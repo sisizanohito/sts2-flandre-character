@@ -108,6 +108,11 @@ Related readable package summary:
   - power
   - at end of Flandre's turn, gains Block for every 10 current `Bloodshed`
 
+- `SanguineOverflowCard`
+  - cost `1`
+  - single-target attack
+  - adds damage for every N current `Bloodshed` without consuming it
+
 ### Rare
 
 - `DokaanCard`
