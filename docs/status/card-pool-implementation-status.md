@@ -74,6 +74,27 @@ Related readable package summary:
   - loses HP
   - draws cards
   - gains Energy when current `Bloodshed` reaches its threshold
+- `BloodyCrescentCard`
+  - cost `1`
+  - single-target attack
+  - gains Block when current `Bloodshed` reaches its threshold
+- `RedMistCard`
+  - cost `1`
+  - loses HP
+  - gains Block
+  - attacks all enemies when current `Bloodshed` reaches its threshold
+- `ShatteredGlintCard`
+  - cost `1`
+  - single-target attack
+  - deals extra damage to the linked eye if the target has one
+- `UnsteadyStrikeCard`
+  - cost `1`
+  - single-target attack
+  - draws when `Madness` is active
+- `RuddyStepCard`
+  - cost `1`
+  - gains Block
+  - draws when current `Bloodshed` reaches its low threshold
 
 ### Uncommon
 
@@ -107,11 +128,18 @@ Related readable package summary:
   - cost `1`
   - power
   - at end of Flandre's turn, gains Block for every 10 current `Bloodshed`
-
 - `SanguineOverflowCard`
   - cost `1`
   - single-target attack
   - adds damage for every N current `Bloodshed` without consuming it
+- `EchoingRuptureCard`
+  - cost `1`
+  - single-target attack
+  - creates `Destruction Eye` on a random enemy when an active eye already exists
+- `UnhingedShelterCard`
+  - cost `1`
+  - gains Block
+  - applies `MadnessPower` 1
 
 ### Rare
 
@@ -127,26 +155,35 @@ Related readable package summary:
   - cost `2`
   - damages each active `Destruction Eye`
   - then attacks all enemies
+- `ScarletDelugeCard`
+  - cost `2`
+  - consumes all current `Bloodshed`
+  - attacks all enemies with bonus damage for every N `Bloodshed` consumed
+- `CrimsonBanquetCard`
+  - cost `2`
+  - consumes 25 current `Bloodshed`
+  - single-target attack plus HP recovery only when the consume succeeds
 
 ## Stable Shared Base
 
 - `DestructionEyeCardHelper` already owns eye creation, eye reinforcement, and initial eye HP setup
 - madness target-shift behavior has already been confirmed for `DokaanCard` and `RandomReflectionCard`
 - every currently shipped card whose localization text includes `[Destruction Eye]` now exposes `DestructionEye.CustomType` through `CanonicalKeywords`
-- the current codebase now ships 22 non-basic cards across common, uncommon, and rare
+- the current codebase now ships 32 non-basic cards across common, uncommon, and rare
 
 ## Follow-Up Status
 
 - completed: reclassified the current implemented cards into [card-pool-package-map.md](./card-pool-package-map.md), a readable package doc that no longer depends on the historically mojibake draft notes
 - completed: closed the remaining `Destruction Eye` tooltip-follow-up cards on `main` by landing keyword exposure for `MadGazeCard`, `CrackedSmileCard`, `RendingClawCard`, `ProliferatingGazeCard`, and the new `CruelBlinkCard`
 - completed: added `FrenziedFlightCard` as a single uncommon madness extender; localization changed, so build plus install verification is required before runtime display can be called verified
+- completed: added `ShatteredGlintCard`, `UnsteadyStrikeCard`, `RuddyStepCard`, `EchoingRuptureCard`, `UnhingedShelterCard`, and `CrimsonBanquetCard` as the next six-card gameplay slice
 
 ## Safe Next Slice
 
 The next non-asset task should stay narrow:
 
-1. Add one new card that closes over the existing `DestructionEyeCardHelper` behavior without introducing a new shared subsystem
-2. Add one new card that closes over the existing `MadnessPower` behavior without introducing a new shared subsystem
-3. Add one rare `Bloodshed` follow-up that consumes the resource, since the first fixed-cost spender and first non-consuming scaling payoff now exist
+1. Build and install the current card-pool changes with the documented PCK workflow
+2. Verify runtime card text, hover tips, and conditional combat behavior for the newly added cards
+3. Rebalance only after the cards have been seen in a live Flandre combat
 
-This document still does not decide which card should go next. It only records the verified inventory and the completed follow-up doc slice.
+Localization and packed card text changed, so repository edits alone are not enough to call this slice runtime-verified.

@@ -47,15 +47,53 @@ It is intentionally separate from direct self-damage: the resource tracks HP dam
   - uncommon power
   - at the end of Flandre's turn, gains Block for every 10 current `Bloodshed`
   - tests the first "N per Bloodshed" scaling payoff without consuming the resource
+- `BloodyCrescentCard`
+  - common attack
+  - gains Block if current `Bloodshed` is at least 10
+- `RedMistCard`
+  - common skill
+  - loses HP for Block
+  - attacks all enemies if current `Bloodshed` is at least 12
+- `SanguineOverflowCard`
+  - uncommon attack
+  - adds damage for every 10 current `Bloodshed` without consuming it
+- `ScarletDelugeCard`
+  - rare attack
+  - consumes all current `Bloodshed`
+  - adds all-enemy damage for every 5 `Bloodshed` consumed
+- `RuddyStepCard`
+  - common skill
+  - gains Block
+  - draws 1 card if current `Bloodshed` is at least 12
+- `CrimsonBanquetCard`
+  - rare attack
+  - consumes 25 current `Bloodshed`
+  - deals damage and heals only if the consume succeeds
 
-The first four cards only read or build the resource. `BloodPactCard` is the first fixed-cost spender and intentionally avoids scaling by every N `Bloodshed`. `SanguineGuardCard` is the first non-consuming scaling payoff, while `ScarletAppetiteCard` keeps the HP-loss reward behavior isolated in a power.
+The initial threshold cards only read or build the resource. `BloodPactCard` is the first fixed-cost spender and intentionally avoids scaling by every N `Bloodshed`. `SanguineGuardCard` and `SanguineOverflowCard` cover non-consuming scaling payoffs, while `ScarletAppetiteCard` keeps the HP-loss reward behavior isolated in a power. `CrimsonBanquetCard` adds the fixed-cost rare spender shape: success consumes a fixed 25 `Bloodshed`, failure does nothing.
 
 ## Extension Notes
 
-Good next cards should test one new behavior at a time:
+Future cards should test one new behavior at a time:
 
-1. a rare card that consumes current `Bloodshed`
-2. a second scaling payoff that uses attack or draw instead of block
+1. a non-consuming payoff that uses draw or card generation instead of block or attack
+2. a self-HP-loss payoff that clearly differs from `CrimsonAdvanceCard`, `BloodMakeupCard`, and `RedMistCard`
 3. a stricter self-HP-loss payoff that only checks HP paid by cards, if the STS2 API exposes a reliable source hook
 
 Avoid adding consumption and multiple threshold tiers in the same slice.
+
+## Decision Record
+
+As of Agent Teams task `#cf3c2c87`, the next `Bloodshed` implementation was a non-consuming per-N attack payoff.
+
+- Implementation task: Agent Teams `#ac56f829`
+- Shape: one card that reads current `Bloodshed`, calculates tiers such as `current / 10`, and converts those tiers into attack output without consuming `Bloodshed`
+- Keep out of scope: `Bloodshed` consumption, multiple threshold tiers, and source-specific HP-payment tracking
+
+Reasoning:
+
+- `BloodPactCard` already validates the fixed-cost consume behavior, so a rare spender can wait until the scaling lane has one offensive example.
+- `SanguineGuardCard` already validates non-consuming per-N scaling for Block, but not for an active attack payoff.
+- Existing HP-loss hooks used by `Bloodshed` reliably report creature and HP delta; source-specific "HP paid by this card" semantics should be handled as a separate API/design task before becoming a card implementation.
+
+Follow-up: `SanguineOverflowCard` now covers the attack-scaling half of that decision. `CrimsonBanquetCard` adds a later fixed-cost rare spender and follows the same consume-success-only rule as `BloodPactCard`.
