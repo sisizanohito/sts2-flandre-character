@@ -57,7 +57,7 @@ Do not accept a generic `connected` answer as proof of MCP success.
 - Do not revert unrelated local changes.
 - If committing, stage only files that belong to the current issue.
 - After useful discoveries, update the relevant docs briefly.
-- Agent Teams の task subject / description / acceptance criteria / notes / comments など、タスク本文はユーザーから別指定がない限り日本語で書く。
+- Beads (bd) の issue title / description / design / acceptance criteria / notes / comments など、タスク本文はユーザーから別指定がない限り日本語で書く。
 
 ## Useful Docs
 
@@ -73,27 +73,27 @@ Do not accept a generic `connected` answer as proof of MCP success.
 
 ## Team Task Management
 
-The durable task tracker for this repository is the Agent Teams `koumakan` board.
+This project uses bd (Beads) for issue tracking. Beads is the durable task tracker for this repository. See also `.agents/skills/beads/SKILL.md`.
 
 ### Workflow
 
-- For assigned work, read the full board task context first with `task_get`.
-- Start only when ready to actively work, using `task_start`.
-- Keep blockers, progress, verification notes, and handoff context in `task_add_comment`.
-- When work is complete, add a final results comment before `task_complete`.
-- For visible replies to leads, teammates, or users during Agent Teams handoffs, use the exposed Agent Teams `message_send` MCP tool as requested by the handoff.
+- Run `bd prime` at the start of a session for workflow context and persistent memories.
+- Find ready work with `bd ready`; read full task context with `bd show <id>` before starting.
+- Claim a task only when ready to actively work: `bd update <id> --claim`.
+- Record blockers, progress, verification notes, and handoff context as issue comments (`bd comment <id>`).
+- Track dependencies with `bd dep add <child> <parent>`; create follow-up work as new issues instead of leaving it in chat.
+- When work is complete, add a final results comment, then `bd close <id> "reason"`.
+- Use `bd remember "insight"` for persistent project memory; do not create MEMORY.md files.
 - Do not use markdown TODO files as the shared task tracker.
-
-### Beads Migration Boundary
-
-- Do not use `bd` or Beads for new task tracking.
-- Beads data may be read only for migration archive or historical lookup when explicitly needed.
-- Do not write, close, delete, or sync Beads data unless a board task or lead/user instruction explicitly authorizes it.
 - Do not delete `.beads/**`, `.agents/skills/beads/**`, or remote `refs/dolt/data` as part of ordinary docs or implementation work.
+
+### Legacy Trackers
+
+- The former Agent Teams `koumakan` board is read-only history. Do not create or update board tasks; migrate anything still relevant into Beads issues.
 
 ### Session Completion
 
 - Run quality gates appropriate to the files changed.
-- Commit only files that belong to the current board task.
+- Commit only files that belong to the current issue.
 - Push completed work to the remote when the task requires repository changes.
-- Record gates, commit/push status, residual risk, and follow-up work in the board task before closing it.
+- Record gates, commit/push status, residual risk, and follow-up work in the Beads issue before closing it.
