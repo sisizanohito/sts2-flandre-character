@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2026-05-31T22:59:44.2912368+09:00",
+  "source": "temporary worktree restored from HEAD~1 tracked .beads/issues.jsonl, because root .beads had already been removed by local commit 8d27e4a before this run",
+  "preOpenCount": 15,
+  "preInProgressCount": 0,
+  "preClosedCount": 6,
+  "postOpenCount": 0,
+  "postInProgressCount": 0,
+  "postClosedCount": 21
+}

@@ -12,8 +12,6 @@ Read this before starting a new task, after workflow changes, and after major de
 - For assigned work, check the full task context first, start the task only when actively beginning, and use task comments for progress, blockers, verification notes, residual risk, and handoff context.
 - Agent Teams task subject / description / acceptance criteria / notes / comments should be written in Japanese unless the user requests otherwise.
 - When a handoff or user message names a specific Agent Teams MCP tool, call that tool first. Do not replace it with shell, HTTP, or hand-rolled JSON-RPC unless explicitly allowed.
-- Do not use Beads for new task tracking. Treat Beads as read-only migration archive or historical lookup unless a board task or lead/user instruction explicitly authorizes Beads writes, closes, deletes, or sync operations.
-- When using old Beads data as historical context, record both the old Beads ID and the current Agent Teams task ID in the relevant task comment, and separate confirmed facts from inference.
 
 ## Work Areas
 
