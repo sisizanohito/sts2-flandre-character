@@ -15,3 +15,12 @@
 
 /.vs/
 /.idea/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+
+# Agent scratch directories (prevent accidental "git add .")
+/.claude/worktrees/
+/.migration-tmp/

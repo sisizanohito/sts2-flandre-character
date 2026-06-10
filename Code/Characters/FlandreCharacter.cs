@@ -1,10 +1,16 @@
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BaseLib.Abstracts;
-using Godot;
-using MegaCrit.Sts2.Core.Entities.Characters;
-using MegaCrit.Sts2.Core.Models;
+using FlandreMod.Bloodshed;
 using FlandreMod.Cards;
 using FlandreMod.Relics;
+using Godot;
+using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace FlandreMod.Characters;
@@ -67,6 +73,37 @@ public class FlandreCharacter : CustomCharacterModel
     public override string CustomMapMarkerPath => FlandreTextureHelper.StartupSafeMapMarkerTexturePath;
     public override string? CustomEnergyCounterPath => "res://scenes/combat/energy_counters/ironclad_energy_counter.tscn";
     protected override IEnumerable<string> ExtraAssetPaths => [FlandreTextureHelper.CardEnergySpritePath];
+    public override bool ShouldReceiveCombatHooks => true;
+
+    public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
+    {
+        if (delta >= 0m || creature.CombatState == null)
+            return Task.CompletedTask;
+
+        int bloodshed = (int)Math.Floor(-delta);
+        if (bloodshed <= 0)
+            return Task.CompletedTask;
+
+        foreach (Player player in creature.CombatState.Players)
+        {
+            if (player.Character is FlandreCharacter)
+            {
+                BloodshedState.Add(player, bloodshed);
+            }
+        }
+
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    {
+        if (player.Character is FlandreCharacter)
+        {
+            BloodshedState.Reset(player);
+        }
+
+        return Task.CompletedTask;
+    }
 }
 
 public sealed class FlandreCharacterCardPool : CustomCardPoolModel
