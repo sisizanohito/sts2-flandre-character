@@ -14,6 +14,9 @@ It is intentionally separate from direct self-damage: the resource tracks HP dam
 - It resets at the start of Flandre's turn.
 - The live count is displayed under/near Flandre's energy counter, following the same combat UI area that Regent uses for the built-in Star counter.
 - If Stars become visible for Flandre through a nonstandard effect, the Bloodshed label shifts lower to avoid directly covering the Star counter.
+- A primitive blood clot visual is attached above Flandre's combat bounds whenever current `Bloodshed` is greater than 0.
+- The clot grows from `Bloodshed` 1 through 60, caps after that to avoid covering intent UI, and hides again when `Bloodshed` resets or is consumed to 0.
+- This visual is code-drawn with Godot primitives, so it does not add new asset or localization requirements.
 
 ## First Payoff Cards
 
