@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using FlandreMod.Bloodshed;
 using FlandreMod.Cards;
+using FlandreMod.Powers;
 using FlandreMod.Relics;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
@@ -74,6 +75,12 @@ public class FlandreCharacter : CustomCharacterModel
     public override string? CustomEnergyCounterPath => "res://scenes/combat/energy_counters/ironclad_energy_counter.tscn";
     protected override IEnumerable<string> ExtraAssetPaths => [FlandreTextureHelper.CardEnergySpritePath];
     public override bool ShouldReceiveCombatHooks => true;
+
+    public override Task BeforeCombatStart()
+    {
+        MadnessPower.ClearResolutionTracking();
+        return Task.CompletedTask;
+    }
 
     public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {

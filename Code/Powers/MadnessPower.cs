@@ -29,6 +29,13 @@ public sealed class MadnessPower : CustomPowerModel
         return ResolvingOwners.Contains(creature);
     }
 
+    // Entries normally clear in AfterCardPlayed, but an aborted card series
+    // (exception, combat end mid-series) can leave stale creatures behind.
+    public static void ClearResolutionTracking()
+    {
+        ResolvingOwners.Clear();
+    }
+
     public static bool IsActiveFor(Creature? creature)
     {
         if (creature == null)
