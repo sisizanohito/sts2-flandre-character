@@ -68,7 +68,7 @@ public static class MadnessAttackCommandTargetingPatch
         var owner = card.Owner;
         if (!MadnessPower.IsActiveFor(owner?.Creature)) return true;
 
-        var combatState = __instance.Attacker?.CombatState ?? owner.Creature.CombatState;
+        var combatState = __instance.Attacker?.CombatState ?? owner?.Creature?.CombatState;
         if (combatState == null) return true;
 
         __result = __instance.TargetingAllOpponents(combatState);

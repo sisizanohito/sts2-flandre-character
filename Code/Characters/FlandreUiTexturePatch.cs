@@ -47,7 +47,7 @@ public static class FlandreUiTexturePatch
     [HarmonyPatch(typeof(NContinueRunInfo), "ShowInfo")]
     public static void ContinueRunInfoShowInfoPostfix(NContinueRunInfo __instance, SerializableRun save)
     {
-        string? characterId = save?.Players.Count > 0 ? save.Players[0].CharacterId.Entry : null;
+        string? characterId = save != null && save.Players.Count > 0 ? save.Players[0].CharacterId?.Entry : null;
         if (!FlandreTextureHelper.IsFlandreCharacterId(characterId))
             return;
 

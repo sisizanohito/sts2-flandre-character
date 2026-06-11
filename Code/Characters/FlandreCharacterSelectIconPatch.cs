@@ -11,7 +11,7 @@ public static class FlandreCharacterSelectIconPatch
 {
     [HarmonyPostfix]
     [HarmonyPatch(typeof(NCharacterSelectButton), nameof(NCharacterSelectButton.Init))]
-    public static void InitPostfix(NCharacterSelectButton __instance, CharacterModel character)
+    public static void InitPostfix(NCharacterSelectButton __instance, CharacterModel? character)
     {
         Log.Warn($"[FlandreMod] CharSelect Init id={character?.Id.Entry} type={character?.GetType().Name} locked={__instance.IsLocked}");
         TryApplyCustomIcon(__instance, character);
@@ -67,7 +67,7 @@ public static class FlandreCharacterSelectIconPatch
         }
     }
 
-    private static void TryApplyCustomIcon(NCharacterSelectButton button, CharacterModel character)
+    private static void TryApplyCustomIcon(NCharacterSelectButton button, CharacterModel? character)
     {
         var idEntry = character?.Id.Entry;
         if (string.IsNullOrEmpty(idEntry) || !idEntry.EndsWith("FLANDRE_CHARACTER"))

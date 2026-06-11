@@ -16,7 +16,7 @@ public static class CardHoverTipPatch
     [HarmonyPrefix]
     public static bool Prefix(NCardHolder __instance, ref bool __state)
     {
-        if (__instance.CardNode == null)
+        if (__instance.CardNode?.Model == null)
             return false;
 
         var hoverTips = __instance.CardNode.Model.HoverTips.ToList();
@@ -27,7 +27,7 @@ public static class CardHoverTipPatch
         }
 
         var hoverTipSet = NHoverTipSet.CreateAndShow(__instance, hoverTips);
-        hoverTipSet.SetAlignmentForCardHolder(__instance);
+        hoverTipSet?.SetAlignmentForCardHolder(__instance);
         return false;
     }
 
@@ -50,7 +50,7 @@ public static class SelectedCardHoverTipPatch
     [HarmonyPrefix]
     public static bool Prefix(NSelectedHandCardHolder __instance, ref bool __state)
     {
-        if (__instance.CardNode == null)
+        if (__instance.CardNode?.Model == null)
             return false;
 
         var hoverTips = __instance.CardNode.Model.HoverTips.ToList();
@@ -61,7 +61,7 @@ public static class SelectedCardHoverTipPatch
         }
 
         var hoverTipSet = NHoverTipSet.CreateAndShow(__instance, hoverTips);
-        hoverTipSet.SetAlignmentForCardHolder(__instance);
+        hoverTipSet?.SetAlignmentForCardHolder(__instance);
         return false;
     }
 
