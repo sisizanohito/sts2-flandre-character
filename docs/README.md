@@ -18,6 +18,7 @@ Start here when you only need to find the right note. Keep the high-traffic hand
 - [status/card-pool-implementation-status.md](./status/card-pool-implementation-status.md): implemented card inventory.
 - [status/card-pool-package-map.md](./status/card-pool-package-map.md): readable package map for current card groups.
 - [status/combat-animation-progress.md](./status/combat-animation-progress.md): combat animation progress and next steps.
+- [status/neow-startup-debugging.md](./status/neow-startup-debugging.md): Flandre Neow blessing-option regression debugging (PCK root images/ folder, dialogue-key guard).
 
 ## Workflows
 

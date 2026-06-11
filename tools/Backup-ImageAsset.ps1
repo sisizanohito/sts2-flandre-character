@@ -23,11 +23,12 @@ if (-not (Test-Path -LiteralPath $sourceAbs -PathType Leaf)) {
     throw "Source image not found: $sourceAbs"
 }
 
-if (-not $sourceAbs.StartsWith($projectAbs, [System.StringComparison]::OrdinalIgnoreCase)) {
+$projectPrefix = $projectAbs.TrimEnd('\', '/') + [System.IO.Path]::DirectorySeparatorChar
+if (-not $sourceAbs.StartsWith($projectPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
     throw "Source image must be under project root.`nproject=$projectAbs`nsource=$sourceAbs"
 }
 
-$relativePath = $sourceAbs.Substring($projectAbs.Length).TrimStart('\', '/')
+$relativePath = $sourceAbs.Substring($projectPrefix.Length)
 $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
 $targetDir = Resolve-AbsolutePath -Path (Join-Path $BackupRoot $timestamp)
 $targetPath = Join-Path $targetDir $relativePath

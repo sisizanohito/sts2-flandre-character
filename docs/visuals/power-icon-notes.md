@@ -6,12 +6,13 @@ This project uses custom power icons for:
 
 - `MadnessPower`
 - `LinkPower`
+- `BloodshedPower` (currently reuses the `LinkPower` icon as a placeholder)
 
 The final working approach is:
 
 1. Make the powers inherit from `BaseLib.Abstracts.CustomPowerModel`
 2. Provide custom icon paths on the model
-3. Patch `NPower._Ready` and `NPower.Reload`
+3. Patch the `PowerModel.Icon` / `PowerModel.BigIcon` getters plus `NPower._Ready` and `NPower.Reload`
 4. If `ResourceLoader.Load<Texture2D>(res://...)` fails, load the PNG from disk and build an `ImageTexture`
 5. Assign both the small icon and the flash texture directly on the node
 
@@ -55,15 +56,19 @@ The reliable fix is to override both of these in:
 
 ## IDs Used By The Patch
 
-- `FLANDREMOD-MADNESS_POWER`
-- `FLANDREMOD-LINK_POWER`
+`CustomPowerIconPatch.GetCustomIconPath` switches on the unprefixed `Id.Entry` values:
 
-The patch also keeps type checks for:
+- `MADNESS_POWER`
+- `LINK_POWER`
+- `BLOODSHED_POWER`
+
+The patch also keeps type checks as a fallback for:
 
 - `MadnessPower`
 - `LinkPower`
+- `BloodshedPower`
 
-Using the full mod-prefixed `Id.Entry` is important because the runtime model ID is prefixed.
+The type-check fallback matters because it keeps the patch working whether or not the runtime `Id.Entry` carries the `FLANDREMOD-` prefix (console commands and localization keys use the prefixed form, e.g. `FLANDREMOD-MADNESS_POWER`).
 
 ## Verification Checklist
 

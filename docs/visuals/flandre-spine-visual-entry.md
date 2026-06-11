@@ -65,21 +65,22 @@ The merchant and rest-site scenes are not touched by this script.
 The current base scene contains a `Visuals` node with:
 
 - node type: `Sprite2D`
-- texture source: `res://flandremod/Characters/FlandreCharacter/flandre_character.png`
+- no `texture` property and no `Texture2D` ext-resource; the combat texture is assigned in code (`Code/Characters/FlandreTextureHelper.cs`, `CombatTexturePath`)
 
 The script changes that scene in the following way:
 
-1. Replaces the texture ext-resource with a Spine skeleton-data ext-resource:
+1. Bumps the scene header `load_steps` from `2` to `3` for the added ext-resource.
+2. Inserts a Spine skeleton-data ext-resource after the existing `Script` ext-resource:
    - `res://flandremod/animations/characters/flandre/flandre_skel_data.tres`
-2. Replaces the `Visuals` node type:
+3. Replaces the `Visuals` node header and adds the Spine properties:
    - `Sprite2D` -> `SpineSprite`
-3. Replaces the node property block:
-   - removes `texture = ExtResource("2_texture")`
    - adds `skeleton_data_res = ExtResource("2_skeleton")`
    - adds `preview_skin = "Default"`
    - adds `preview_animation = "idle_loop"`
    - adds `preview_frame = false`
    - adds `preview_time = 0.0`
+
+Each patch step throws if its pattern no longer matches the scene file, so scene-layout drift fails loudly instead of writing a half-patched scene. If the scene already uses a `SpineSprite` Visuals node, the scene patch is skipped (assets and `flandre_skel_data.tres` are still refreshed).
 
 Positioning and marker nodes such as `Bounds`, `CenterPos`, `IntentPos`, and `OrbPos` remain in the same scene file.
 

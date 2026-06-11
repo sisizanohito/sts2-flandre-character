@@ -164,6 +164,9 @@ if ($BuildManaged) {
     Push-Location $projectAbs
     try {
         dotnet build ".\FlandreMod.csproj" -c $Configuration
+        if ($LASTEXITCODE -ne 0) {
+            throw "dotnet build failed with exit code $LASTEXITCODE. Aborting install so stale artifacts are not copied."
+        }
     }
     finally {
         Pop-Location

@@ -17,7 +17,13 @@ When that happens, hover tips can still appear, but the title and description sh
 dotnet build .\FlandreMod.csproj -c Debug
 ```
 
-2. Rebuild the PCK from a staging directory that contains both root asset folders:
+The build resolves `sts2.dll` through the `Sts2Dir` property in `FlandreMod.csproj`, which defaults to the standard Steam install path. If the game lives elsewhere, override it without editing the csproj:
+
+```powershell
+dotnet build .\FlandreMod.csproj -c Debug -p:Sts2Dir="D:\path\to\Slay the Spire 2\data_sts2_windows_x86_64"
+```
+
+2. Rebuild the PCK with the `build_pck` MCP tool (server `sts2_moddding` in Codex / `sts2-modding` in Claude Code), using a staging directory that contains both root asset folders:
 
 ```text
 source_dir = %REPO_ROOT%\out\pck_stage

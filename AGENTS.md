@@ -13,7 +13,7 @@ Read this file first whenever a new Codex thread starts in this repository.
 
 - This repository is the Flandre mod for Slay the Spire 2.
 - Treat paths in docs as repository-relative unless a task explicitly requires an external location.
-- The `sts2_moddding` MCP server is configured for this workspace.
+- The `sts2_moddding` MCP server is configured for this workspace. The name is client-dependent: the same backend is registered as `sts2_moddding` in the Codex user config and as `sts2-modding` in Claude Code, so substitute the `mcp__<server>__` prefix that matches your client.
 - Do not treat repository edits alone as complete when the change affects assets, localization, PCK contents, install state, or runtime display.
 - For those changes, think through install and live verification before calling the task done.
 

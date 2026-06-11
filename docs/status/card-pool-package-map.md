@@ -29,6 +29,10 @@ The common pool is already split into five readable lanes.
 
 ### 1. Eye setup
 
+- `EchoLinkCard`
+  - targeted eye application
+  - upgrade increases eye count instead of changing cost
+  - also anchors the starter deck (x2); rarity is `Common` in code
 - `MadGazeCard`
   - adds `Madness`
   - creates one `Destruction Eye` on a random enemy
@@ -37,7 +41,7 @@ The common pool is already split into five readable lanes.
   - single-target attack
   - creates `Destruction Eye` on the target after dealing damage
 - role:
-  - starts the eye engine without spending the starter `EchoLinkCard`
+  - starts the eye engine without spending the starter `EchoLinkCard` copies
   - gives the common pool one direct "hit first, then mark" setup card
   - keeps `MadGazeCard` as the bridge between the eye lane and the madness lane
 
@@ -108,9 +112,6 @@ The common pool is already split into five readable lanes.
 
 ## Uncommon Package
 
-- `EchoLinkCard`
-  - targeted eye application
-  - upgrade increases eye count instead of changing cost
 - `ProliferatingGazeCard`
   - applies eyes to all enemies
   - upgrade reduces cost
@@ -138,7 +139,6 @@ The common pool is already split into five readable lanes.
 
 Uncommon cards are the package expanders.
 
-- `EchoLinkCard` is the precise setup card and already anchors the starter deck
 - `ProliferatingGazeCard` is the wide-board escalation card
 - `BloodMakeupCard` lets the bloodshed lane use HP payment as defensive tempo instead of only raw acceleration
 - `BloodPactCard` is the first explicit `Bloodshed` spender and turns the resource into burst tempo

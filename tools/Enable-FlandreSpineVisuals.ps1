@@ -58,12 +58,35 @@ if (-not (Test-Path -LiteralPath $scenePath -PathType Leaf)) {
 
 . "$projectAbs\\tools\\Backup-ImageAsset.ps1" -SourcePath $scenePath -ProjectRoot $projectAbs -BackupRoot "assets_tmp/backups/scenes"
 
+function Invoke-ScenePatch {
+    param([string]$Content, [string]$Pattern, [string]$Replacement, [string]$Description)
+    $patched = $Content -replace $Pattern, $Replacement
+    if ($patched -eq $Content) {
+        throw "Scene patch step matched nothing: $Description. The scene layout has drifted; update tools/Enable-FlandreSpineVisuals.ps1 before rerunning."
+    }
+    return $patched
+}
+
 $scene = Get-Content -LiteralPath $scenePath -Raw
-$scene = $scene -replace '(?s)\[ext_resource type="Texture2D".*?\n', '[ext_resource type="SpineSkeletonDataResource" path="res://flandremod/animations/characters/flandre/flandre_skel_data.tres" id="2_skeleton"]' + [Environment]::NewLine
-$scene = $scene -replace '\[node name="Visuals" type="Sprite2D" parent="\."\]', '[node name="Visuals" type="SpineSprite" parent="."]'
-$scene = $scene -replace 'texture = ExtResource\("2_texture"\)', 'skeleton_data_res = ExtResource("2_skeleton")' + [Environment]::NewLine + 'preview_skin = "Default"' + [Environment]::NewLine + 'preview_animation = "idle_loop"' + [Environment]::NewLine + 'preview_frame = false' + [Environment]::NewLine + 'preview_time = 0.0'
-Set-Content -LiteralPath $scenePath -Value $scene -Encoding UTF8
+if ($scene -match '\[node name="Visuals" type="SpineSprite" parent="\."\]') {
+    Write-Output "Scene already uses SpineSprite visuals; skipping scene patch: $scenePath"
+}
+else {
+    $scene = Invoke-ScenePatch -Content $scene `
+        -Pattern '\[gd_scene load_steps=2 format=3\]' `
+        -Replacement '[gd_scene load_steps=3 format=3]' `
+        -Description 'bump load_steps for the added SpineSkeletonDataResource ext_resource'
+    $scene = Invoke-ScenePatch -Content $scene `
+        -Pattern '(\[ext_resource type="Script"[^\r\n]*\]\r?\n)' `
+        -Replacement ('$1[ext_resource type="SpineSkeletonDataResource" path="res://flandremod/animations/characters/flandre/flandre_skel_data.tres" id="2_skeleton"]' + [Environment]::NewLine) `
+        -Description 'insert SpineSkeletonDataResource ext_resource after the Script ext_resource'
+    $scene = Invoke-ScenePatch -Content $scene `
+        -Pattern '\[node name="Visuals" type="Sprite2D" parent="\."\]' `
+        -Replacement ('[node name="Visuals" type="SpineSprite" parent="."]' + [Environment]::NewLine + 'skeleton_data_res = ExtResource("2_skeleton")' + [Environment]::NewLine + 'preview_skin = "Default"' + [Environment]::NewLine + 'preview_animation = "idle_loop"' + [Environment]::NewLine + 'preview_frame = false' + [Environment]::NewLine + 'preview_time = 0.0') `
+        -Description 'replace the Sprite2D Visuals node with a SpineSprite node bound to the skeleton data'
+    Set-Content -LiteralPath $scenePath -Value $scene -Encoding UTF8
+    Write-Output "Scene patched: $scenePath"
+}
 
 Write-Output "Enabled Spine visuals for Flandre."
 Write-Output "Assets copied to: $destDir"
-Write-Output "Scene patched: $scenePath"

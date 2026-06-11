@@ -8,10 +8,10 @@ Read this before starting a new task, after workflow changes, and after major de
 
 ## Task Management
 
-- The durable task tracker is the Agent Teams `koumakan` board.
-- For assigned work, check the full task context first, start the task only when actively beginning, and use task comments for progress, blockers, verification notes, residual risk, and handoff context.
-- Agent Teams task subject / description / acceptance criteria / notes / comments should be written in Japanese unless the user requests otherwise.
-- When a handoff or user message names a specific Agent Teams MCP tool, call that tool first. Do not replace it with shell, HTTP, or hand-rolled JSON-RPC unless explicitly allowed.
+- The durable task tracker is bd (Beads); run `bd prime` at session start and use `bd ready` / `bd show <id>` before starting work.
+- For assigned work, claim only when actively beginning (`bd update <id> --claim`), and record progress, blockers, verification notes, residual risk, and handoff context as issue comments (`bd comment <id>`).
+- Beads issue title / description / acceptance criteria / notes / comments are written in Japanese unless the user requests otherwise.
+- The former Agent Teams `koumakan` board is read-only history; do not create or update board tasks — migrate anything still relevant into Beads issues.
 
 ## Work Areas
 
@@ -50,6 +50,7 @@ Read this before starting a new task, after workflow changes, and after major de
 
 ## MCP Rules
 
+- Server naming differs by client: the same backend is registered as `sts2_moddding` in the Codex user config and as `sts2-modding` in Claude Code. Use the `mcp__<server>__` prefix that matches your client; docs in this repo write `sts2_moddding` (the Codex name) unless stated otherwise.
 - `sts2_moddding` is usable from the main thread and from most sub-agents.
 - If a sub-agent is suspected to be failing because of context pollution, re-create the agent instead of arguing with the old thread.
 - New spawn-created sub-agents may still fail to execute `sts2_moddding` tools even when older existing agents can execute them.

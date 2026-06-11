@@ -95,13 +95,14 @@ Related readable package summary:
   - cost `1`
   - gains Block
   - draws when current `Bloodshed` reaches its low threshold
-
-### Uncommon
-
 - `EchoLinkCard`
   - cost `2`
   - applies `Destruction Eye` to the chosen target
   - upgrade changes the application count from `1` to `2`
+  - also anchors the starter deck (x2)
+
+### Uncommon
+
 - `ProliferatingGazeCard`
   - cost `2`
   - applies `Destruction Eye` to all enemies
